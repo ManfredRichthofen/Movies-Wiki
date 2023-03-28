@@ -2,8 +2,6 @@
 Visit the [Jellyfin Website](https://jfapp.xyz)
 ### Common Issues
 
-#### Videos Wont Play
-
 ### Downloads
 
 # Android TV/Fire TV
@@ -22,9 +20,11 @@ You can search for Jellyfin in the appstore of your device or visit the store pa
 ### Common Issues
 
 ### Downloads
+[App Store Page]
 
 # Windows
 
 ### Common Issues
 
 ### Downloads
+[Download]

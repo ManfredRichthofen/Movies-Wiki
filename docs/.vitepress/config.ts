@@ -45,7 +45,7 @@ export default defineConfig({
       { icon: 'twitter', link: '...' },
       {
         icon: {
-          svg: '<img src = "/imgs/jellyfin.svg" alt="jellyfin" width="24" height="24"/>'
+          svg: '<img src = "https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/jellyfin.svg" alt="jellyfin" width="24" height="24"/>'
         },
         link: 'https://jfapp.xyz'
       }
