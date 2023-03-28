@@ -1,7 +1,7 @@
 # DIRS #
 node_modules/
 docs/.vitepress
-public/
+dist/
 
 # Compiled source #
 ###################
