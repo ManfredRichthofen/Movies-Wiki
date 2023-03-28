@@ -2,13 +2,14 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  outDir: '../public',
   title: "Movies",
-  description: "Jellyfin Media Server",
+  description: "Media Server Guides",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Guides', link: '/apps' }
     ],
 
     sidebar: [

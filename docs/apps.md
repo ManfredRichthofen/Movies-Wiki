@@ -1,12 +1,27 @@
-# Markdown Extension Examples
+# Web Browser
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+### Common Issues
 
-## Syntax Highlighting
+### Downloads
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+# Android TV/Fire TV
 
-**Input**
+### Common Issues
+
+### Downloads
+
+# Ios/Apple TV
+
+### Common Issues
+
+### Downloads
+
+# Windows
+
+### Common Issues
+
+### Downloads
+
 
 ````
 ```js{4}
