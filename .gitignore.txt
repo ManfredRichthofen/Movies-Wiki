@@ -1,3 +1,7 @@
+# DIRS #
+node_modules/
+docs/.vitepress
+
 # Compiled source #
 ###################
 *.com
