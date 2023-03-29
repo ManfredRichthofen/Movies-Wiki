@@ -21,4 +21,3 @@ features:
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
     link: https://play.google.com/store/apps/details?id=dev.jdtech.jellyfin&hl=en_US&gl=US
 ---
-

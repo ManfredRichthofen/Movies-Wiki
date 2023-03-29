@@ -1,54 +1,51 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  outDir: '../dist',
+  outDir: "../dist",
   title: "Movies",
   description: "Server Guides",
-  
-  
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Guides', link: '/jellyfin/apps' }
+      { text: "Home", link: "/" },
+      { text: "Guides", link: "/jellyfin/apps" },
     ],
 
     sidebar: [
       {
-        text: 'Jellyfin Guides',
+        text: "Jellyfin Guides",
         collapsed: false,
         items: [
-          { text: 'Apps', link: '/jellyfin/apps' },
-          { text: 'Requesting Movies', link: '/jellyfin/requests' },
-          { text: 'Request an Account', link: '/jellyfin/account' },
-          { text: 'Server Status', link: '/jellyfin/status' }
-        ]
+          { text: "Apps", link: "/jellyfin/apps" },
+          { text: "Requesting Movies", link: "/jellyfin/requests" },
+          { text: "Request an Account", link: "/jellyfin/account" },
+          { text: "Server Status", link: "/jellyfin/status" },
+        ],
       },
       {
-        text: 'Server Hosting Guides',
+        text: "Server Hosting Guides",
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Upload Server Files', link: '/api-examples' }
-        ]
+          { text: "Markdown Examples", link: "/markdown-examples" },
+          { text: "Upload Server Files", link: "/api-examples" },
+        ],
       },
       {
-        text: 'Discord Bot Guides',
-        items: [
-          { text: 'Music Bot', link: '/discord-bots/markdown-examples' },
-        ]
-      }
+        text: "Discord Bot Guides",
+        items: [{ text: "Music Bot", link: "/discord-bots/markdown-examples" }],
+      },
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
-      { icon: 'twitter', link: '...' },
+      { icon: "github", link: "https://github.com/vuejs/vitepress" },
+      { icon: "twitter", link: "..." },
       {
         icon: {
-          svg: '<img src = "https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/jellyfin.svg" alt="jellyfin" width="24" height="24"/>'
+          svg: '<img src = "https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/jellyfin.svg" alt="jellyfin" width="24" height="24"/>',
         },
-        link: 'https://jfapp.xyz'
-      }
-    ]
-  }
-})
+        link: "https://jfapp.xyz",
+      },
+    ],
+  },
+});
