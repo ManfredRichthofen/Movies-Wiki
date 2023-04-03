@@ -3,8 +3,9 @@
 layout: home
 
 hero:
-  name: ""
-  text: "Jellyfin Media Server"
+  name: "Jellyfin Media Server"
+  text: ""
+  tagline: Simple, powerful, and fast. Meet the modern SSG framework you've always wanted.
   actions:
     - theme: brand
       text: Guides
