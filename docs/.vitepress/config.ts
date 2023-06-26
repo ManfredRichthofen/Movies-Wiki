@@ -21,7 +21,7 @@ export default defineConfig({
           { text: "Apps", link: "/jellyfin/apps" },
           { text: "Requesting Movies", link: "/jellyfin/requests" },
           { text: "Request an Account", link: "/jellyfin/account" },
-          { text: "Server Status", link: "/jellyfin/status" },
+          { text: "Server Status", link: "status.jfapp.xyz" },
         ],
       },
       {

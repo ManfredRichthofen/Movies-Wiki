@@ -1,12 +1,12 @@
-# Web Browser
+## Web Browser
 
 Visit the [Jellyfin Website](https://jfapp.xyz)
 
+Try the Beta Version
+
 ### Common Issues
 
-### Downloads
-
-# Android TV/Fire TV
+## Android TV/Fire TV
 
 ### Common Issues
 
@@ -18,15 +18,27 @@ You can search for Jellyfin in the appstore of your device or visit the store pa
 
 [Fire TV Store Page]
 
-# Ios/Apple TV
+## Ios/Apple TV
 
 ### Common Issues
 
 ### Downloads
 
+You can search for Jellyfin in the appstore of your device or visit the store pages
+
 [App Store Page]
 
-# Windows
+## Android Phones
+
+### Common Issues
+
+### Downloads
+
+You can search for Jellyfin in the appstore of your device or visit the store pages
+
+[Android TV Store Page]
+
+## Windows
 
 ### Common Issues
 
