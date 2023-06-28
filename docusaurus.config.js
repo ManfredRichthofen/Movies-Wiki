@@ -96,7 +96,7 @@ const config = {
               },
               {
                 label: 'Game Servers',
-                to: '/docs/category/server-hosting',
+                to: '/docs/category/jellyfin',
               },
               {
                 label: 'Discord Bots',
