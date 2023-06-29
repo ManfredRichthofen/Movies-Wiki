@@ -14,7 +14,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Quick access to an almost unlimited number of movies, including an automated request system
+        Quick access to an almost unlimited number of movies, including an automated request system.
       </>
     ),
   },
@@ -23,7 +23,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Simple Game server
+        Simple server panel for hosting game servers.
       </>
     ),
   },

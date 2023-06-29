@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Jellyfin',
-  tagline: 'Dinosaurs are cool',
+  tagline: '',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -72,11 +72,22 @@ const config = {
         items: [
           {
             type: 'docSidebar',
+            sidebarId: 'jellyfinSidebar',
+            position: 'left',
+            label: 'Jellyfin',
+          },
+          {
+            type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Game Panel',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            type: 'docSidebar',
+            sidebarId: 'tutorialSidebar',
+            position: 'left',
+            label: 'Game Panel',
+          },
           {
             href: 'https://watch.jfapp.xyz',
             label: 'Jellyfin',
