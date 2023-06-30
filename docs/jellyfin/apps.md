@@ -6,7 +6,6 @@ tags:
   - Jellyfin
 ---
 
-
 ## Web Browser
 
 Visit the [Jellyfin Website](https://jfapp.xyz)
@@ -14,6 +13,11 @@ Visit the [Jellyfin Website](https://jfapp.xyz)
 Try the [Beta Version](https://beta.jfapp.xyz)
 
 ### Common Issues
+
+Can't load into jellyfin
+-Try clicking _CTRL + F5_ if that works you can clear your browser cookies to fix it permanently.
+
+---
 
 ## Android TV/Fire TV
 
@@ -27,6 +31,8 @@ You can search for Jellyfin in the appstore of your device or visit the store pa
 
 [Fire TV Store Page](https://play.google.com/store/apps/details?id=dev.jdtech.jellyfin&hl=en_US&gl=US)
 
+---
+
 ## Ios/Apple TV
 
 ### Common Issues
@@ -37,6 +43,9 @@ You can search for Jellyfin in the appstore of your device or visit the store pa
 
 [App Store Page](https://apps.apple.com/us/app/swiftfin/id1604098728)
 
+
+---
+
 ## Android Phones
 
 ### Common Issues
@@ -46,6 +55,8 @@ You can search for Jellyfin in the appstore of your device or visit the store pa
 You can search for Jellyfin in the appstore of your device or visit the store pages
 
 [Android TV Store Page](https://play.google.com/store/apps/details?id=dev.jdtech.jellyfin&hl=en_US&gl=US)
+
+---
 
 ## Desktop/PC - Windows/Mac/Linux
 

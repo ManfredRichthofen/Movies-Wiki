@@ -78,15 +78,15 @@ const config = {
           },
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'serverSidebar',
             position: 'left',
             label: 'Game Panel',
           },
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'botSidebar',
             position: 'left',
-            label: 'Game Panel',
+            label: 'Discord Bots',
           },
           {
             href: 'https://watch.jfapp.xyz',
