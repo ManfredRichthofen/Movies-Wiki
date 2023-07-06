@@ -7,21 +7,26 @@ tags:
   - Games
   - Panel
 ---
+
 ## Minecraft 1.16.5
 
 ### Uploading Files
+Upload the a zip then extract.
+
+Make sure the files are in the root folder. For example all the files should be visible and not in another folder
 
 ### Choosing Java Version
-In the server panel go to the startup tab and under docker image chose the correct java version for the Minecraft version you are playing 
+
+In the server panel go to the startup tab and under docker image chose the correct ***Java Version*** for the Minecraft version you are playing on.
 
 ### Creating the Start Script
 
-Make sure you change *INSTALL_JAR* and *SERVER_JAR* to the correct jar name
+Make sure you change _INSTALL_JAR_ and _SERVER_JAR_ to the correct jar name
 
 ```sh title='start.sh'
 #!/bin/sh
 
-#Set Ram and Minecraft Jar
+# Set Ram and Minecraft Jar names
 
 INSTALL_JAR=forge-1.16.5-36.2.35-installer.jar
 SERVER_JAR=forge-1.16.5-36.2.35.jar
@@ -48,4 +53,3 @@ echo "Starting Server..."
 start_server
 
 ```
-
