@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Jellyfin Accounts"
 title: "Jellyfin Apps/Common Issues"
-description: Create a doc page with rich content.
+description: Create an account on Jellyfin.
 tags:
   - Jellyfin
   - Accounts

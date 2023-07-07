@@ -1,9 +1,12 @@
 ---
 sidebar_label: "Jellyfin Apps/Common Issues"
 title: "Jellyfin Apps/Common Issues"
-description: Create a doc page with rich content.
+description: Guide to jellyfin apps and common issues.
 tags:
   - Jellyfin
+  - Apps
+  - Clients
+  - FAQ
 ---
 
 ## Web Browser
@@ -27,9 +30,9 @@ Can't load into jellyfin
 
 You can search for Jellyfin in the appstore of your device or visit the store pages
 
-[Android TV Store Page](https://play.google.com/store/apps/details?id=dev.jdtech.jellyfin&hl=en_US&gl=US)
+[Android TV Store Page](https://play.google.com/store/apps/details?id=org.jellyfin.androidtv&hl=en_US&gl=US)
 
-[Fire TV Store Page](https://play.google.com/store/apps/details?id=dev.jdtech.jellyfin&hl=en_US&gl=US)
+[Fire TV Store Page](https://www.amazon.com/Jellyfin-for-Fire-TV/dp/B07TX7Z725/ref=sr_1_1?keywords=jellyfin&s=mobile-apps&sr=1-1)
 
 ---
 
