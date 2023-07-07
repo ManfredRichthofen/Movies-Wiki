@@ -21,6 +21,9 @@ In the server panel go to the startup tab and under docker image chose the corre
 
 ### Creating the Start Script
 
+Create a file called start.sh
+
+
 Make sure you change _INSTALL_JAR_ and _SERVER_JAR_ to the correct jar name
 
 ```sh title='start.sh'
