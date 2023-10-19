@@ -7,7 +7,6 @@ import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import Spacer from "@site/src/components/divider";
 import Youtube from "@site/src/components/youtube";
-
 import styles from "./index.module.css";
 
 function Homepage() {
