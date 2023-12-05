@@ -59,7 +59,7 @@ const sidebars = {
         type: "generated-index",
         title: "Jellyfin Guides",
         description: "Learn how to navigate and use jellyfin.",
-        slug: "/category/game-servers",
+        slug: "/category/custom-apps",
         keywords: ["guides"],
         image: "/img/docusaurus.png",
       },
