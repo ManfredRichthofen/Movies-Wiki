@@ -51,6 +51,21 @@ const sidebars = {
       items: ["discord-bots/musicbot"],
     },
   ],
+  appSidebar: [
+    {
+      type: "category",
+      label: "Guides",
+      link: {
+        type: "generated-index",
+        title: "Jellyfin Guides",
+        description: "Learn how to navigate and use jellyfin.",
+        slug: "/category/game-servers",
+        keywords: ["guides"],
+        image: "/img/docusaurus.png",
+      },
+      items: ["server-hosting/minecraft"],
+    },
+  ],
 };
 
 module.exports = sidebars;

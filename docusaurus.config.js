@@ -11,7 +11,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://jfapp.xyz',
+  url: 'https://docs.jfapp.xyz',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -86,6 +86,12 @@ const config = {
             sidebarId: 'serverSidebar',
             position: 'left',
             label: 'Game Panel',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'appSidebar',
+            position: 'left',
+            label: 'Custom Apps',
           },
           {
             type: 'docSidebar',
