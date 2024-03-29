@@ -77,27 +77,9 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'jellyfinSidebar',
+            sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Jellyfin',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'serverSidebar',
-            position: 'left',
-            label: 'Game Panel',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'appSidebar',
-            position: 'left',
-            label: 'Custom Apps',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'botSidebar',
-            position: 'left',
-            label: 'Discord Bots',
+            label: 'Tutorial',
           },
           {
             href: 'https://watch.jfapp.xyz',
