@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@mui/joy/Card";
 import AspectRatio from "@mui/joy/AspectRatio";
 import CardOverflow from "@mui/joy/CardOverflow";
@@ -8,7 +8,33 @@ import Button from "@mui/joy/Button";
 import Box from "@mui/joy/Box";
 import Link from "@mui/joy/Link";
 
+function GetLatestAPKReleaseInfo() {
+  const [downloadURL, setDownloadURL] = useState('');
+
+  useEffect(() => {
+    const fetchLatestRelease = async () => {
+      try {
+        const response = await fetch("https://api.github.com/repos/ManfredRichthofen/py-revanced/releases/latest");
+        const release = await response.json();
+        const assets = release.assets;
+        const desiredAPK = assets.find(asset => asset.name.startsWith("Re-youtube"));
+        if (desiredAPK) {
+          setDownloadURL(desiredAPK.browser_download_url);
+        } else {
+          console.error('Desired APK release not found.');
+        }
+      } catch (error) {
+        console.error('Error fetching latest APK release:', error);
+      }
+    };
+
+    fetchLatestRelease();
+  }, []);
+
+  return downloadURL;
+}
 export default function Youtube() {
+  const downloadURL = GetLatestAPKReleaseInfo();
   return (
     <Grid
       container
@@ -49,7 +75,7 @@ export default function Youtube() {
           </Typography>
           <Typography>
             <Box display="flex" justifyContent="center" alignItems="center">
-              <Link href="https://github.com/ManfredRichthofen/py-revanced/releases/latest/download/Re-youtube-output.apk">
+              <Link href="{downloadURL}">
                 <Button>Download</Button>
               </Link>
             </Box>
