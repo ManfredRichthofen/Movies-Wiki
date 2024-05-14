@@ -62,6 +62,23 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
        ({
       // Replace with your project's social card
+      headTags: [
+        // Declare a <link> preconnect t
+        // Declare some json-ld structured data
+        {
+          tagName: 'script',
+          attributes: {
+            type: 'application/ld+json',
+          },
+          innerHTML: JSON.stringify({
+            '@context': 'https://schema.org/',
+            '@type': 'Organization',
+            name: 'Jellyfin',
+            url: 'https://opensource.fb.com/',
+            logo: 'https://opensource.fb.com/img/logos/Meta-Open-Source.svg',
+          }),
+        },
+      ],
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: true,
