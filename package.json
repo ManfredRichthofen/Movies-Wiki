@@ -28,6 +28,7 @@
     "@mui/system": "^5.14.19",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.0.0",
+    "flowbite-react": "^0.9.0",
     "postcss": "^8.4.38",
     "prism-react-renderer": "^2.0.0",
     "react": "^18.0.0",

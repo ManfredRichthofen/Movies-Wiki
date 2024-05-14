@@ -27,8 +27,8 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Tutorial',
-      items: ['jellyfin/apps'],
+      label: 'Modified Apps',
+      items: ['apps/youtube'],
     },
   ],
 

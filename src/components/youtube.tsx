@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Card from "@mui/joy/Card";
-import AspectRatio from "@mui/joy/AspectRatio";
-import CardOverflow from "@mui/joy/CardOverflow";
-import Grid from "@mui/joy/Grid";
-import Typography from "@mui/joy/Typography";
-import Button from "@mui/joy/Button";
-import Box from "@mui/joy/Box";
-import Link from "@mui/joy/Link";
+import {
+  Card,
+  Button,
+} from "flowbite-react";
 
 function GetLatestAPKReleaseInfo() {
   const [downloadURL, setDownloadURL] = useState('');
@@ -33,55 +29,38 @@ function GetLatestAPKReleaseInfo() {
 
   return downloadURL;
 }
+
 export default function Youtube() {
   const downloadURL = GetLatestAPKReleaseInfo();
   return (
-    <Grid
-      container
-      spacing={2}
-      sx={{ flexGrow: 1, p: 5 }}
-      justifyContent="space-evenly"
-      alignItems="center"
-      style={{
-        position: "relative",
-        top: 0,
-        bottom: -30,
-      }}
-    >
-        <Grid>
-          <Card>
-            <CardOverflow sx={{ minWidth: 270, minHeight: 534.5}}>
-              <AspectRatio ratio="540/1069">
-                <img
-                  src={require("@site/static/img/youtube.jpg").default}
-                  loading="lazy"
-                  alt=""
-                />
-              </AspectRatio>
-            </CardOverflow>
-          </Card>
-        </Grid>
-      <Grid>
-        <Card variant="outlined" sx={{ maxWidth: 400 }}>
-          <Typography level="h1">ReVanced</Typography>
-          <Typography level="h2" fontSize="xl" sx={{ mb: 0.5 }}>
-            Ad Free Youtube for Android
-          </Typography>
-          <Typography>
-            An alternative to YouTube on android with built-in features like Ad
-            blocking, SponsorBlock (Allows you to automatically skip in-video
-            sponsors.), background play, Picture-in-picture, Amoled dark theme,
-            and restore dislikes count.
-          </Typography>
-          <Typography>
-            <Box display="flex" justifyContent="center" alignItems="center">
-              <Link href={downloadURL}>
+    <div className="flex justify-center items-center h-full">
+      <div className="grid grid-cols-2 gap-4 px-5 py-5">
+        <div className="flex justify-center items-center">
+          <img
+            src={require("@site/static/img/youtube.jpg").default}
+            className="w-80 h-auto rounded-lg"
+            loading="lazy"
+            alt=""
+          />
+        </div>
+        <div className="flex justify-center items-center">
+          <Card variant="outlined" className="max-w-[400px]">
+            <h1 className="text-3xl">ReVanced</h1>
+            <h2 className="text-2xl mb-0.5">Ad Free Youtube for Android</h2>
+            <p>
+              An alternative to YouTube on android with built-in features like
+              Ad blocking, SponsorBlock (Allows you to automatically skip
+              in-video sponsors.), background play, Picture-in-picture, Amoled
+              dark theme, and restore dislikes count.
+            </p>
+            <div className="flex justify-center items-center">
+              <a href={downloadURL}>
                 <Button>Download</Button>
-              </Link>
-            </Box>
-          </Typography>
-        </Card>
-      </Grid>
-    </Grid>
+              </a>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
   );
 }
