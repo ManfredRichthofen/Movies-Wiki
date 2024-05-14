@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Jellyfin Apps/Common Issues"
-title: "Jellyfin Apps/Common Issues"
+sidebar_label: 'Jellyfin Apps/Common Issues'
+title: 'Jellyfin Apps/Common Issues'
 description: Guide to jellyfin apps and common issues.
 tags:
   - Jellyfin
@@ -45,7 +45,6 @@ You can search for Jellyfin in the appstore of your device or visit the store pa
 You can search for Jellyfin in the appstore of your device or visit the store pages
 
 [App Store Page](https://apps.apple.com/us/app/swiftfin/id1604098728)
-
 
 ---
 

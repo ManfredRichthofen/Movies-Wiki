@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Setting up a Minecraft Server"
-title: "Setting up a Minecraft Server"
+sidebar_label: 'Setting up a Minecraft Server'
+title: 'Setting up a Minecraft Server'
 description: Guide to setting up and running a minecraft server.
 tags:
   - Server
@@ -11,18 +11,18 @@ tags:
 ## Minecraft 1.16.5
 
 ### Uploading Files
+
 Upload the a zip then extract.
 
 Make sure the files are in the root folder. For example all the files should be visible and not in another folder
 
 ### Choosing Java Version
 
-In the server panel go to the startup tab and under docker image chose the correct ***Java Version*** for the Minecraft version you are playing on.
+In the server panel go to the startup tab and under docker image chose the correct **_Java Version_** for the Minecraft version you are playing on.
 
 ### Creating the Start Script
 
 Create a file called start.sh
-
 
 Make sure you change _INSTALL_JAR_ and _SERVER_JAR_ to the correct jar name
 
