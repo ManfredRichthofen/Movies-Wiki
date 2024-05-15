@@ -118,14 +118,6 @@ const config = {
                 label: 'Jellyfin',
                 to: '/docs/category/jellyfin',
               },
-              {
-                label: 'Game Servers',
-                to: '/docs/category/jellyfin',
-              },
-              {
-                label: 'Discord Bots',
-                to: '/docs/category/jellyfin',
-              },
             ],
           },
           {
