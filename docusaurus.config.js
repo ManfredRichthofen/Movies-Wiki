@@ -116,7 +116,7 @@ const config = {
             items: [
               {
                 label: 'Jellyfin',
-                to: '/docs/category/jellyfin',
+                to: '/docs/jellyfin',
               },
             ],
           },
