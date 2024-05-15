@@ -30,6 +30,11 @@ const sidebars = {
       label: 'Modified Apps',
       items: ['apps/youtube'],
     },
+    {
+      type: 'category',
+      label: 'Game Hosting',
+      items: ['server-hosting/minecraft'],
+    },
   ],
 };
 
