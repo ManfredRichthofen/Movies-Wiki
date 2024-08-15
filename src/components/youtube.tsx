@@ -30,7 +30,7 @@ function GetLatestAPKReleaseInfo() {
 export default function Youtube() {
   const downloadURL = GetLatestAPKReleaseInfo();
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center min-h-screen bg-white dark:bg-gray-900">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-5">
         <div className="flex justify-center items-center">
           <img
@@ -41,10 +41,10 @@ export default function Youtube() {
           />
         </div>
         <div className="flex justify-center items-center">
-          <Card className="max-w-md">
+          <Card className="max-w-md bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
             <h1 className="text-3xl font-bold mb-2">ReVanced</h1>
             <h2 className="text-2xl font-semibold mb-3">Ad-Free YouTube for Android</h2>
-            <p className="text-gray-600 mb-4">
+            <p className="mb-4">
               An alternative to YouTube on Android with built-in features like Ad blocking, SponsorBlock (skip in-video sponsors), background play, Picture-in-picture, AMOLED dark theme, and restored dislike counts.
             </p>
             <div className="flex justify-center">

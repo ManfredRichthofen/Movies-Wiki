@@ -1,6 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
-import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
@@ -28,13 +26,13 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({ title, Svg, description }: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className='text--center'>
-        <Svg className={styles.featureSvg} role='img' />
+    <div className="col col--4">
+      <div className="flex justify-center">
+        <Svg className="h-32 w-32" role="img" />
       </div>
-      <div className='text--center padding-horiz--md'>
-        <h3>{title}</h3>
-        <p>{description}</p>
+      <div className="text-center px-6">
+        <h3 className="text-xl font-semibold mt-4">{title}</h3>
+        <p className="text-gray-600 dark:text-gray-300">{description}</p>
       </div>
     </div>
   );
@@ -42,9 +40,9 @@ function Feature({ title, Svg, description }: FeatureItem) {
 
 export default function HomepageFeatures(): JSX.Element {
   return (
-    <section className={styles.features}>
-      <div className='container'>
-        <div className='row'>
+    <section className="py-12 bg-gray-100 dark:bg-gray-900">
+      <div className="container mx-auto">
+        <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
