@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Spacer from '@site/src/components/divider';
 import Youtube from '@site/src/components/youtube';
 
 function Homepage() {
@@ -31,7 +30,6 @@ export default function Home(): JSX.Element {
       <Homepage />
       <main>
         <HomepageFeatures />
-        <Spacer />
         <Youtube />
       </main>
     </Layout>
