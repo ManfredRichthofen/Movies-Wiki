@@ -95,6 +95,7 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
+          { to: '/download', label: 'Download', position: 'right' },
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
