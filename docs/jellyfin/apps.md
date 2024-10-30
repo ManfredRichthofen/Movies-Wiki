@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'Jellyfin Apps/Common Issues'
+sidebar_label: 'Apps/Common Issues'
 title: 'Jellyfin Apps/Common Issues'
 description: Guide to jellyfin apps and common issues.
 tags:

@@ -8,10 +8,10 @@ function GetLatestAPKReleaseInfo() {
     useEffect(() => {
         const fetchLatestRelease = async () => {
             try {
-                const response = await fetch('https://api.github.com/repos/ManfredRichthofen/py-revanced/releases/latest');
+                const response = await fetch('https://api.github.com/repos/ManfredRichthofen/build-apps/releases/latest');
                 const release = await response.json();
                 const assets = release.assets;
-                const desiredAPK = assets.find((asset) => asset.name.startsWith('Re-youtube'));
+                const desiredAPK = assets.find((asset) => asset.name.startsWith('youtube-revanced'));
                 if (desiredAPK) {
                     setDownloadURL(desiredAPK.browser_download_url);
                 } else {
