@@ -1,5 +1,4 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
+
 import tailwindPlugin from './plugins/tailwind-config.cjs';
 
 const lightCodeTheme = require('prism-react-renderer').themes.github;
@@ -8,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Jellyfin',
-  tagline: 'Watch Movies Host Games Get Ad free Youtube',
+  tagline: 'Watch Movies, Host Games, Get Ad free Youtube',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -42,10 +41,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          // 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          sidebarCollapsible: false,
         },
         blog: {
           showReadingTime: true,
@@ -64,10 +60,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
       headTags: [
-        // Declare a <link> preconnect t
-        // Declare some json-ld structured data
         {
           tagName: 'script',
           attributes: {
