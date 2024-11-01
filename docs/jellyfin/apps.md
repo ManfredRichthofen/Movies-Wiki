@@ -23,6 +23,29 @@ Can't load into jellyfin
 ---
 
 ## Android TV/Fire TV
+### Setup
+
+**Launch the Jellyfin App on Fire TV**
+1. Turn on your Fire TV device.
+2. Navigate to Apps from the Fire TV menu.
+3. Find and open the Jellyfin app.
+
+**Initial Setup of the Jellyfin App**
+1. Upon launching the Jellyfin app, you should see a welcome screen.
+2. Select Add Server to proceed.
+
+**Enter the Server URL**
+1. In the Server Address field, enter jfapp.xyz.
+2. Click Next or Continue after entering the server URL.
+
+**Log in to Your Account**
+1. You should now see the Jellyfin Login screen.
+2. Enter your Jellyfin username and password.
+3. Select Login to connect to your Jellyfin server.
+
+**Verify Connectivity and Start Streaming**
+1. Once logged in, you’ll see your media library.
+2. Browse through your media, select a title, and start streaming!
 
 ### Common Issues
 

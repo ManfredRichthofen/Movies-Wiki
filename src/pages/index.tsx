@@ -62,10 +62,10 @@ function HomepageHeader() {
                         color="primary"
                         outline
                         gradientMonochrome="info"
-                        onClick={() => window.location.href = '/docs'}
+                        onClick={() => window.location.href = '/docs/jellyfin'}
                         aria-label="Go to Documentation"
                     >
-                        Documentation
+                        Start Streaming
                     </Button>
                 </div>
             </div>
