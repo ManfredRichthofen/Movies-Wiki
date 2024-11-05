@@ -6,19 +6,18 @@ tags:
   - Jellyfin
 ---
 
-## Requesting Movies and TV Shows via Overseerr with Jellyfin
-This guide will walk you through the steps to request both movies and TV shows using Overseerr, integrated with your Jellyfin server. Overseerr allows users to submit requests for new content, streamlining media requests and management for server admins.
+## Requesting Movies and TV Shows for Jellyfin
+This guide will walk you through the steps to request both movies and TV shows using the web portal, integrated with your Jellyfin server. Overseerr allows users to submit requests for new content and streamlines media requests.
 
 ### Steps
-1. Access Overseerr
+1. Access the Website
 Open a web browser on your device.
 
-Go to the URL where Overseerr is hosted. For example, https://requests.jfapp.xyz.
+Go to the URL. https://requests.jfapp.xyz.
 
-Use the URL specified by the server admin if accessing it locally or via a custom domain.
-
-2. Log in to Overseerr
-On the Overseerr login page, enter your username and password.
+2. Log in
+On the login page, enter your username and password. 
+This should be the same as your jellyfin login.
 If you’re logging in for the first time, you may need to create an account or request access from the server admin.
 Click Login to access your account.
 3. Navigate to the Movies or TV Shows Section
