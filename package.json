@@ -28,24 +28,32 @@
     "autoprefixer": "^10.4.19",
     "clsx": "^2.0.0",
     "flowbite-react": "^0.10.0",
-    "postcss": "^8.4.38",
     "prism-react-renderer": "^2.0.0",
     "react": "^18.0.0",
+<<<<<<< Updated upstream
     "react-dom": "^18.0.0",
     "tailwindcss": "^3.4.3"
+=======
+>>>>>>> Stashed changes
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.5.2",
     "@docusaurus/tsconfig": "3.7.0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "prettier": "3.5.3",
 =======
+=======
+>>>>>>> Stashed changes
     "@tailwindcss/postcss": "^4.0.12",
     "daisyui": "^5.0.0",
     "postcss": "^8.5.3",
     "prettier": "3.3.3",
     "tailwindcss": "^4.0.12",
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     "typescript": "^5.0.0"
   },
