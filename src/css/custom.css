@@ -3,35 +3,146 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
- @tailwind base;
- @tailwind components;
- @tailwind utilities;
- 
- /* You can override the default Infima variables here. */
- :root {
-   --ifm-color-primary: #244778; /* Navy blue primary color */
-   --ifm-color-primary-dark: #1a2e53; /* Darker navy blue */
-   --ifm-color-primary-darker: #172947; /* Even darker navy */
-   --ifm-color-primary-darkest: #131f38; /* Darkest navy */
-   --ifm-color-primary-light: #3a5a93; /* Lighter navy blue */
-   --ifm-color-primary-lighter: #5075a8; /* Lighter shade of navy */
-   --ifm-color-primary-lightest: #6a8bbd; /* Lightest shade of navy */
-   --ifm-code-font-size: 95%;
-   --docusaurus-highlighted-code-line-bg: rgba(36, 71, 120, 0.1); /* Adjusted for readability */
- }
- 
- /* For readability concerns, you should choose a lighter palette in dark mode. */
- [data-theme='dark'] {
-   --ifm-color-primary: #29d5b0; /* Teal primary color */
-   --ifm-color-primary-dark: #21af90; /* Darker teal */
-   --ifm-color-primary-darker: #1fa588; /* Even darker teal */
-   --ifm-color-primary-darkest: #1a8870; /* Darkest teal */
-   --ifm-color-primary-light: #32d8b4; /* Lighter teal */
-   --ifm-color-primary-lighter: #4fddbf; /* Lighter shade of teal */
-   --ifm-color-primary-lightest: #5be1c5; /* Lightest shade of teal */
-   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3); /* Slightly darker for dark mode */
- }
- 
- .hidden {
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: true;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(25.33% 0.016 252.42);
+  --color-base-200: oklch(23.26% 0.014 253.1);
+  --color-base-300: oklch(21.15% 0.012 254.09);
+  --color-base-content: oklch(97.807% 0.029 256.847);
+  --color-primary: oklch(58% 0.233 277.117);
+  --color-primary-content: oklch(96% 0.018 272.314);
+  --color-secondary: oklch(65% 0.241 354.308);
+  --color-secondary-content: oklch(94% 0.028 342.258);
+  --color-accent: oklch(77% 0.152 181.912);
+  --color-accent-content: oklch(38% 0.063 188.416);
+  --color-neutral: oklch(14% 0.005 285.823);
+  --color-neutral-content: oklch(92% 0.004 286.32);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(37% 0.077 168.94);
+  --color-warning: oklch(82% 0.189 84.429);
+  --color-warning-content: oklch(41% 0.112 45.904);
+  --color-error: oklch(71% 0.194 13.428);
+  --color-error-content: oklch(27% 0.105 12.094);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+@custom-variant dark (&:is([data-theme="dark"] *));
+
+/* Light theme variables */
+:root {
+  --ifm-color-primary: #2563eb; /* Match DaisyUI primary */
+  --ifm-color-primary-dark: #1d4ed8; /* Match DaisyUI primary-focus */
+  --ifm-color-primary-darker: #1e40af;
+  --ifm-color-primary-darkest: #1e3a8a;
+  --ifm-color-primary-light: #3b82f6; /* Match DaisyUI info */
+  --ifm-color-primary-lighter: #60a5fa;
+  --ifm-color-primary-lightest: #93c5fd;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.1);
+  --ifm-background-color: #f8fafc; /* Lighter background */
+  --ifm-background-surface-color: #f1f5f9; /* Slightly darker surface */
+  --ifm-color-emphasis-100: #f1f5f9; /* Match surface */
+  --ifm-color-emphasis-200: #e2e8f0; /* Lighter border */
+  --ifm-color-emphasis-300: #cbd5e1;
+  --ifm-color-emphasis-400: #94a3b8;
+  --ifm-color-emphasis-500: #64748b;
+  --ifm-color-emphasis-600: #475569;
+  --ifm-color-emphasis-700: #334155;
+  --ifm-color-emphasis-800: #1e293b;
+  --ifm-color-emphasis-900: #0f172a;
+}
+
+/* Dark theme variables */
+[data-theme='dark'] {
+  --ifm-color-primary: #3b82f6; /* Match DaisyUI primary */
+  --ifm-color-primary-dark: #2563eb; /* Match DaisyUI primary-focus */
+  --ifm-color-primary-darker: #1d4ed8;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #60a5fa;
+  --ifm-color-primary-lighter: #93c5fd;
+  --ifm-color-primary-lightest: #bfdbfe;
+  --docusaurus-highlighted-code-line-bg: rgba(59, 130, 246, 0.1);
+  --ifm-background-color: #0f172a; /* Darker background */
+  --ifm-background-surface-color: #1e293b; /* Slightly lighter surface */
+  --ifm-color-emphasis-100: #1e293b; /* Match surface */
+  --ifm-color-emphasis-200: #334155; /* Lighter border */
+  --ifm-color-emphasis-300: #475569;
+  --ifm-color-emphasis-400: #64748b;
+  --ifm-color-emphasis-500: #94a3b8;
+  --ifm-color-emphasis-600: #cbd5e1;
+  --ifm-color-emphasis-700: #e2e8f0;
+  --ifm-color-emphasis-800: #f1f5f9;
+  --ifm-color-emphasis-900: #f8fafc;
+}
+
+/* Additional Docusaurus component styling */
+.navbar {
+  background-color: var(--ifm-background-surface-color);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.footer {
+  background-color: var(--ifm-background-surface-color);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.menu__link {
+  color: var(--ifm-color-emphasis-700);
+}
+
+.menu__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+.menu__link--active {
+  color: var(--ifm-color-primary);
+}
+
+.table-of-contents {
+  border-left: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.table-of-contents__link {
+  color: var(--ifm-color-emphasis-700);
+}
+
+.table-of-contents__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+}
+
+/* Additional styling for better contrast */
+.theme-doc-sidebar-container {
+  background-color: var(--ifm-background-surface-color);
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__link {
+  color: var(--ifm-color-emphasis-900);
+  font-weight: 600;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+.hidden {
   display: none !important;
-  }
+}

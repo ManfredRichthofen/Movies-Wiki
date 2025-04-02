@@ -1,4 +1,4 @@
-import tailwindPlugin from './plugins/tailwind-config.cjs';
+
 
 const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
@@ -26,7 +26,7 @@ const config = {
     locales: ['en'],
   },
 
-  plugins: [tailwindPlugin],
+  plugins: ["./plugins/tailwind-config.js"],
 
   presets: [
     [

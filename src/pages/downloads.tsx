@@ -1,35 +1,62 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import { Button } from 'flowbite-react';
-import { FaWindows, FaAndroid, FaApple, FaTv, FaGlobe } from 'react-icons/fa'; // Importing icons from react-icons
+import { FaWindows, FaAndroid, FaApple, FaTv, FaGlobe } from 'react-icons/fa';
 
 export default function DownloadPage(): JSX.Element {
     return (
         <Layout title="Download Jellyfin Apps" description="Download Jellyfin for your devices.">
-            <div className="container mx-auto py-16 text-center bg-white dark:bg-gray-900">
-                <h1 className="text-5xl font-bold text-gray-900 dark:text-gray-100">Download Jellyfin Apps</h1>
-                <p className="text-lg text-gray-600 dark:text-gray-400 mt-4">
-                    Choose your platform and get started with Jellyfin.
-                </p>
-                <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
-                    <Button color="primary" outline href="https://jellyfin.org/client-windows" gradientMonochrome="info">
-                        <FaWindows className="mr-2" /> Windows
-                    </Button>
-                    <Button color="primary" outline href="https://jellyfin.org/client-android" gradientMonochrome="info">
-                        <FaAndroid className="mr-2" /> Android
-                    </Button>
-                    <Button color="primary" outline href="https://jellyfin.org/client-ios" gradientMonochrome="info">
-                        <FaApple className="mr-2" /> iOS
-                    </Button>
-                    <Button color="primary" outline href="https://jellyfin.org/client-android-tv" gradientMonochrome="info">
-                        <FaTv className="mr-2" /> Android TV
-                    </Button>
-                    <Button color="primary" outline href="https://jellyfin.org/client-lg" gradientMonochrome="info">
-                        <FaTv className="mr-2" /> LG OS
-                    </Button>
-                    <Button color="primary" outline href="https://jfapp.xyz" gradientMonochrome="info">
-                        <FaGlobe className="mr-2" /> Web
-                    </Button>
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content text-center w-full max-w-4xl mx-auto">
+                    <div className="flex flex-col items-center justify-center">
+                        <h1 className="text-6xl font-bold text-base-content mb-6">Download Jellyfin Apps</h1>
+                        <p className="text-xl text-base-content/80 mb-12 max-w-2xl">
+                            Choose your platform and get started with Jellyfin. Access your media library from any device.
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                            <a href="https://jellyfin.org/client-windows" className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all border border-base-300">
+                                <div className="card-body items-center text-center">
+                                    <FaWindows className="text-5xl mb-4 text-primary" />
+                                    <h2 className="card-title text-xl font-bold text-base-content">Windows</h2>
+                                    <p className="text-base-content/80">Desktop client for Windows</p>
+                                </div>
+                            </a>
+                            <a href="https://jellyfin.org/client-android" className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all border border-base-300">
+                                <div className="card-body items-center text-center">
+                                    <FaAndroid className="text-5xl mb-4 text-primary" />
+                                    <h2 className="card-title text-xl font-bold text-base-content">Android</h2>
+                                    <p className="text-base-content/80">Mobile app for Android</p>
+                                </div>
+                            </a>
+                            <a href="https://jellyfin.org/client-ios" className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all border border-base-300">
+                                <div className="card-body items-center text-center">
+                                    <FaApple className="text-5xl mb-4 text-primary" />
+                                    <h2 className="card-title text-xl font-bold text-base-content">iOS</h2>
+                                    <p className="text-base-content/80">Mobile app for iOS</p>
+                                </div>
+                            </a>
+                            <a href="https://jellyfin.org/client-android-tv" className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all border border-base-300">
+                                <div className="card-body items-center text-center">
+                                    <FaTv className="text-5xl mb-4 text-primary" />
+                                    <h2 className="card-title text-xl font-bold text-base-content">Android TV</h2>
+                                    <p className="text-base-content/80">TV app for Android TV</p>
+                                </div>
+                            </a>
+                            <a href="https://jellyfin.org/client-lg" className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all border border-base-300">
+                                <div className="card-body items-center text-center">
+                                    <FaTv className="text-5xl mb-4 text-primary" />
+                                    <h2 className="card-title text-xl font-bold text-base-content">LG OS</h2>
+                                    <p className="text-base-content/80">TV app for LG Smart TVs</p>
+                                </div>
+                            </a>
+                            <a href="https://jfapp.xyz" className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all border border-base-300">
+                                <div className="card-body items-center text-center">
+                                    <FaGlobe className="text-5xl mb-4 text-primary" />
+                                    <h2 className="card-title text-xl font-bold text-base-content">Web</h2>
+                                    <p className="text-base-content/80">Access via web browser</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </Layout>
