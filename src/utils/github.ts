@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export function GetLatestAPKReleaseInfo(): string {
+export function useLatestAPKReleaseInfo(): string {
     const [downloadURL, setDownloadURL] = useState('');
 
     useEffect(() => {

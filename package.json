@@ -22,39 +22,24 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/inter": "^5.0.15",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
-    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@mdx-js/react": "^3.0.0",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.0.0",
-    "flowbite-react": "^0.10.0",
     "prism-react-renderer": "^2.0.0",
     "react": "^18.0.0",
-<<<<<<< Updated upstream
     "react-dom": "^18.0.0",
-    "tailwindcss": "^3.4.3"
-=======
->>>>>>> Stashed changes
-    "react-dom": "^18.0.0"
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.5.2",
     "@docusaurus/tsconfig": "3.7.0",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    "prettier": "3.5.3",
-=======
-=======
->>>>>>> Stashed changes
     "@tailwindcss/postcss": "^4.0.12",
     "daisyui": "^5.0.0",
     "postcss": "^8.5.3",
-    "prettier": "3.3.3",
+    "prettier": "3.5.3",
     "tailwindcss": "^4.0.12",
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     "typescript": "^5.0.0"
   },
   "browserslist": {
