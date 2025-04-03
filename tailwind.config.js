@@ -1,4 +1,3 @@
-const flowbite = require('flowbite-react/tailwind');
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
@@ -25,7 +24,7 @@ module.exports = {
       colors: {},
     },
   },
-  plugins: [flowbite.plugin(), require("daisyui")],
+  plugins: [require("daisyui")],
   daisyui: {
     themes: [
       {
