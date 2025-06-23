@@ -30,7 +30,7 @@
     "@tailwindcss/postcss": "^4.1.1",
     "daisyui": "^5.0.12",
     "postcss": "^8.5.3",
-    "prettier": "3.5.3",
+    "prettier": "3.6.0",
     "tailwindcss": "^4.1.1",
     "typescript": "^5.0.0"
   },
