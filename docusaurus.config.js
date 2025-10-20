@@ -1,5 +1,3 @@
-
-
 const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
@@ -26,7 +24,7 @@ const config = {
     locales: ['en'],
   },
 
-  plugins: ["./plugins/tailwind-config.js"],
+  plugins: ['./plugins/tailwind-config.js'],
 
   presets: [
     [
@@ -69,7 +67,7 @@ const config = {
       ],
       colorMode: {
         defaultMode: 'dark',
-        disableSwitch: true,
+        disableSwitch: false,
         respectPrefersColorScheme: false,
       },
       image: 'img/docusaurus-social-card.jpg',
@@ -80,7 +78,7 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
-          { to: '/downloads', label: 'Downloads', position: 'left' },
+          { to: '/Downloads/Downloads', label: 'Downloads', position: 'left' },
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',

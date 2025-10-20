@@ -1,145 +1,117 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
 @import "tailwindcss";
 @plugin "daisyui";
+
+/* DaisyUI Light Theme Configuration */
 @plugin "daisyui/theme" {
-  name: "dark";
+  name: "light";
   default: true;
   prefersdark: false;
-  color-scheme: "dark";
-  --color-base-100: oklch(25.33% 0.016 252.42);
-  --color-base-200: oklch(23.26% 0.014 253.1);
-  --color-base-300: oklch(21.15% 0.012 254.09);
-  --color-base-content: oklch(97.807% 0.029 256.847);
-  --color-primary: oklch(58% 0.233 277.117);
-  --color-primary-content: oklch(96% 0.018 272.314);
-  --color-secondary: oklch(65% 0.241 354.308);
-  --color-secondary-content: oklch(94% 0.028 342.258);
-  --color-accent: oklch(77% 0.152 181.912);
-  --color-accent-content: oklch(38% 0.063 188.416);
-  --color-neutral: oklch(14% 0.005 285.823);
-  --color-neutral-content: oklch(92% 0.004 286.32);
-  --color-info: oklch(74% 0.16 232.661);
-  --color-info-content: oklch(29% 0.066 243.157);
-  --color-success: oklch(76% 0.177 163.223);
-  --color-success-content: oklch(37% 0.077 168.94);
-  --color-warning: oklch(82% 0.189 84.429);
-  --color-warning-content: oklch(41% 0.112 45.904);
-  --color-error: oklch(71% 0.194 13.428);
-  --color-error-content: oklch(27% 0.105 12.094);
-  --radius-selector: 0.5rem;
-  --radius-field: 0.25rem;
-  --radius-box: 0.5rem;
+  color-scheme: "light";
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(97.466% 0.011 259.822);
+  --color-base-300: oklch(93.268% 0.016 262.751);
+  --color-base-content: oklch(41.886% 0.053 255.824);
+  --color-primary: oklch(56.86% 0.255 257.57);
+  --color-primary-content: oklch(91.372% 0.051 257.57);
+  --color-secondary: oklch(42.551% 0.161 282.339);
+  --color-secondary-content: oklch(88.51% 0.032 282.339);
+  --color-accent: oklch(59.939% 0.191 335.171);
+  --color-accent-content: oklch(11.988% 0.038 335.171);
+  --color-neutral: oklch(19.616% 0.063 257.651);
+  --color-neutral-content: oklch(83.923% 0.012 257.651);
+  --color-info: oklch(88.127% 0.085 214.515);
+  --color-info-content: oklch(17.625% 0.017 214.515);
+  --color-success: oklch(80.494% 0.077 197.823);
+  --color-success-content: oklch(16.098% 0.015 197.823);
+  --color-warning: oklch(92% 0.12 95.746);
+  --color-warning-content: oklch(17.834% 0.009 71.47);
+  --color-error: oklch(73.092% 0.11 20.076);
+  --color-error-content: oklch(14.618% 0.022 20.076);
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
-  --depth: 1;
+  --depth: 0;
   --noise: 0;
 }
 
-@custom-variant dark (&:is([data-theme="dark"] *));
-
-/* Light theme variables */
-:root {
-  --ifm-color-primary: #2563eb; /* Match DaisyUI primary */
-  --ifm-color-primary-dark: #1d4ed8; /* Match DaisyUI primary-focus */
-  --ifm-color-primary-darker: #1e40af;
-  --ifm-color-primary-darkest: #1e3a8a;
-  --ifm-color-primary-light: #3b82f6; /* Match DaisyUI info */
-  --ifm-color-primary-lighter: #60a5fa;
-  --ifm-color-primary-lightest: #93c5fd;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.1);
-  --ifm-background-color: #f8fafc; /* Lighter background */
-  --ifm-background-surface-color: #f1f5f9; /* Slightly darker surface */
-  --ifm-color-emphasis-100: #f1f5f9; /* Match surface */
-  --ifm-color-emphasis-200: #e2e8f0; /* Lighter border */
-  --ifm-color-emphasis-300: #cbd5e1;
-  --ifm-color-emphasis-400: #94a3b8;
-  --ifm-color-emphasis-500: #64748b;
-  --ifm-color-emphasis-600: #475569;
-  --ifm-color-emphasis-700: #334155;
-  --ifm-color-emphasis-800: #1e293b;
-  --ifm-color-emphasis-900: #0f172a;
+/* DaisyUI Dark Theme Configuration */
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: "dark";
+  --color-base-100: oklch(20.768% 0.039 265.754);
+  --color-base-200: oklch(19.314% 0.037 265.754);
+  --color-base-300: oklch(17.86% 0.034 265.754);
+  --color-base-content: oklch(84.153% 0.007 265.754);
+  --color-primary: oklch(75.351% 0.138 232.661);
+  --color-primary-content: oklch(15.07% 0.027 232.661);
+  --color-secondary: oklch(68.011% 0.158 276.934);
+  --color-secondary-content: oklch(13.602% 0.031 276.934);
+  --color-accent: oklch(72.36% 0.176 350.048);
+  --color-accent-content: oklch(14.472% 0.035 350.048);
+  --color-neutral: oklch(27.949% 0.036 260.03);
+  --color-neutral-content: oklch(85.589% 0.007 260.03);
+  --color-info: oklch(68.455% 0.148 237.251);
+  --color-info-content: oklch(0% 0 0);
+  --color-success: oklch(78.452% 0.132 181.911);
+  --color-success-content: oklch(15.69% 0.026 181.911);
+  --color-warning: oklch(83.242% 0.139 82.95);
+  --color-warning-content: oklch(16.648% 0.027 82.95);
+  --color-error: oklch(71.785% 0.17 13.118);
+  --color-error-content: oklch(14.357% 0.034 13.118);
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
 }
 
-/* Dark theme variables */
-[data-theme='dark'] {
-  --ifm-color-primary: #3b82f6; /* Match DaisyUI primary */
-  --ifm-color-primary-dark: #2563eb; /* Match DaisyUI primary-focus */
+
+@custom-variant dark (&:is([data-theme="dark"] *));
+
+/* Docusaurus Theme Integration */
+:root {
+  --ifm-color-primary: #3b82f6;
+  --ifm-color-primary-dark: #2563eb;
   --ifm-color-primary-darker: #1d4ed8;
   --ifm-color-primary-darkest: #1e40af;
   --ifm-color-primary-light: #60a5fa;
   --ifm-color-primary-lighter: #93c5fd;
   --ifm-color-primary-lightest: #bfdbfe;
+  --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(59, 130, 246, 0.1);
-  --ifm-background-color: #0f172a; /* Darker background */
-  --ifm-background-surface-color: #1e293b; /* Slightly lighter surface */
-  --ifm-color-emphasis-100: #1e293b; /* Match surface */
-  --ifm-color-emphasis-200: #334155; /* Lighter border */
-  --ifm-color-emphasis-300: #475569;
-  --ifm-color-emphasis-400: #64748b;
-  --ifm-color-emphasis-500: #94a3b8;
-  --ifm-color-emphasis-600: #cbd5e1;
-  --ifm-color-emphasis-700: #e2e8f0;
-  --ifm-color-emphasis-800: #f1f5f9;
-  --ifm-color-emphasis-900: #f8fafc;
+  --ifm-background-color: #f8fafc;
+  --ifm-background-surface-color: #f1f5f9;
 }
 
-/* Additional Docusaurus component styling */
-.navbar {
-  background-color: var(--ifm-background-surface-color);
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+[data-theme="dark"] {
+  --ifm-background-color: #0f172a;
+  --ifm-background-surface-color: #1e293b;
+  --docusaurus-highlighted-code-line-bg: rgba(59, 130, 246, 0.15);
 }
 
+/* Component Styling */
+.navbar,
 .footer {
   background-color: var(--ifm-background-surface-color);
-  border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
-.menu__link {
-  color: var(--ifm-color-emphasis-700);
-}
-
-.menu__link:hover {
-  color: var(--ifm-color-primary);
-}
-
-.menu__link--active {
-  color: var(--ifm-color-primary);
-}
-
-.table-of-contents {
-  border-left: 1px solid var(--ifm-color-emphasis-200);
-}
-
+.menu__link,
 .table-of-contents__link {
-  color: var(--ifm-color-emphasis-700);
+  transition: color 0.2s ease;
 }
 
-.table-of-contents__link:hover {
-  color: var(--ifm-color-primary);
-}
-
+.menu__link:hover,
+.menu__link--active,
+.table-of-contents__link:hover,
 .table-of-contents__link--active {
-  color: var(--ifm-color-primary);
-}
-
-/* Additional styling for better contrast */
-.theme-doc-sidebar-container {
-  background-color: var(--ifm-background-surface-color);
-  border-right: 1px solid var(--ifm-color-emphasis-200);
-}
-
-.theme-doc-sidebar-item-category-level-1 > .menu__link {
-  color: var(--ifm-color-emphasis-900);
-  font-weight: 600;
-}
-
-.theme-doc-sidebar-item-category-level-1 > .menu__link:hover {
   color: var(--ifm-color-primary);
 }
 
