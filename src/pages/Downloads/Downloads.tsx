@@ -1,6 +1,17 @@
 import Layout from '@theme/Layout';
-import React from 'react';
-import { FaAndroid, FaApple, FaArrowRight, FaDesktop, FaDownload, FaGlobe, FaMobile, FaStar, FaTv, FaWindows } from 'react-icons/fa';
+import type React from 'react';
+import {
+  FaAndroid,
+  FaApple,
+  FaArrowRight,
+  FaDesktop,
+  FaDownload,
+  FaGlobe,
+  FaMobile,
+  FaStar,
+  FaTv,
+  FaWindows,
+} from 'react-icons/fa';
 
 type Platform = {
   name: string;
@@ -70,7 +81,7 @@ const categories = [
   { id: 'web', name: 'Web', icon: FaGlobe },
   { id: 'mobile', name: 'Mobile', icon: FaMobile },
   { id: 'tv', name: 'TV', icon: FaTv },
-    { id: 'desktop', name: 'Desktop', icon: FaDesktop },
+  { id: 'desktop', name: 'Desktop', icon: FaDesktop },
 ];
 
 export default function DownloadPage(): React.JSX.Element {

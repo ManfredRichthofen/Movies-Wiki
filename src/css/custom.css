@@ -76,36 +76,135 @@
 
 @custom-variant dark (&:is([data-theme="dark"] *));
 
-/* Docusaurus Theme Integration */
+/* Docusaurus Theme Integration - Synced with DaisyUI */
 :root {
-  --ifm-color-primary: #3b82f6;
-  --ifm-color-primary-dark: #2563eb;
-  --ifm-color-primary-darker: #1d4ed8;
-  --ifm-color-primary-darkest: #1e40af;
-  --ifm-color-primary-light: #60a5fa;
-  --ifm-color-primary-lighter: #93c5fd;
-  --ifm-color-primary-lightest: #bfdbfe;
+  /* Primary colors from DaisyUI light theme */
+  --ifm-color-primary: oklch(56.86% 0.255 257.57);
+  --ifm-color-primary-dark: oklch(51% 0.24 257.57);
+  --ifm-color-primary-darker: oklch(48% 0.23 257.57);
+  --ifm-color-primary-darkest: oklch(45% 0.22 257.57);
+  --ifm-color-primary-light: oklch(62% 0.27 257.57);
+  --ifm-color-primary-lighter: oklch(68% 0.29 257.57);
+  --ifm-color-primary-lightest: oklch(74% 0.31 257.57);
+  
+  /* Background colors from DaisyUI light theme */
+  --ifm-background-color: oklch(100% 0 0);
+  --ifm-background-surface-color: oklch(97.466% 0.011 259.822);
+  
+  /* Emphasis colors (borders, dividers) */
+  --ifm-color-emphasis-0: oklch(100% 0 0);
+  --ifm-color-emphasis-100: oklch(97.466% 0.011 259.822);
+  --ifm-color-emphasis-200: oklch(93.268% 0.016 262.751);
+  --ifm-color-emphasis-300: oklch(88% 0.02 262.751);
+  --ifm-color-emphasis-400: oklch(75% 0.03 255.824);
+  --ifm-color-emphasis-500: oklch(60% 0.04 255.824);
+  --ifm-color-emphasis-600: oklch(50% 0.05 255.824);
+  --ifm-color-emphasis-700: oklch(41.886% 0.053 255.824);
+  --ifm-color-emphasis-800: oklch(35% 0.055 255.824);
+  --ifm-color-emphasis-900: oklch(25% 0.06 255.824);
+  --ifm-color-emphasis-1000: oklch(15% 0.065 255.824);
+  
+  /* Text colors */
+  --ifm-font-color-base: oklch(41.886% 0.053 255.824);
+  --ifm-font-color-base-inverse: oklch(100% 0 0);
+  --ifm-font-color-secondary: oklch(60% 0.04 255.824);
+  --ifm-heading-color: oklch(41.886% 0.053 255.824);
+  --ifm-link-color: oklch(56.86% 0.255 257.57);
+  --ifm-link-hover-color: oklch(51% 0.24 257.57);
+  
+  /* Code highlighting */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(59, 130, 246, 0.1);
-  --ifm-background-color: #f8fafc;
-  --ifm-background-surface-color: #f1f5f9;
+  --ifm-code-background: oklch(97.466% 0.011 259.822);
+  --ifm-code-color: oklch(42.551% 0.161 282.339);
+  --docusaurus-highlighted-code-line-bg: oklch(56.86% 0.255 257.57 / 0.1);
+  
+  /* Card and hover colors */
+  --ifm-hover-overlay: oklch(93.268% 0.016 262.751);
+  --ifm-card-background-color: oklch(100% 0 0);
 }
 
 [data-theme="dark"] {
-  --ifm-background-color: #0f172a;
-  --ifm-background-surface-color: #1e293b;
-  --docusaurus-highlighted-code-line-bg: rgba(59, 130, 246, 0.15);
+  /* Primary colors from DaisyUI dark theme */
+  --ifm-color-primary: oklch(75.351% 0.138 232.661);
+  --ifm-color-primary-dark: oklch(70% 0.13 232.661);
+  --ifm-color-primary-darker: oklch(67% 0.125 232.661);
+  --ifm-color-primary-darkest: oklch(64% 0.12 232.661);
+  --ifm-color-primary-light: oklch(80% 0.145 232.661);
+  --ifm-color-primary-lighter: oklch(85% 0.15 232.661);
+  --ifm-color-primary-lightest: oklch(90% 0.155 232.661);
+  
+  /* Background colors from DaisyUI dark theme */
+  --ifm-background-color: oklch(20.768% 0.039 265.754);
+  --ifm-background-surface-color: oklch(19.314% 0.037 265.754);
+  
+  /* Emphasis colors (borders, dividers) */
+  --ifm-color-emphasis-0: oklch(15% 0.032 265.754);
+  --ifm-color-emphasis-100: oklch(19.314% 0.037 265.754);
+  --ifm-color-emphasis-200: oklch(17.86% 0.034 265.754);
+  --ifm-color-emphasis-300: oklch(25% 0.04 265.754);
+  --ifm-color-emphasis-400: oklch(35% 0.045 265.754);
+  --ifm-color-emphasis-500: oklch(45% 0.05 265.754);
+  --ifm-color-emphasis-600: oklch(55% 0.055 265.754);
+  --ifm-color-emphasis-700: oklch(65% 0.06 265.754);
+  --ifm-color-emphasis-800: oklch(75% 0.065 265.754);
+  --ifm-color-emphasis-900: oklch(84.153% 0.007 265.754);
+  --ifm-color-emphasis-1000: oklch(90% 0.005 265.754);
+  
+  /* Text colors */
+  --ifm-font-color-base: oklch(84.153% 0.007 265.754);
+  --ifm-font-color-base-inverse: oklch(20.768% 0.039 265.754);
+  --ifm-font-color-secondary: oklch(65% 0.06 265.754);
+  --ifm-heading-color: oklch(84.153% 0.007 265.754);
+  --ifm-link-color: oklch(75.351% 0.138 232.661);
+  --ifm-link-hover-color: oklch(80% 0.145 232.661);
+  
+  /* Code highlighting */
+  --ifm-code-background: oklch(19.314% 0.037 265.754);
+  --ifm-code-color: oklch(68.011% 0.158 276.934);
+  --docusaurus-highlighted-code-line-bg: oklch(75.351% 0.138 232.661 / 0.15);
+  
+  /* Card and hover colors */
+  --ifm-hover-overlay: oklch(17.86% 0.034 265.754);
+  --ifm-card-background-color: oklch(20.768% 0.039 265.754);
 }
 
 /* Component Styling */
-.navbar,
-.footer {
-  background-color: var(--ifm-background-surface-color);
+.navbar {
+  background-color: var(--ifm-background-color);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: none;
 }
 
+.footer {
+  background-color: var(--ifm-background-color);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.footer__title,
+.footer__item,
+.footer__link-item {
+  color: var(--ifm-font-color-base);
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary);
+}
+
+.footer__copyright {
+  color: var(--ifm-font-color-secondary);
+}
+
+/* Sidebar styling */
+.theme-doc-sidebar-container {
+  background-color: var(--ifm-background-color);
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Menu links */
 .menu__link,
 .table-of-contents__link {
   transition: color 0.2s ease;
+  color: var(--ifm-font-color-base);
 }
 
 .menu__link:hover,
@@ -113,6 +212,27 @@
 .table-of-contents__link:hover,
 .table-of-contents__link--active {
   color: var(--ifm-color-primary);
+  background-color: transparent;
+}
+
+.menu__link--active {
+  font-weight: 600;
+}
+
+/* Navbar items */
+.navbar__item,
+.navbar__link {
+  color: var(--ifm-font-color-base);
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--ifm-color-primary);
+}
+
+/* Table of contents */
+.table-of-contents {
+  border-left: 1px solid var(--ifm-color-emphasis-200);
 }
 
 .hidden {
