@@ -4,6 +4,7 @@ import {
   FaAndroid,
   FaApple,
   FaArrowRight,
+  FaBook,
   FaDesktop,
   FaDownload,
   FaGlobe,
@@ -12,6 +13,16 @@ import {
   FaTv,
   FaWindows,
 } from 'react-icons/fa';
+import {
+  Button,
+  Card,
+  CTASection,
+  HeroSection,
+  SectionHeader,
+  SPACING,
+  TYPOGRAPHY,
+  OPACITY,
+} from '@site/src/components/design-system';
 
 type Platform = {
   name: string;
@@ -87,30 +98,18 @@ const categories = [
 export default function DownloadPage(): React.JSX.Element {
   return (
     <Layout title='Download Jellyfin Apps' description='Download Jellyfin for your devices.'>
-      {/* Hero Section */}
-      <section className='relative overflow-hidden bg-gradient-to-br from-base-100 via-base-200 to-base-100 py-20 md:py-32'>
-        <div className='container mx-auto px-4'>
-          <div className='max-w-5xl mx-auto text-center flex flex-col items-center'>
-            <div className='inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-8'>
-              <FaDownload className='w-4 h-4' />
-              <span className='text-sm font-semibold'>Available on All Your Devices</span>
-            </div>
-            <h1 className='text-5xl md:text-7xl font-extrabold mb-6 text-base-content'>
-              Download Jellyfin
-              <span className='block text-primary mt-2'>For Any Platform</span>
-            </h1>
-            <p className='text-xl text-base-content/80 mb-10 max-w-3xl leading-relaxed'>
-              Stream your media library anywhere. Choose your platform and start enjoying your content in minutes.
-            </p>
-          </div>
-        </div>
-        <div className='absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10' />
-        <div className='absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -z-10' />
-      </section>
+      <HeroSection
+        title='Download Jellyfin'
+        subtitle='For Any Platform'
+        description='Stream your media library anywhere. Choose your platform and start enjoying your content in minutes.'
+        badgeText='Available on All Your Devices'
+        badgeIcon={FaDownload}
+        variant='gradient'
+      />
 
       {/* Category Pills */}
-      <section className='py-8 bg-base-100 border-b border-base-300'>
-        <div className='container mx-auto px-4'>
+      <section className={`${SPACING.sectionLarge} bg-base-100 border-b border-base-300`}>
+        <div className={SPACING.container}>
           <div className='flex flex-wrap justify-center gap-3 max-w-4xl mx-auto'>
             {categories.map((category) => (
               <a
@@ -127,22 +126,20 @@ export default function DownloadPage(): React.JSX.Element {
       </section>
 
       {/* Featured Apps */}
-      <section className='py-20 bg-base-100'>
-        <div className='container mx-auto px-4'>
-          <div className='text-center mb-12'>
-            <h2 className='text-3xl md:text-4xl font-bold mb-3 text-base-content'>Most Popular</h2>
-            <p className='text-base-content/70'>Get started with these recommended clients</p>
-          </div>
+      <section className={`${SPACING.section} bg-base-100`}>
+        <div className={SPACING.container}>
+          <SectionHeader
+            title='Most Popular'
+            subtitle='Get started with these recommended clients'
+          />
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16'>
             {platforms
               .filter((p) => p.featured)
               .map((platform) => (
-                <a
+                <Card
                   key={platform.name}
-                  href={platform.url}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='group relative bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-primary/20'
+                  variant='featured'
+                  className='p-8 hover:shadow-2xl hover:-translate-y-2'
                 >
                   <div className='absolute top-4 right-4'>
                     <div className='bg-primary/20 text-primary p-1.5 rounded-full'>
@@ -153,27 +150,33 @@ export default function DownloadPage(): React.JSX.Element {
                     <div className='bg-base-100 p-6 rounded-2xl mb-6 group-hover:scale-110 transition-transform'>
                       <platform.icon className='w-16 h-16 text-primary' />
                     </div>
-                    <h3 className='text-2xl font-bold mb-2 text-base-content'>{platform.name}</h3>
-                    <p className='text-base-content/70 mb-6'>{platform.description}</p>
-                    <div className='flex items-center gap-2 text-primary font-semibold'>
-                      <span>Download</span>
-                      <FaArrowRight className='w-4 h-4 group-hover:translate-x-1 transition-transform' />
-                    </div>
+                    <h3 className={`${TYPOGRAPHY.cardTitle} mb-2 ${OPACITY.primary}`}>{platform.name}</h3>
+                    <p className={OPACITY.muted + ' mb-6'}>{platform.description}</p>
+                    <Button
+                      variant='primary'
+                      href={platform.url}
+                      icon={FaArrowRight}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='group'
+                    >
+                      Download
+                    </Button>
                   </div>
-                </a>
+                </Card>
               ))}
           </div>
         </div>
       </section>
 
       {/* All Platforms by Category */}
-      <section className='py-20 bg-base-200'>
-        <div className='container mx-auto px-4'>
+      <section className={`${SPACING.section} bg-base-200`}>
+        <div className={SPACING.container}>
           <div className='max-w-6xl mx-auto'>
-            <div className='text-center mb-16'>
-              <h2 className='text-3xl md:text-4xl font-bold mb-3 text-base-content'>All Platforms</h2>
-              <p className='text-base-content/70'>Complete list of available Jellyfin clients</p>
-            </div>
+            <SectionHeader
+              title='All Platforms'
+              subtitle='Complete list of available Jellyfin clients'
+            />
 
             {categories.map((category) => {
               const categoryPlatforms = platforms.filter((p) => p.category === category.id);
@@ -183,33 +186,32 @@ export default function DownloadPage(): React.JSX.Element {
                     <div className='bg-primary/10 p-3 rounded-xl'>
                       <category.icon className='w-6 h-6 text-primary' />
                     </div>
-                    <h3 className='text-2xl font-bold text-base-content'>{category.name}</h3>
+                    <h3 className={`${TYPOGRAPHY.sectionTitle} ${OPACITY.primary}`}>{category.name}</h3>
                   </div>
                   <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                     {categoryPlatforms.map((platform) => (
-                      <a
-                        key={platform.name}
-                        href={platform.url}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        className='group bg-base-100 rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1'
-                      >
-                        <div className='flex items-start gap-4'>
+                      <Card key={platform.name} className='p-6'>
+                        <a
+                          href={platform.url}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          className='flex items-start gap-4 group'
+                        >
                           <div className='bg-primary/10 p-3 rounded-lg group-hover:bg-primary/20 transition-colors'>
                             <platform.icon className='w-8 h-8 text-primary' />
                           </div>
                           <div className='flex-1'>
-                            <h4 className='text-lg font-bold mb-1 text-base-content group-hover:text-primary transition-colors'>
+                            <h4 className={`text-lg font-bold mb-1 ${OPACITY.primary} group-hover:text-primary transition-colors`}>
                               {platform.name}
                             </h4>
-                            <p className='text-sm text-base-content/70 mb-3'>{platform.description}</p>
+                            <p className={`text-sm ${OPACITY.muted} mb-3`}>{platform.description}</p>
                             <div className='flex items-center gap-2 text-primary text-sm font-semibold'>
                               <span>Download</span>
                               <FaArrowRight className='w-3 h-3 group-hover:translate-x-1 transition-transform' />
                             </div>
                           </div>
-                        </div>
-                      </a>
+                        </a>
+                      </Card>
                     ))}
                   </div>
                 </div>
@@ -219,26 +221,20 @@ export default function DownloadPage(): React.JSX.Element {
         </div>
       </section>
 
-      {/* Help Section */}
-      <section className='py-20 bg-gradient-to-br from-primary/10 via-base-100 to-secondary/10'>
-        <div className='container mx-auto px-4'>
-          <div className='max-w-4xl mx-auto text-center'>
-            <h2 className='text-3xl md:text-4xl font-bold mb-6 text-base-content'>Need Help Getting Started?</h2>
-            <p className='text-xl text-base-content/70 mb-10'>
-              Check out our comprehensive installation guides and documentation.
-            </p>
-            <div className='flex flex-wrap justify-center gap-4'>
-              <a href='/docs/installation' className='btn btn-primary !text-primary-content btn-lg gap-2'>
-                Installation Guide
-                <FaArrowRight />
-              </a>
-              <a href='/docs' className='btn btn-outline btn-lg gap-2'>
-                View All Docs
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title='Need Help Getting Started?'
+        description='Check out our comprehensive installation guides and documentation.'
+        primaryButton={{
+          text: 'Installation Guide',
+          href: '/docs/installation',
+          icon: FaArrowRight,
+        }}
+        secondaryButton={{
+          text: 'View All Docs',
+          href: '/docs',
+          icon: FaBook,
+        }}
+      />
     </Layout>
   );
 }
