@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* Tell Tailwind v4 to scan these directories for classes */
+@source "../../src/pages";
+@source "../../src/components";
+@source "../../src/theme";
+
 /* DaisyUI Light Theme Configuration */
 @plugin "daisyui/theme" {
   name: "light";

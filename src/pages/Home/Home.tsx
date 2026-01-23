@@ -16,17 +16,96 @@ import {
   FaStar,
   FaTv,
 } from 'react-icons/fa';
-import {
-  Button,
-  Card,
-  CTASection,
-  FeatureGrid,
-  HeroSection,
-  SectionHeader,
-  SPACING,
-  TYPOGRAPHY,
-  OPACITY,
-} from '@site/src/components/design-system';
+
+// Hero Section
+function Hero() {
+  return (
+    <section className='bg-base-100 border-b-2 border-base-300 py-24 md:py-32'>
+      <div className='container mx-auto px-4'>
+        <div className='max-w-5xl mx-auto text-center flex flex-col items-center'>
+          <div className='inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg mb-8 border border-primary/20'>
+            <FaStar className='w-4 h-4' />
+            <span className='text-sm font-semibold'>Your Complete Entertainment Solution</span>
+          </div>
+          <h1 className='text-5xl md:text-7xl font-extrabold mb-6 text-base-content'>
+            Stream, Play, and Enjoy
+            <span className='block text-primary mt-2'>Without Limits</span>
+          </h1>
+          <p className='text-xl text-base-content/80 mb-10 max-w-3xl leading-relaxed'>
+            Access unlimited movies, ad-free YouTube, game servers, and powerful AI tools—all in one place.
+          </p>
+          <div className='flex flex-wrap justify-center gap-4'>
+            <a href='#apps' className='btn btn-primary !text-primary-content btn-lg gap-2 transition-all'>
+              Get Started
+              <FaArrowRight />
+            </a>
+            <a href='#features' className='btn btn-ghost btn-lg gap-2 hover:bg-base-200 transition-all'>
+              Learn More
+              <FaBook />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Features Grid
+function FeaturesGrid() {
+  const features = [
+    {
+      icon: FaFilm,
+      title: 'Unlimited Movies',
+      description: 'Stream thousands of movies with automated requests',
+      color: 'text-primary',
+    },
+    {
+      icon: FaPlay,
+      title: 'Ad-Free YouTube',
+      description: 'Watch YouTube without ads or interruptions',
+      color: 'text-error',
+    },
+    {
+      icon: FaGamepad,
+      title: 'Game Servers',
+      description: 'Host and manage your own game servers easily',
+      color: 'text-secondary',
+    },
+    {
+      icon: FaRobot,
+      title: 'AI Tools',
+      description: 'Powerful Discord bots for automation',
+      color: 'text-accent',
+    },
+  ];
+
+  return (
+    <section id='features' className='py-24 bg-base-100'>
+      <div className='container mx-auto px-4'>
+        <div className='text-center mb-16 flex flex-col items-center'>
+          <h2 className='text-4xl md:text-5xl font-bold mb-4 text-base-content'>Everything You Need</h2>
+          <p className='text-lg text-base-content/70 max-w-2xl'>
+            A complete entertainment ecosystem at your fingertips
+          </p>
+        </div>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto'>
+          {features.map((feature) => (
+            <div
+              key={feature.title}
+              className='group bg-base-200 border-2 border-base-300 rounded-lg p-6 hover:border-primary transition-all duration-300'
+            >
+              <div className={`${feature.color} mb-4`}>
+                <feature.icon className='w-12 h-12' />
+              </div>
+              <h3 className='text-xl font-bold mb-2 text-base-content'>{feature.title}</h3>
+              <p className='text-base-content/70'>{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 // Jellyfin Showcase
 function JellyfinShowcase() {
@@ -39,17 +118,19 @@ function JellyfinShowcase() {
   ];
 
   return (
-    <section id='apps' className={`${SPACING.section} bg-base-200`}>
-      <div className={SPACING.container}>
+    <section id='apps' className='py-24 bg-base-200'>
+      <div className='container mx-auto px-4'>
         <div className='max-w-6xl mx-auto'>
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
             <div className='order-2 lg:order-1'>
-              <SectionHeader
-                badge='MEDIA SERVER'
-                title='Your Personal Netflix Alternative'
-                centered={false}
-              />
-              <p className={`${TYPOGRAPHY.description} ${OPACITY.secondary} mb-8`}>
+              <div className='inline-block bg-primary/10 text-primary px-3 py-1 rounded-lg text-sm font-semibold mb-4 border border-primary/20'>
+                MEDIA SERVER
+              </div>
+              <h2 className='text-4xl md:text-5xl font-bold mb-6 text-base-content'>
+                Your Personal
+                <span className='block text-primary'>Netflix Alternative</span>
+              </h2>
+              <p className='text-lg text-base-content/80 mb-8'>
                 Jellyfin gives you complete control over your media. Stream movies, TV shows, music, and more to any
                 device—no subscription required.
               </p>
@@ -60,7 +141,7 @@ function JellyfinShowcase() {
                   </div>
                   <div>
                     <h4 className='font-semibold text-base-content mb-1'>100% Free & Open Source</h4>
-                    <p className={OPACITY.muted + ' text-sm'}>No hidden fees, no subscriptions, forever free</p>
+                    <p className='text-base-content/70 text-sm'>No hidden fees, no subscriptions, forever free</p>
                   </div>
                 </div>
                 <div className='flex items-start gap-3'>
@@ -69,7 +150,7 @@ function JellyfinShowcase() {
                   </div>
                   <div>
                     <h4 className='font-semibold text-base-content mb-1'>Self-Hosted Control</h4>
-                    <p className={OPACITY.muted + ' text-sm'}>Your data stays yours, complete privacy</p>
+                    <p className='text-base-content/70 text-sm'>Your data stays yours, complete privacy</p>
                   </div>
                 </div>
               </div>
@@ -81,24 +162,22 @@ function JellyfinShowcase() {
                   </div>
                 ))}
               </div>
-              <Button
-                variant='primary'
-                size='lg'
+              <a
                 href='https://jellyfin.org/downloads'
-                icon={FaDownload}
+                className='btn btn-primary !text-primary-content btn-lg gap-2 hover:shadow-lg transition-all'
                 target='_blank'
                 rel='noopener noreferrer'
               >
+                <FaDownload />
                 Download Jellyfin
-              </Button>
+              </a>
             </div>
             <div className='order-1 lg:order-2'>
               <div className='relative'>
-                <div className='absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-2xl' />
                 <img
                   src={require('@site/static/img/jellyfin.png').default}
                   alt='Jellyfin interface'
-                  className='relative rounded-2xl shadow-2xl w-full'
+                  className='rounded-lg border-2 border-base-300 w-full'
                   loading='lazy'
                 />
               </div>
@@ -122,28 +201,29 @@ function RevancedShowcase() {
   ];
 
   return (
-    <section className={`${SPACING.section} bg-base-100`}>
-      <div className={SPACING.container}>
+    <section className='py-24 bg-base-100'>
+      <div className='container mx-auto px-4'>
         <div className='max-w-6xl mx-auto'>
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
             <div>
               <div className='relative'>
-                <div className='absolute inset-0 bg-gradient-to-br from-error/20 to-primary/20 rounded-3xl blur-2xl' />
                 <img
                   src={require('@site/static/img/youtube.jpg').default}
                   alt='ReVanced interface'
-                  className='relative rounded-2xl shadow-2xl w-full'
+                  className='rounded-lg border-2 border-base-300 w-full'
                   loading='lazy'
                 />
               </div>
             </div>
             <div>
-              <SectionHeader
-                badge='YOUTUBE ENHANCED'
-                title='YouTube Premium Without the Price Tag'
-                centered={false}
-              />
-              <p className={`${TYPOGRAPHY.description} ${OPACITY.secondary} mb-8`}>
+              <div className='inline-block bg-error/10 text-error px-3 py-1 rounded-lg text-sm font-semibold mb-4 border border-error/20'>
+                YOUTUBE ENHANCED
+              </div>
+              <h2 className='text-4xl md:text-5xl font-bold mb-6 text-base-content'>
+                YouTube Premium
+                <span className='block text-error'>Without the Price Tag</span>
+              </h2>
+              <p className='text-lg text-base-content/80 mb-8'>
                 ReVanced brings all premium features to YouTube and YouTube Music—completely free. No ads, no
                 interruptions, just pure content.
               </p>
@@ -151,44 +231,61 @@ function RevancedShowcase() {
                 {features.map((feature) => (
                   <div key={feature} className='flex items-center gap-2'>
                     <div className='w-1.5 h-1.5 bg-error rounded-full' />
-                    <span className={OPACITY.secondary + ' text-sm'}>{feature}</span>
+                    <span className='text-base-content/80 text-sm'>{feature}</span>
                   </div>
                 ))}
               </div>
               <div className='flex flex-col sm:flex-row gap-3'>
-                <Button
-                  variant='error'
-                  size='lg'
+                <a
                   href='https://revanced.app/download'
-                  icon={FaPlay}
-                  className='flex-1'
+                  className='btn btn-error !text-error-content btn-lg gap-2 flex-1 transition-all'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
+                  <FaPlay />
                   Get YouTube
-                </Button>
-                <Button
-                  variant='outline'
-                  size='lg'
+                </a>
+                <a
                   href='https://revanced.app/download'
-                  icon={FaMusic}
-                  className='flex-1'
+                  className='btn btn-outline btn-lg gap-2 flex-1 hover:bg-base-200 transition-all'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
+                  <FaMusic />
                   Get Music
-                </Button>
+                </a>
               </div>
-              <Button
-                variant='ghost'
-                size='sm'
-                href='/docs/installation'
-                icon={FaBook}
-                className='mt-4'
-              >
+              <a href='/docs/installation' className='btn btn-ghost btn-sm gap-2 mt-4 hover:bg-base-200 transition-all'>
+                <FaBook />
                 Installation Guide
-              </Button>
+              </a>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// CTA Section
+function CTASection() {
+  return (
+    <section className='py-24 bg-base-200 border-t-2 border-base-300'>
+      <div className='container mx-auto px-4'>
+        <div className='max-w-4xl mx-auto text-center flex flex-col items-center'>
+          <h2 className='text-4xl md:text-5xl font-bold mb-6 text-base-content'>Ready to Get Started?</h2>
+          <p className='text-xl text-base-content/70 mb-10'>
+            Join thousands of users enjoying unlimited entertainment without restrictions.
+          </p>
+          <div className='flex flex-wrap justify-center gap-4'>
+            <a href='#apps' className='btn btn-primary !text-primary-content btn-lg gap-2 transition-all'>
+              Download Now
+              <FaDownload />
+            </a>
+            <a href='/docs' className='btn btn-outline btn-lg gap-2 hover:bg-base-200 transition-all'>
+              View Documentation
+              <FaBook />
+            </a>
           </div>
         </div>
       </div>
@@ -200,69 +297,11 @@ function RevancedShowcase() {
 export default function Home(): React.JSX.Element {
   return (
     <>
-      <HeroSection
-        title='Stream, Play, and Enjoy'
-        subtitle='Without Limits'
-        description='Access unlimited movies, ad-free YouTube, game servers, and powerful AI tools—all in one place.'
-        badgeText='Your Complete Entertainment Solution'
-        primaryButton={{
-          text: 'Get Started',
-          href: '#apps',
-          icon: FaArrowRight,
-        }}
-        secondaryButton={{
-          text: 'Learn More',
-          href: '#features',
-          icon: FaBook,
-        }}
-        variant='gradient'
-      />
-      <FeatureGrid
-        title='Everything You Need'
-        subtitle='A complete entertainment ecosystem at your fingertips'
-        features={[
-          {
-            icon: FaFilm,
-            title: 'Unlimited Movies',
-            description: 'Stream thousands of movies with automated requests',
-            color: 'text-primary',
-          },
-          {
-            icon: FaPlay,
-            title: 'Ad-Free YouTube',
-            description: 'Watch YouTube without ads or interruptions',
-            color: 'text-error',
-          },
-          {
-            icon: FaGamepad,
-            title: 'Game Servers',
-            description: 'Host and manage your own game servers easily',
-            color: 'text-secondary',
-          },
-          {
-            icon: FaRobot,
-            title: 'AI Tools',
-            description: 'Powerful Discord bots for automation',
-            color: 'text-accent',
-          },
-        ]}
-      />
+      <Hero />
+      <FeaturesGrid />
       <JellyfinShowcase />
       <RevancedShowcase />
-      <CTASection
-        title='Ready to Get Started?'
-        description='Join thousands of users enjoying unlimited entertainment without restrictions.'
-        primaryButton={{
-          text: 'Download Now',
-          href: '#apps',
-          icon: FaDownload,
-        }}
-        secondaryButton={{
-          text: 'View Documentation',
-          href: '/docs',
-          icon: FaBook,
-        }}
-      />
+      <CTASection />
     </>
   );
 }
