@@ -16,6 +16,7 @@ import {
   FaStar,
   FaTv,
 } from 'react-icons/fa';
+import { useLatestAPKReleaseInfo } from '@site/src/utils/github';
 
 // Hero Section
 function Hero() {
@@ -191,6 +192,7 @@ function JellyfinShowcase() {
 
 // ReVanced Showcase
 function RevancedShowcase() {
+  const downloadURLs = useLatestAPKReleaseInfo();
   const features = [
     'Block all ads',
     'Background playback',
@@ -237,8 +239,8 @@ function RevancedShowcase() {
               </div>
               <div className='flex flex-col sm:flex-row gap-3'>
                 <a
-                  href='https://revanced.app/download'
-                  className='btn btn-error !text-error-content btn-lg gap-2 flex-1 transition-all'
+                  href={downloadURLs.youtube || 'https://github.com/ManfredRichthofen/morphe-builder/releases'}
+                  className='btn btn-error btn-lg gap-2 flex-1 transition-all !text-white'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
@@ -246,13 +248,24 @@ function RevancedShowcase() {
                   Get YouTube
                 </a>
                 <a
-                  href='https://revanced.app/download'
-                  className='btn btn-outline btn-lg gap-2 flex-1 hover:bg-base-200 transition-all'
+                  href={downloadURLs.youtubeMusic || 'https://github.com/ManfredRichthofen/morphe-builder/releases'}
+                  className='btn btn-outline btn-lg gap-2 flex-1 hover:bg-base-200 transition-all !text-base-content'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
                   <FaMusic />
                   Get Music
+                </a>
+              </div>
+              <div className='mt-3'>
+                <a
+                  href={downloadURLs.microg || 'https://github.com/MorpheApp/MicroG-RE/releases'}
+                  className='btn btn-primary btn-lg gap-2 w-full transition-all !text-white'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <FaDownload />
+                  Get MicroG (Required)
                 </a>
               </div>
               <a href='/docs/installation' className='btn btn-ghost btn-sm gap-2 mt-4 hover:bg-base-200 transition-all'>
