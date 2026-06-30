@@ -17,6 +17,7 @@ import {
   FaTv,
 } from 'react-icons/fa';
 import { useLatestAPKReleaseInfo } from '@site/src/utils/github';
+import { ButtonLink } from '@site/src/components/ui/button-link';
 
 // Hero Section
 function Hero() {
@@ -36,14 +37,14 @@ function Hero() {
             Access unlimited movies, ad-free YouTube, game servers, and powerful AI tools—all in one place.
           </p>
           <div className='flex flex-wrap justify-center gap-4'>
-            <a href='#apps' className='btn btn-primary !text-primary-content btn-lg gap-2 transition-all'>
+            <ButtonLink href='#apps' variant='primary' size='lg'>
               Get Started
               <FaArrowRight />
-            </a>
-            <a href='#features' className='btn btn-ghost btn-lg gap-2 hover:bg-base-200 transition-all'>
+            </ButtonLink>
+            <ButtonLink href='#features' variant='ghost' size='lg'>
               Learn More
               <FaBook />
-            </a>
+            </ButtonLink>
           </div>
         </div>
       </div>
@@ -163,15 +164,17 @@ function JellyfinShowcase() {
                   </div>
                 ))}
               </div>
-              <a
+              <ButtonLink
                 href='https://jellyfin.org/downloads'
-                className='btn btn-primary !text-primary-content btn-lg gap-2 hover:shadow-lg transition-all'
+                variant='primary'
+                size='lg'
+                className='hover:shadow-lg'
                 target='_blank'
                 rel='noopener noreferrer'
               >
                 <FaDownload />
                 Download Jellyfin
-              </a>
+              </ButtonLink>
             </div>
             <div className='order-1 lg:order-2'>
               <div className='relative'>
@@ -238,40 +241,46 @@ function RevancedShowcase() {
                 ))}
               </div>
               <div className='flex flex-col sm:flex-row gap-3'>
-                <a
+                <ButtonLink
                   href={downloadURLs.youtube || 'https://github.com/ManfredRichthofen/morphe-builder/releases'}
-                  className='btn btn-error btn-lg gap-2 flex-1 transition-all !text-white'
+                  variant='error'
+                  size='lg'
+                  className='flex-1'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
                   <FaPlay />
                   Get YouTube
-                </a>
-                <a
+                </ButtonLink>
+                <ButtonLink
                   href={downloadURLs.youtubeMusic || 'https://github.com/ManfredRichthofen/morphe-builder/releases'}
-                  className='btn btn-outline btn-lg gap-2 flex-1 hover:bg-base-200 transition-all !text-base-content'
+                  variant='outline'
+                  size='lg'
+                  className='flex-1'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
                   <FaMusic />
                   Get Music
-                </a>
+                </ButtonLink>
               </div>
               <div className='mt-3'>
-                <a
+                <ButtonLink
                   href={downloadURLs.microg || 'https://github.com/MorpheApp/MicroG-RE/releases'}
-                  className='btn btn-primary btn-lg gap-2 w-full transition-all !text-white'
+                  variant='primary'
+                  size='lg'
+                  className='w-full'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
                   <FaDownload />
                   Get MicroG (Required)
-                </a>
+                </ButtonLink>
               </div>
-              <a href='/docs/installation' className='btn btn-ghost btn-sm gap-2 mt-4 hover:bg-base-200 transition-all'>
+              <ButtonLink href='/docs/installation' variant='ghost' size='sm' className='mt-4'>
                 <FaBook />
                 Installation Guide
-              </a>
+              </ButtonLink>
             </div>
           </div>
         </div>
@@ -291,14 +300,14 @@ function CTASection() {
             Join thousands of users enjoying unlimited entertainment without restrictions.
           </p>
           <div className='flex flex-wrap justify-center gap-4'>
-            <a href='#apps' className='btn btn-primary !text-primary-content btn-lg gap-2 transition-all'>
+            <ButtonLink href='#apps' variant='primary' size='lg'>
               Download Now
               <FaDownload />
-            </a>
-            <a href='/docs' className='btn btn-outline btn-lg gap-2 hover:bg-base-200 transition-all'>
+            </ButtonLink>
+            <ButtonLink href='/docs' variant='outline' size='lg'>
               View Documentation
               <FaBook />
-            </a>
+            </ButtonLink>
           </div>
         </div>
       </div>

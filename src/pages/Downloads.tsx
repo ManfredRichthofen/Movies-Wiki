@@ -1,5 +1,6 @@
 import Layout from '@theme/Layout';
 import type React from 'react';
+import { ButtonLink } from '@site/src/components/ui/button-link';
 import {
   FaAndroid,
   FaApple,
@@ -227,14 +228,14 @@ export default function DownloadPage(): React.JSX.Element {
               Check out our comprehensive installation guides and documentation.
             </p>
             <div className='flex flex-wrap justify-center gap-4'>
-              <a href='/docs/installation' className='btn btn-primary !text-primary-content btn-lg gap-2 transition-all'>
+              <ButtonLink href='/docs/installation' variant='primary' size='lg'>
                 Installation Guide
                 <FaArrowRight />
-              </a>
-              <a href='/docs' className='btn btn-outline btn-lg gap-2 hover:bg-base-200 transition-all'>
+              </ButtonLink>
+              <ButtonLink href='/docs' variant='outline' size='lg'>
                 View All Docs
                 <FaBook />
-              </a>
+              </ButtonLink>
             </div>
           </div>
         </div>

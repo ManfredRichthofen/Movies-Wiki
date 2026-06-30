@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaGithub, FaDiscord, FaBook, FaHeart } from 'react-icons/fa';
+import { ButtonLink } from '@site/src/components/ui/button-link';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -92,13 +93,10 @@ export default function Footer() {
             <p className='text-base-content/70 mb-4 text-sm'>
               Get the latest updates on new features and services.
             </p>
-            <a
-              href='/docs'
-              className='btn btn-primary !text-primary-content btn-sm gap-2'
-            >
+            <ButtonLink href='/docs' variant='primary' size='sm'>
               <FaBook className='w-4 h-4' />
               Read Docs
-            </a>
+            </ButtonLink>
           </div>
         </div>
 
