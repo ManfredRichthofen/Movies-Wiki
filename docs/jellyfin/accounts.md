@@ -2,7 +2,7 @@
 sidebar_label: 'Accounts'
 sidebar_position: 1
 title: 'Jellyfin Accounts'
-description: How to get access to the jfapp Jellyfin server and sign in on any device.
+description: How to accept your invite, set up your account, and sign in on any device.
 tags:
   - Jellyfin
   - Accounts
@@ -14,11 +14,15 @@ jfapp runs a private Jellyfin server for the community. You need an account befo
 
 ## Getting access
 
-Accounts are created by the server admin — there is no public sign-up page. To request access:
+There is no public sign-up page. When your account is ready, the admin will send you an **invite link**.
 
-1. Reach out to the jfapp community (Discord or your usual contact channel).
-2. Provide the username you would like to use.
-3. Wait for confirmation — you will receive a username and temporary password.
+1. Open the **invite link** you were sent.
+2. Follow the on-screen steps to **choose a username** (if asked) and **set your password**.
+3. When setup finishes, you are connected to the jfapp server — sign in at [jfapp.xyz](https://jfapp.xyz).
+
+:::info Need an account?
+Contact the jfapp admin to request access. Once your account is created, you will receive an invite link to complete setup.
+:::
 
 :::tip
 Your Jellyfin login is also used for [Seerr requests](request.md). Use the same username and password on [requests.jfapp.xyz](https://requests.jfapp.xyz).
@@ -26,12 +30,17 @@ Your Jellyfin login is also used for [Seerr requests](request.md). Use the same 
 
 ## First sign-in
 
+After you finish the invite link setup:
+
 1. Open [jfapp.xyz](https://jfapp.xyz) in a browser, or launch a Jellyfin client and add the server **`jfapp.xyz`**.
-2. Enter the username and password you were given.
-3. Change your password after the first login:
+2. Enter the **username and password** you chose during setup.
+3. Optional — change your password anytime from your profile:
    - Click your **profile icon** (top right).
    - Open **Profile** → **Password**.
-   - Enter your current password, then choose a new one.
+
+:::warning Invite link not used yet?
+If sign-in fails and you never opened your invite link, go back to the link you were sent and complete setup first. Manual login will not work until the invite is finished.
+:::
 
 ## Signing in on other devices
 
@@ -48,11 +57,16 @@ See [Apps & common issues](apps.md) for platform-specific setup and troubleshoot
 
 ## Common issues
 
+### Invite link expired or already used
+
+- Contact the admin for a new invite link.
+
 ### "Invalid username or password"
 
 - Double-check caps lock and spelling.
-- If you just received your account, wait a minute and try again — provisioning can take a moment.
-- Contact an admin to reset your password if you are locked out.
+- Make sure you completed the invite link setup and are using the password you set there.
+- If you just finished setup, wait a minute and try again.
+- Contact the admin to reset your password if you are locked out.
 
 ### "Unable to connect to server"
 

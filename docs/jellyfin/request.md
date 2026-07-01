@@ -49,7 +49,7 @@ Go to [requests.jfapp.xyz](https://requests.jfapp.xyz) in any web browser.
 
 Enter your **Jellyfin username and password**, then click **Sign in**.
 
-If login fails on your first visit, your account may not be linked yet — contact an admin.
+If login fails on your first visit, make sure you have [finished your invite link setup](accounts.md) first. If it still fails, contact the admin.
 
 ### 3. Search for a title
 
