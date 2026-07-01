@@ -1,245 +1,250 @@
-import Layout from '@theme/Layout';
 import type React from 'react';
-import { ButtonLink } from '@site/src/components/ui/button-link';
 import {
-  FaAndroid,
-  FaApple,
-  FaArrowRight,
-  FaBook,
-  FaDesktop,
-  FaDownload,
-  FaGlobe,
-  FaMobile,
-  FaStar,
-  FaTv,
-  FaWindows,
-} from 'react-icons/fa';
+  ArrowRight,
+  BookOpen,
+  Clapperboard,
+  Globe,
+  LifeBuoy,
+  Monitor,
+  Smartphone,
+  Star,
+  Tv,
+} from 'lucide-react';
+import SiteLayout from '@site/src/components/SiteLayout';
+import { Badge } from '@site/src/components/ui/badge';
+import { ButtonLink } from '@site/src/components/ui/button-link';
+import { GradientText } from '@site/src/components/ui/gradient-text';
+import { SectionLabel } from '@site/src/components/ui/section-label';
 
 type Platform = {
   name: string;
   description: string;
-  icon: React.ComponentType<{ className?: string }>;
+  shortDescription?: string;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
   url: string;
   category: 'desktop' | 'mobile' | 'tv' | 'web';
   featured?: boolean;
+  actionLabel?: string;
 };
 
 const platforms: Platform[] = [
   {
-    name: 'Desktop',
-    description: 'Full-featured desktop client. Compatable with Windows, Linux, and macOS',
-    icon: FaDesktop,
-    url: 'https://jellyfin.org/client-windows',
-    category: 'desktop',
+    name: 'Web player',
+    description: 'Stream straight from your browser — nothing to install.',
+    shortDescription: 'Stream from any browser.',
+    icon: Globe,
+    url: 'https://jfapp.xyz',
+    category: 'web',
+    featured: true,
+    actionLabel: 'Open player',
   },
   {
     name: 'Android',
-    description: 'Mobile streaming on the go',
-    icon: FaAndroid,
+    description: 'The native app for phones and tablets, on the go.',
+    shortDescription: 'Phones and tablets.',
+    icon: Smartphone,
     url: 'https://jellyfin.org/client-android',
     category: 'mobile',
     featured: true,
   },
   {
-    name: 'iOS',
-    description: 'Native iPhone & iPad app',
-    icon: FaApple,
+    name: 'iPhone & iPad',
+    description: 'Native iOS app with AirPlay and offline support.',
+    shortDescription: 'Native iOS app.',
+    icon: Smartphone,
     url: 'https://jellyfin.org/client-ios',
     category: 'mobile',
     featured: true,
   },
   {
     name: 'Android TV',
-    description: 'Big screen experience',
-    icon: FaTv,
+    description: 'Big-screen experience.',
+    icon: Tv,
     url: 'https://jellyfin.org/client-android-tv',
     category: 'tv',
   },
   {
     name: 'Apple TV',
-    description: 'Big screen experience',
-    icon: FaTv,
+    description: 'tvOS native client.',
+    icon: Tv,
     url: 'https://jellyfin.org/client-android-tv',
     category: 'tv',
   },
   {
     name: 'LG webOS',
-    description: 'Smart TV integration',
-    icon: FaTv,
+    description: 'Smart TV integration.',
+    icon: Tv,
     url: 'https://jellyfin.org/client-lg',
     category: 'tv',
   },
   {
-    name: 'Web Player',
-    description: 'Stream from any browser',
-    icon: FaGlobe,
-    url: 'https://jfapp.xyz',
-    category: 'web',
-    featured: true,
+    name: 'Desktop app',
+    description: 'Windows, Linux & macOS.',
+    icon: Monitor,
+    url: 'https://jellyfin.org/client-windows',
+    category: 'desktop',
   },
 ];
 
 const categories = [
-  { id: 'web', name: 'Web', icon: FaGlobe },
-  { id: 'mobile', name: 'Mobile', icon: FaMobile },
-  { id: 'tv', name: 'TV', icon: FaTv },
-  { id: 'desktop', name: 'Desktop', icon: FaDesktop },
+  { id: 'web', name: 'Web', icon: Globe },
+  { id: 'mobile', name: 'Mobile', icon: Smartphone },
+  { id: 'tv', name: 'TV', icon: Tv },
+  { id: 'desktop', name: 'Desktop', icon: Monitor },
 ];
+
+function FeaturedCard({ platform }: { platform: Platform }) {
+  const actionLabel = platform.actionLabel ?? 'Download';
+  return (
+    <a
+      href={platform.url}
+      target='_blank'
+      rel='noopener noreferrer'
+      className='group relative flex flex-col items-center text-center p-9 rounded-[20px] border border-primary/30 surface-card hover:border-primary'
+    >
+      <span className='absolute top-3.5 right-3.5 flex size-[26px] items-center justify-center rounded-full bg-primary/20 text-primary'>
+        <Star className='size-3.5' />
+      </span>
+      <span className='flex size-[82px] items-center justify-center rounded-[22px] bg-primary/12 border border-primary/24 text-primary mb-5'>
+        <platform.icon className='size-9' strokeWidth={1.5} />
+      </span>
+      <h3 className='font-heading font-bold text-[21px] text-[#f2eff7] mb-1.5'>{platform.name}</h3>
+      <p className='text-sm text-[#9d97ad] leading-relaxed mb-5'>{platform.description}</p>
+      <span className='inline-flex items-center gap-2 text-sm font-bold text-primary'>
+        {actionLabel}
+        <ArrowRight className='size-4 group-hover:translate-x-0.5 transition-transform' />
+      </span>
+    </a>
+  );
+}
+
+function PlatformRow({ platform }: { platform: Platform }) {
+  const actionLabel = platform.actionLabel ?? (platform.category === 'web' ? 'Open' : 'Download');
+  return (
+    <a
+      href={platform.url}
+      target='_blank'
+      rel='noopener noreferrer'
+      className='group flex gap-3.5 items-start p-5 rounded-[15px] border border-white/8 bg-base-200 hover:border-primary/40 hover:-translate-y-0.5 transition-all'
+    >
+      <span className='flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/12 text-primary'>
+        <platform.icon className='size-5' strokeWidth={1.5} />
+      </span>
+      <div className='min-w-0'>
+        <h4 className='font-heading font-bold text-[15.5px] text-[#f2eff7] mb-0.5'>{platform.name}</h4>
+        <p className='text-[13px] text-[#9d97ad] leading-snug mb-2'>
+          {platform.shortDescription ?? platform.description}
+        </p>
+        <span className='inline-flex items-center gap-1.5 text-xs font-semibold text-primary'>
+          {actionLabel}
+          <ArrowRight className='size-3 group-hover:translate-x-0.5 transition-transform' />
+        </span>
+      </div>
+    </a>
+  );
+}
 
 export default function DownloadPage(): React.JSX.Element {
   return (
-    <Layout title='Download Jellyfin Apps' description='Download Jellyfin for your devices.'>
-      {/* Hero Section */}
-      <section className='bg-base-100 border-b-2 border-base-300 py-24 md:py-32'>
-        <div className='container mx-auto px-4'>
-          <div className='max-w-5xl mx-auto text-center flex flex-col items-center'>
-            <div className='inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg mb-8 border border-primary/20'>
-              <FaDownload className='w-4 h-4' />
-              <span className='text-sm font-semibold'>Available on All Your Devices</span>
-            </div>
-            <h1 className='text-5xl md:text-7xl font-extrabold mb-6 text-base-content'>
-              Download Jellyfin
-              <span className='block text-primary mt-2'>For Any Platform</span>
-            </h1>
-            <p className='text-xl text-base-content/80 mb-10 max-w-3xl leading-relaxed'>
-              Stream your media library anywhere. Choose your platform and start enjoying your content in minutes.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Category Pills */}
-      <section className='py-8 bg-base-100 border-b border-base-300'>
-        <div className='container mx-auto px-4'>
-          <div className='flex flex-wrap justify-center gap-3 max-w-4xl mx-auto'>
+    <SiteLayout>
+      <section className='relative overflow-hidden pt-28 pb-12 px-6 text-center hero-glow grid-bg'>
+        <div className='relative max-w-[760px] mx-auto flex flex-col items-center'>
+          <Badge className='mb-6'>
+            <Clapperboard className='size-3.5' />
+            Jellyfin · streaming
+          </Badge>
+          <h1 className='font-heading font-extrabold text-[clamp(2.375rem,6vw,4.5rem)] leading-[1.04] tracking-tight text-[#f6f3fb] mb-5'>
+            Watch on
+            <br />
+            <GradientText>every device</GradientText>
+          </h1>
+          <p className='text-base md:text-lg text-base-muted max-w-[560px] leading-relaxed mb-7'>
+            Get the jfapp player for your platform, sign in, and stream everything you&apos;ve requested.
+            Free on every device.
+          </p>
+          <div className='flex flex-wrap justify-center gap-2.5'>
             {categories.map((category) => (
               <a
                 key={category.id}
-                href={`#${category.id}`}
-                className='flex items-center gap-2 bg-base-200 hover:bg-base-300 px-5 py-3 rounded-full transition-all hover:scale-105'
+                href={`#dl-${category.id}`}
+                className='inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/3 border border-white/10 text-[13.5px] font-semibold text-[#c7c1d6] hover:text-white transition-colors'
               >
-                <category.icon className='w-4 h-4 text-primary' />
-                <span className='text-sm font-semibold text-base-content'>{category.name}</span>
+                <category.icon className='size-4 text-primary' />
+                {category.name}
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Apps */}
-      <section className='py-24 bg-base-100'>
-        <div className='container mx-auto px-4'>
-          <div className='text-center mb-12'>
-            <h2 className='text-3xl md:text-4xl font-bold mb-3 text-base-content'>Most Popular</h2>
-            <p className='text-base-content/70'>Get started with these recommended clients</p>
+      <section className='py-10 px-6'>
+        <div className='max-w-[1080px] mx-auto'>
+          <div className='text-center mb-10'>
+            <SectionLabel>Most popular</SectionLabel>
+            <h2 className='font-heading font-extrabold text-[clamp(1.625rem,3.6vw,2.5rem)] leading-tight tracking-tight text-[#f4f1fa]'>
+              Start here
+            </h2>
           </div>
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16'>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
             {platforms
               .filter((p) => p.featured)
               .map((platform) => (
-                <a
-                  key={platform.name}
-                  href={platform.url}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='group bg-base-200 border-2 border-primary/30 rounded-lg p-8 hover:border-primary transition-all duration-300'
-                >
-                  <div className='absolute top-4 right-4'>
-                    <div className='bg-primary/20 text-primary p-1.5 rounded-full'>
-                      <FaStar className='w-3 h-3' />
-                    </div>
-                  </div>
-                  <div className='flex flex-col items-center text-center'>
-                    <div className='bg-base-100 p-6 rounded-2xl mb-6 group-hover:scale-110 transition-transform'>
-                      <platform.icon className='w-16 h-16 text-primary' />
-                    </div>
-                    <h3 className='text-2xl font-bold mb-2 text-base-content'>{platform.name}</h3>
-                    <p className='text-base-content/70 mb-6'>{platform.description}</p>
-                    <div className='flex items-center gap-2 text-primary font-semibold'>
-                      <span>Download</span>
-                      <FaArrowRight className='w-4 h-4 group-hover:translate-x-1 transition-transform' />
-                    </div>
-                  </div>
-                </a>
+                <FeaturedCard key={platform.name} platform={platform} />
               ))}
           </div>
         </div>
       </section>
 
-      {/* All Platforms by Category */}
-      <section className='py-24 bg-base-200'>
-        <div className='container mx-auto px-4'>
-          <div className='max-w-6xl mx-auto'>
-            <div className='text-center mb-16'>
-              <h2 className='text-3xl md:text-4xl font-bold mb-3 text-base-content'>All Platforms</h2>
-              <p className='text-base-content/70'>Complete list of available Jellyfin clients</p>
-            </div>
+      <section className='py-5 px-6 pb-10'>
+        <div className='max-w-[1080px] mx-auto'>
+          <div className='text-center mb-11'>
+            <SectionLabel>Every client</SectionLabel>
+            <h2 className='font-heading font-extrabold text-[clamp(1.625rem,3.6vw,2.5rem)] leading-tight tracking-tight text-[#f4f1fa]'>
+              All platforms
+            </h2>
+          </div>
 
-            {categories.map((category) => {
-              const categoryPlatforms = platforms.filter((p) => p.category === category.id);
-              return (
-                <div key={category.id} id={category.id} className='mb-12 scroll-mt-20'>
-                  <div className='flex items-center gap-3 mb-6'>
-                    <div className='bg-primary/10 p-3 rounded-xl'>
-                      <category.icon className='w-6 h-6 text-primary' />
-                    </div>
-                    <h3 className='text-2xl font-bold text-base-content'>{category.name}</h3>
-                  </div>
-                  <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                    {categoryPlatforms.map((platform) => (
-                      <a
-                        key={platform.name}
-                        href={platform.url}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        className='group bg-base-100 border-2 border-base-300 rounded-lg p-6 hover:border-primary transition-all duration-300'
-                      >
-                        <div className='flex items-start gap-4'>
-                          <div className='bg-primary/10 p-3 rounded-lg group-hover:bg-primary/20 transition-colors'>
-                            <platform.icon className='w-8 h-8 text-primary' />
-                          </div>
-                          <div className='flex-1'>
-                            <h4 className='text-lg font-bold mb-1 text-base-content group-hover:text-primary transition-colors'>
-                              {platform.name}
-                            </h4>
-                            <p className='text-sm text-base-content/70 mb-3'>{platform.description}</p>
-                            <div className='flex items-center gap-2 text-primary text-sm font-semibold'>
-                              <span>Download</span>
-                              <FaArrowRight className='w-3 h-3 group-hover:translate-x-1 transition-transform' />
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    ))}
-                  </div>
+          {categories.map((category) => {
+            const categoryPlatforms = platforms.filter((p) => p.category === category.id);
+            return (
+              <div key={category.id} id={`dl-${category.id}`} className='mb-10 scroll-mt-24'>
+                <div className='flex items-center gap-2.5 mb-4'>
+                  <span className='flex size-[38px] items-center justify-center rounded-[11px] bg-primary/12 text-primary'>
+                    <category.icon className='size-5' />
+                  </span>
+                  <h3 className='font-heading font-bold text-xl text-[#f2eff7]'>{category.name}</h3>
                 </div>
-              );
-            })}
-          </div>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5'>
+                  {categoryPlatforms.map((platform) => (
+                    <PlatformRow key={platform.name} platform={platform} />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Help Section */}
-      <section className='py-24 bg-base-200 border-t-2 border-base-300'>
-        <div className='container mx-auto px-4'>
-          <div className='max-w-4xl mx-auto text-center'>
-            <h2 className='text-3xl md:text-4xl font-bold mb-6 text-base-content'>Need Help Getting Started?</h2>
-            <p className='text-xl text-base-content/70 mb-10'>
-              Check out our comprehensive installation guides and documentation.
-            </p>
-            <div className='flex flex-wrap justify-center gap-4'>
-              <ButtonLink href='/docs/installation' variant='primary' size='lg'>
-                Installation Guide
-                <FaArrowRight />
-              </ButtonLink>
-              <ButtonLink href='/docs' variant='outline' size='lg'>
-                View All Docs
-                <FaBook />
-              </ButtonLink>
-            </div>
+      <section className='py-10 px-6 pb-24'>
+        <div className='cta-card relative max-w-[1000px] mx-auto px-8 py-14 text-center overflow-hidden'>
+          <h2 className='font-heading font-extrabold text-[clamp(1.625rem,4vw,2.625rem)] leading-tight tracking-tight text-[#f6f3fb] mb-3.5'>
+            Need a hand setting up?
+          </h2>
+          <p className='text-base md:text-lg text-base-muted max-w-[480px] mx-auto mb-7'>
+            Our guides walk you through install and first sign-in for every platform.
+          </p>
+          <div className='flex flex-wrap justify-center gap-3.5'>
+            <ButtonLink href='/docs/installation' variant='gradient' size='lg'>
+              <BookOpen className='size-4' />
+              Installation guide
+            </ButtonLink>
+            <ButtonLink href='/docs' variant='ghost-glass' size='lg'>
+              <LifeBuoy className='size-4' />
+              View all docs
+            </ButtonLink>
           </div>
         </div>
       </section>
-    </Layout>
+    </SiteLayout>
   );
 }

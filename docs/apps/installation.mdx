@@ -1,0 +1,95 @@
+---
+sidebar_label: 'Installation guide'
+sidebar_position: 1
+slug: /installation
+title: 'Installing ReVanced & MicroG'
+description: Complete walkthrough for ad-free YouTube and YouTube Music on Android.
+tags:
+  - ReVanced
+  - MicroG
+  - Installation
+  - Android
+---
+
+# Installing ReVanced & MicroG
+
+A complete walkthrough for getting ad-free YouTube running on Android, including the required MicroG companion app. The same steps apply to **YouTube Music** — install MicroG once, then add the Music APK instead of YouTube.
+
+## Prerequisites
+
+Before you begin, make sure your device meets the following requirements. Both apps must be installed together — YouTube will not sign in without MicroG.
+
+- Android 8.0 (Oreo) or newer
+- **Install from unknown sources** enabled for your browser or file manager
+- Around 200 MB of free storage
+
+:::tip
+Already have stock YouTube installed? Uninstall it first to avoid signature conflicts during install.
+:::
+
+## Download the APKs
+
+Grab the latest builds from the [Apps page](/Apps):
+
+1. **MicroG** (required — install this first)
+2. **YouTube** and/or **YouTube Music**
+
+## Install the apps
+
+Install **MicroG before** the YouTube APK so authentication works on first launch.
+
+1. Open your file manager and tap the **MicroG** APK.
+2. Allow installation from unknown sources if prompted, then finish the install.
+3. Open MicroG once and grant any requested permissions. Allow it to run in the background.
+4. Tap the **YouTube** (or **YouTube Music**) APK and install it.
+5. Launch the app and sign in with your Google account.
+
+:::warning
+MicroG must stay installed. Removing it will sign you out of YouTube and disable background playback.
+:::
+
+### Sideloading with ADB (optional)
+
+If you prefer a computer, connect your phone with USB debugging enabled:
+
+```bash
+# 1. Install MicroG (required)
+adb install microg-re.apk
+
+# 2. Install the patched YouTube client
+adb install youtube-morphe.apk
+
+# 3. Launch the app
+adb shell monkey -p app.revanced.android.youtube 1
+```
+
+Replace the package name with `app.revanced.android.apps.youtube.music` for YouTube Music.
+
+## Verify it works
+
+1. Play any video — you should see **no pre-roll or mid-roll ads**.
+2. The **SponsorBlock** segment bar should appear under the seek bar on sponsored videos.
+3. Lock your screen — audio should continue (**background playback**).
+
+If sign-in fails, confirm MicroG is installed and running, then reboot the device and try again.
+
+## Troubleshooting
+
+| Problem | Fix |
+| --- | --- |
+| Install blocked | Enable unknown sources in Settings → Security (wording varies by manufacturer) |
+| "App not installed" | Uninstall stock YouTube/YouTube Music, free up storage, retry |
+| Sign-in loop | Reinstall MicroG, sign in there first, then open YouTube |
+| No background play | Check battery optimization — set MicroG and YouTube to **Unrestricted** |
+| App crashes on open | Download the latest APKs from [/Apps](/Apps); older builds break when YouTube updates |
+
+For app-specific help, see the dedicated guides:
+
+- [YouTube ReVanced](/docs/apps/youtube)
+- [YouTube Music ReVanced](/docs/apps/youtube-music)
+
+## Legal disclaimer
+
+:::note
+ReVanced is not affiliated with, endorsed by, or connected to YouTube, YouTube Music, or Google. It is a community-driven project that modifies existing applications. Use at your own risk.
+:::

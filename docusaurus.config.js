@@ -3,8 +3,8 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Jellyfin',
-  tagline: 'Watch Movies, Host Games, Get Ad free Youtube',
+  title: 'jfapp',
+  tagline: 'Request anything, watch it free.',
   favicon: 'img/favicon.ico',
 
   // Set the production URL of your site here
@@ -25,6 +25,14 @@ const config = {
   },
 
   plugins: ['./plugins/tailwind-config.js'],
+
+  stylesheets: [
+    {
+      href: 'https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap',
+      type: 'text/css',
+      rel: 'stylesheet',
+    },
+  ],
 
   presets: [
     [
@@ -59,7 +67,7 @@ const config = {
           innerHTML: JSON.stringify({
             '@context': 'https://schema.org/',
             '@type': 'Organization',
-            name: 'Jellyfin',
+            name: 'jfapp',
             url: 'https://opensource.fb.com/',
             logo: 'https://opensource.fb.com/img/logos/Meta-Open-Source.svg',
           }),
@@ -114,10 +122,6 @@ const config = {
               {
                 label: 'Server Status',
                 href: 'https://status.jfapp.xyz',
-              },
-              {
-                label: 'Game Panel',
-                href: 'https://panel.jfapp.xyz',
               },
             ],
           },

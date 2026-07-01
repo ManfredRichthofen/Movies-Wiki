@@ -1,103 +1,87 @@
-import React, { useState } from 'react';
-import { FaBars, FaTimes, FaHome, FaDownload, FaBook, FaGithub } from 'react-icons/fa';
+import { useState } from 'react';
+import { BookOpen, Clapperboard, Download, Home, Menu, Sparkles, X } from 'lucide-react';
+import { ColorModeToggleButton } from '@site/src/components/ColorModeToggleButton';
 import { ButtonLink } from '@site/src/components/ui/button-link';
 import { buttonClassName } from '@site/src/components/ui/button-variants';
 import { Collapsible } from '@site/src/components/ui/collapsible';
 import { cn } from '@site/src/components/ui/cn';
 
+const navLinks = [
+  { label: 'Home', href: '/', icon: Home },
+  { label: 'Jellyfin', href: '/Downloads', icon: Clapperboard },
+  { label: 'Apps', href: '/Apps', icon: Sparkles },
+  { label: 'Docs', href: '/docs', icon: BookOpen },
+];
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const navLinks = [
-    { label: 'Home', href: '/', icon: FaHome },
-    { label: 'Downloads', href: '/Downloads', icon: FaDownload },
-    { label: 'Documentation', href: '/docs', icon: FaBook },
-  ];
-
   return (
-    <nav className='sticky top-0 z-50 bg-base-100 border-b-2 border-base-300 shadow-sm'>
+    <nav className='navbar navbar--fixed-top jfapp-navbar glass-nav'>
       <Collapsible.Root open={menuOpen} onOpenChange={setMenuOpen}>
-        <div className='container mx-auto px-4'>
-          <div className='flex items-center justify-between h-16'>
-            <a href='/' className='flex items-center gap-2 group'>
-              <div className='bg-primary text-primary-content p-2 rounded-lg group-hover:scale-110 transition-transform'>
-                <FaHome className='w-5 h-5' />
-              </div>
-              <span className='text-xl font-bold text-base-content'>Movies Wiki</span>
+        <div className='max-w-[1240px] mx-auto px-6'>
+          <div className='flex items-center justify-between h-[68px]'>
+            <a href='/' className='flex items-center gap-3 group'>
+              <span className='flex size-9 items-center justify-center rounded-[11px] gradient-btn shadow-[0_6px_18px_-6px_color-mix(in_srgb,var(--theme-primary)_70%,transparent)]'>
+                <Clapperboard className='size-5 text-white' />
+              </span>
+              <span className='font-heading text-lg font-extrabold tracking-tight text-[#f2eff7]'>jfapp</span>
             </a>
 
-            <div className='hidden md:flex items-center gap-6'>
+            <div className='hidden md:flex items-center gap-7'>
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className='flex items-center gap-2 text-base-content/80 hover:text-primary font-medium transition-colors'
+                  className='text-sm font-semibold text-[#c7c1d6] hover:text-white transition-colors'
                 >
-                  <link.icon className='w-4 h-4' />
                   {link.label}
                 </a>
               ))}
 
-              <ButtonLink
-                href='https://github.com'
-                target='_blank'
-                rel='noopener noreferrer'
-                variant='ghost'
-                size='sm'
-                aria-label='GitHub'
-              >
-                <FaGithub className='w-5 h-5' />
-              </ButtonLink>
+              <ColorModeToggleButton />
 
-              <ButtonLink href='/Downloads' variant='primary' size='sm'>
-                <FaDownload className='w-4 h-4' />
-                Get Started
+              <ButtonLink href='/Downloads' variant='gradient' size='sm'>
+                <Download className='size-4' />
+                Get the app
               </ButtonLink>
             </div>
 
-            <Collapsible.Trigger
-              className={cn(buttonClassName('ghost', 'sm'), 'md:hidden')}
-              aria-label='Toggle menu'
-            >
-              <FaBars className='w-6 h-6 data-panel-open:hidden' />
-              <FaTimes className='w-6 h-6 hidden data-panel-open:block' />
-            </Collapsible.Trigger>
+            <div className='flex items-center gap-2 md:hidden'>
+              <ColorModeToggleButton />
+              <Collapsible.Trigger
+                className={cn(buttonClassName('ghost', 'sm'))}
+                aria-label='Toggle menu'
+              >
+                <Menu className='size-5 data-panel-open:hidden' />
+                <X className='size-5 hidden data-panel-open:block' />
+              </Collapsible.Trigger>
+            </div>
           </div>
 
-          <Collapsible.Panel className='md:hidden py-4 border-t border-base-300'>
-            <div className='flex flex-col gap-2'>
+          <Collapsible.Panel className='md:hidden py-4 border-t border-white/7'>
+            <div className='flex flex-col gap-1'>
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className='flex items-center gap-3 px-4 py-3 text-base-content/80 hover:bg-base-200 hover:text-primary rounded-lg transition-all'
+                  className='flex items-center gap-3 rounded-lg px-4 py-3 text-[#c7c1d6] hover:text-white hover:bg-white/5 transition-colors'
                   onClick={() => setMenuOpen(false)}
                 >
-                  <link.icon className='w-5 h-5' />
+                  <link.icon className='size-5' />
                   {link.label}
                 </a>
               ))}
-
-              <div className='flex flex-col gap-2 px-4 pt-2 mt-2 border-t border-base-300'>
-                <ButtonLink
-                  href='https://github.com'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  variant='ghost'
-                  size='sm'
-                  className='justify-start'
-                >
-                  <FaGithub className='w-5 h-5' />
-                  GitHub
-                </ButtonLink>
+              <div className='pt-3 mt-2 border-t border-white/7'>
                 <ButtonLink
                   href='/Downloads'
-                  variant='primary'
+                  variant='gradient'
                   size='sm'
+                  className='w-full'
                   onClick={() => setMenuOpen(false)}
                 >
-                  <FaDownload className='w-4 h-4' />
-                  Get Started
+                  <Download className='size-4' />
+                  Get the app
                 </ButtonLink>
               </div>
             </div>
