@@ -17,7 +17,12 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className='navbar navbar--fixed-top jfapp-navbar glass-nav'>
+    <nav
+      className={cn(
+        'navbar navbar--fixed-top jfapp-navbar glass-nav',
+        menuOpen && 'jfapp-navbar--open',
+      )}
+    >
       <Collapsible.Root open={menuOpen} onOpenChange={setMenuOpen}>
         <div className='max-w-[1240px] mx-auto px-6'>
           <div className='flex items-center justify-between h-[68px]'>
@@ -48,9 +53,9 @@ export default function Navbar() {
             </div>
 
             <div className='flex items-center gap-2 md:hidden'>
-              <ColorModeToggleButton />
+              <ColorModeToggleButton className='flex items-center justify-center' />
               <Collapsible.Trigger
-                className={cn(buttonClassName('ghost', 'sm'))}
+                className={cn(buttonClassName('ghost', 'sm'), 'shrink-0')}
                 aria-label='Toggle menu'
               >
                 <Menu className='size-5 data-panel-open:hidden' />
@@ -58,26 +63,28 @@ export default function Navbar() {
               </Collapsible.Trigger>
             </div>
           </div>
+        </div>
 
-          <Collapsible.Panel className='md:hidden py-4 border-t border-white/7'>
+        <Collapsible.Panel className='jfapp-mobile-nav-panel md:hidden border-t border-white/10'>
+          <div className='max-w-[1240px] mx-auto px-6 py-4'>
             <div className='flex flex-col gap-1'>
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className='flex items-center gap-3 rounded-lg px-4 py-3 text-[#c7c1d6] hover:text-white hover:bg-white/5 transition-colors'
+                  className='flex items-center gap-3 rounded-lg px-3 py-3 text-[15px] font-semibold text-[#c7c1d6] hover:text-white hover:bg-white/6 transition-colors'
                   onClick={() => setMenuOpen(false)}
                 >
-                  <link.icon className='size-5' />
+                  <link.icon className='size-5 shrink-0 text-primary' />
                   {link.label}
                 </a>
               ))}
-              <div className='pt-3 mt-2 border-t border-white/7'>
+              <div className='pt-3 mt-2 border-t border-white/10'>
                 <ButtonLink
                   href='/Downloads'
                   variant='gradient'
                   size='sm'
-                  className='w-full'
+                  className='w-full justify-center'
                   onClick={() => setMenuOpen(false)}
                 >
                   <Download className='size-4' />
@@ -85,8 +92,8 @@ export default function Navbar() {
                 </ButtonLink>
               </div>
             </div>
-          </Collapsible.Panel>
-        </div>
+          </div>
+        </Collapsible.Panel>
       </Collapsible.Root>
     </nav>
   );

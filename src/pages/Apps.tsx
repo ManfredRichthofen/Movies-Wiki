@@ -108,13 +108,20 @@ export default function AppsPage(): React.JSX.Element {
                   <app.icon className='size-[22px]' />
                 </span>
                 <div className='min-w-0'>
-                  <div className='flex items-center gap-2 mb-1'>
+                  <div className='flex items-center gap-2 mb-1 flex-wrap'>
                     <h4 className='font-heading font-bold text-base text-[#f2eff7]'>{app.name}</h4>
-                    {app.version && (
-                      <span className='text-[10px] font-semibold uppercase tracking-wide text-[#8e889e] bg-white/5 px-1.5 py-0.5 rounded'>
+                    {releaseInfo.loading ? (
+                      <span
+                        className='text-[10px] font-semibold uppercase tracking-wide text-[#8e889e] bg-white/5 px-1.5 py-0.5 rounded animate-pulse'
+                        aria-hidden
+                      >
+                        ···
+                      </span>
+                    ) : app.version ? (
+                      <span className='text-[10px] font-semibold uppercase tracking-wide text-primary bg-primary/12 px-1.5 py-0.5 rounded'>
                         v{app.version}
                       </span>
-                    )}
+                    ) : null}
                   </div>
                   <p className='text-[13.5px] text-[#9d97ad] leading-snug mb-2.5'>{app.description}</p>
                   <span className='inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary'>

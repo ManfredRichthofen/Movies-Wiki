@@ -39,9 +39,20 @@ const EMPTY_RELEASE_INFO: APKReleaseInfo = {
 
 function parseMorpheVersions(body?: string) {
   return {
-    music: body?.match(/Music:\s*([\d.]+)/i)?.[1] ?? null,
-    youtube: body?.match(/Youtube:\s*([\d.]+)/i)?.[1] ?? null,
+    music: body?.match(/Music:\s*v?([\d.]+)/i)?.[1] ?? null,
+    youtube: body?.match(/You\s?tube:\s*v?([\d.]+)/i)?.[1] ?? null,
   };
+}
+
+function parseVersionFromApkName(name: string): string | null {
+  const match = name.match(/-v([\d.]+)(?:-|\.apk)/i);
+  return match?.[1] ?? null;
+}
+
+function normalizeTag(tag?: string): string | null {
+  if (!tag) return null;
+  const normalized = tag.replace(/^v/i, '').trim();
+  return normalized || null;
 }
 
 function findApk(assets: GitHubAsset[], prefix: string) {
@@ -55,7 +66,10 @@ function findApk(assets: GitHubAsset[], prefix: string) {
 
 async function fetchLatestRelease(repo: string): Promise<GitHubRelease> {
   const response = await fetch(`https://api.github.com/repos/${repo}/releases/latest`, {
-    headers: { Accept: 'application/vnd.github+json' },
+    headers: {
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'jfapp-docs',
+    },
   });
 
   if (!response.ok) {
@@ -73,24 +87,33 @@ async function fetchLatestAPKReleaseInfo(): Promise<Omit<APKReleaseInfo, 'loadin
 
   const morpheAssets = morpheRelease.assets ?? [];
   const microgAssets = microgRelease.assets ?? [];
-  const versions = parseMorpheVersions(morpheRelease.body);
 
   const youtubeApk = findApk(morpheAssets, 'youtube-morphe-');
   const musicApk = findApk(morpheAssets, 'music-morphe-');
   const microgApk = microgAssets.find(
     (asset) => asset.name.startsWith('microg-') && asset.name.endsWith('.apk'),
   );
+  const bodyVersions = parseMorpheVersions(morpheRelease.body);
+
+  const youtubeVersion =
+    parseVersionFromApkName(youtubeApk?.name ?? '') ??
+    bodyVersions.youtube ??
+    null;
+  const youtubeMusicVersion =
+    parseVersionFromApkName(musicApk?.name ?? '') ??
+    bodyVersions.music ??
+    null;
   const microgVersion =
+    normalizeTag(microgRelease.tag_name) ??
     microgApk?.name?.match(/microg-([\d.]+)\.apk/)?.[1] ??
-    microgRelease.tag_name?.replace(/^v/i, '') ??
     null;
 
   return {
     youtube: youtubeApk?.browser_download_url ?? '',
     youtubeMusic: musicApk?.browser_download_url ?? '',
     microg: microgApk?.browser_download_url ?? '',
-    youtubeVersion: versions.youtube,
-    youtubeMusicVersion: versions.music,
+    youtubeVersion,
+    youtubeMusicVersion,
     microgVersion,
   };
 }
