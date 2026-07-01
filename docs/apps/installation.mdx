@@ -2,94 +2,90 @@
 sidebar_label: 'Installation guide'
 sidebar_position: 1
 slug: /installation
-title: 'Installing ReVanced & MicroG'
-description: Complete walkthrough for ad-free YouTube and YouTube Music on Android.
+title: 'Installing YouTube on Android'
+description: Simple step-by-step guide to install ad-free YouTube and YouTube Music on Android.
 tags:
-  - ReVanced
   - MicroG
   - Installation
   - Android
+  - YouTube
 ---
 
-# Installing ReVanced & MicroG
+# Installing YouTube on Android
 
-A complete walkthrough for getting ad-free YouTube running on Android, including the required MicroG companion app. The same steps apply to **YouTube Music** — install MicroG once, then add the Music APK instead of YouTube.
+This guide walks you through installing **ad-free YouTube** and **YouTube Music** on an Android phone or tablet. You will download three files and install them in a specific order.
 
-## Prerequisites
-
-Before you begin, make sure your device meets the following requirements. Both apps must be installed together — YouTube will not sign in without MicroG.
-
-- Android 8.0 (Oreo) or newer
-- **Install from unknown sources** enabled for your browser or file manager
-- Around 200 MB of free storage
-
-:::tip
-Already have stock YouTube installed? Uninstall it first to avoid signature conflicts during install.
+:::info What you need
+- An **Android phone or tablet** (Android 8.0 or newer)
+- About **200 MB** of free storage
+- A few minutes — no computer required
 :::
 
-## Download the APKs
+## Step 1 — Download the apps
 
-Grab the latest builds from the [Apps page](/Apps):
+Open the [Apps page](/Apps) on your phone and download these files:
 
-1. **MicroG** (required — install this first)
-2. **YouTube** and/or **YouTube Music**
+1. **MicroG** — required helper app (install this **first**)
+2. **YouTube** and/or **YouTube Music** — pick one or both
 
-## Install the apps
+Your browser will save `.apk` files. You can find them in your **Downloads** folder or by opening your browser’s download list.
 
-Install **MicroG before** the YouTube APK so authentication works on first launch.
+## Step 2 — Allow installs from your browser
 
-1. Open your file manager and tap the **MicroG** APK.
-2. Allow installation from unknown sources if prompted, then finish the install.
-3. Open MicroG once and grant any requested permissions. Allow it to run in the background.
-4. Tap the **YouTube** (or **YouTube Music**) APK and install it.
-5. Launch the app and sign in with your Google account.
+Android blocks apps from outside the Play Store until you allow it once.
 
-:::warning
-MicroG must stay installed. Removing it will sign you out of YouTube and disable background playback.
+1. Open **Settings**
+2. Search for **Install unknown apps** (wording varies by phone)
+3. Tap your **browser** (Chrome, Samsung Internet, etc.)
+4. Turn on **Allow from this source**
+
+You only need to do this once for the browser you used to download the APKs.
+
+## Step 3 — Install MicroG
+
+1. Open your **Downloads** folder (or tap the finished download in your browser)
+2. Tap the **MicroG** file
+3. Tap **Install** — allow unknown apps if asked
+4. When it finishes, tap **Open**
+5. Grant any permissions it asks for and allow it to **run in the background**
+
+:::warning Keep MicroG installed
+Do not uninstall MicroG later. YouTube and YouTube Music need it to sign in and play in the background.
 :::
 
-### Sideloading with ADB (optional)
+## Step 4 — Install YouTube or YouTube Music
 
-If you prefer a computer, connect your phone with USB debugging enabled:
+1. Go back to **Downloads**
+2. Tap the **YouTube** or **YouTube Music** file
+3. Tap **Install**
 
-```bash
-# 1. Install MicroG (required)
-adb install microg-re.apk
+:::tip Already have YouTube installed?
+Uninstall the regular YouTube app from the Play Store first, or the new app may fail to install.
+:::
 
-# 2. Install the patched YouTube client
-adb install youtube-morphe.apk
+## Step 5 — Sign in and test
 
-# 3. Launch the app
-adb shell monkey -p app.revanced.android.youtube 1
-```
+1. Open **YouTube** (or **YouTube Music**)
+2. Sign in with your **Google account**
+3. Play a video or song — there should be **no ads**
+4. Lock your phone — audio should **keep playing**
 
-Replace the package name with `app.revanced.android.apps.youtube.music` for YouTube Music.
+If sign-in fails, open **MicroG**, make sure you’re signed in there, restart your phone, and try again.
 
-## Verify it works
+## Something went wrong?
 
-1. Play any video — you should see **no pre-roll or mid-roll ads**.
-2. The **SponsorBlock** segment bar should appear under the seek bar on sponsored videos.
-3. Lock your screen — audio should continue (**background playback**).
-
-If sign-in fails, confirm MicroG is installed and running, then reboot the device and try again.
-
-## Troubleshooting
-
-| Problem | Fix |
+| What you see | What to try |
 | --- | --- |
-| Install blocked | Enable unknown sources in Settings → Security (wording varies by manufacturer) |
-| "App not installed" | Uninstall stock YouTube/YouTube Music, free up storage, retry |
-| Sign-in loop | Reinstall MicroG, sign in there first, then open YouTube |
-| No background play | Check battery optimization — set MicroG and YouTube to **Unrestricted** |
-| App crashes on open | Download the latest APKs from [/Apps](/Apps); older builds break when YouTube updates |
+| Install blocked | Turn on “Install unknown apps” for your browser (Step 2) |
+| “App not installed” | Uninstall stock YouTube/YouTube Music, free up storage, download fresh APKs from [/Apps](/Apps) |
+| Sign-in loop | Reinstall MicroG, sign in inside MicroG first, then open YouTube |
+| No background audio | Settings → Battery → set **MicroG** and **YouTube** to **Unrestricted** |
+| App crashes | Download the latest APKs from [/Apps](/Apps) — old builds stop working when YouTube updates |
 
-For app-specific help, see the dedicated guides:
+Need more help? See the [YouTube](/docs/apps/youtube) and [YouTube Music](/docs/apps/youtube-music) pages for extra tips.
 
-- [YouTube ReVanced](/docs/apps/youtube)
-- [YouTube Music ReVanced](/docs/apps/youtube-music)
+<div className="doc-disclaimer">
 
-## Legal disclaimer
+These modified apps are not affiliated with, endorsed by, or connected to YouTube, YouTube Music, or Google. They are community-built modifications. Use at your own risk.
 
-:::note
-ReVanced is not affiliated with, endorsed by, or connected to YouTube, YouTube Music, or Google. It is a community-driven project that modifies existing applications. Use at your own risk.
-:::
+</div>

@@ -272,3 +272,14 @@ html {
 .table-of-contents {
   border-left: 1px solid var(--ifm-color-emphasis-200);
 }
+
+.doc-disclaimer {
+  max-width: 42rem;
+  margin: 2.5rem auto 0;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--ifm-font-color-secondary);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}

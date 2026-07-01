@@ -15,7 +15,7 @@ tags:
 Stream from any device using the official Jellyfin clients. The server address is always **`jfapp.xyz`**.
 
 :::info
-Need an account first? See [Accounts](accounts.md). Want new titles? See [Requesting content](request.md).
+Need an account first? See [Accounts](accounts.md). Want something that is not in the library? See [Requesting content](request.md) — search in Jellyfin or Seerr and tap **Request**.
 :::
 
 ---

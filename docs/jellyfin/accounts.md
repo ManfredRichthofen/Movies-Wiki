@@ -21,7 +21,7 @@ Accounts are created by the server admin — there is no public sign-up page. To
 3. Wait for confirmation — you will receive a username and temporary password.
 
 :::tip
-Your Jellyfin login is also used for [Overseerr requests](request.md). Use the same username and password on [requests.jfapp.xyz](https://requests.jfapp.xyz).
+Your Jellyfin login is also used for [Seerr requests](request.md). Use the same username and password on [requests.jfapp.xyz](https://requests.jfapp.xyz).
 :::
 
 ## First sign-in

@@ -11,7 +11,7 @@ const footerLinks = {
   ],
   services: [
     { label: 'Jellyfin', href: 'https://jellyfin.org' },
-    { label: 'ReVanced', href: 'https://revanced.app' },
+    { label: 'Install guide', href: '/docs/installation' },
     { label: 'Apps', href: '/Apps' },
   ],
   community: [

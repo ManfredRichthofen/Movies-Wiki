@@ -18,6 +18,8 @@ import {
 
   Star,
 
+  Flame,
+
   Tv,
 
 } from 'lucide-react';
@@ -41,12 +43,13 @@ type PlatformCategory = 'desktop' | 'mobile' | 'tv' | 'web';
 
 
 type PlatformLink = {
-
   label: string;
-
   url: string;
-
 };
+
+function hasAltLink(alt?: PlatformLink | null): alt is PlatformLink {
+  return Boolean(alt?.url?.trim());
+}
 
 
 
@@ -65,13 +68,9 @@ type Platform = {
   featured?: boolean;
 
   links: {
-
     recommended: PlatformLink;
-
-    alt?: PlatformLink;
-
+    alt?: PlatformLink | null;
   };
-
 };
 
 
@@ -184,9 +183,27 @@ const platforms: Platform[] = [
 
       },
 
-      alt: {
+    },
 
-        label: 'Amazon Fire TV',
+  },
+
+  {
+
+    name: 'Fire TV',
+
+    description: 'Stream on Amazon Fire TV sticks, cubes, and smart TVs.',
+
+    shortDescription: 'Fire TV sticks & smart TVs.',
+
+    icon: Flame,
+
+    categories: ['tv'],
+
+    links: {
+
+      recommended: {
+
+        label: 'Amazon Appstore',
 
         url: 'https://www.amazon.com/Jellyfin-for-Fire-TV/dp/B07TX7Z725',
 
@@ -297,91 +314,62 @@ function PlatformLinks({
 }) {
 
   const isFeatured = layout === 'featured';
-
-
+  const alt = hasAltLink(links.alt) ? links.alt : null;
 
   return (
-
     <div
-
       className={cn(
-
         'flex w-full gap-2',
-
         isFeatured ? 'flex-col sm:flex-row sm:justify-center' : 'flex-col',
-
+        !alt && isFeatured && 'items-center',
       )}
-
     >
-
       <a
-
         href={links.recommended.url}
-
         target='_blank'
-
         rel='noopener noreferrer'
-
+        aria-label={`Recommended: ${links.recommended.label}`}
         className={cn(
-
           'inline-flex items-center justify-center gap-2 font-bold text-primary transition-colors',
-
           isFeatured
-
             ? 'rounded-xl border border-primary/35 bg-primary/12 px-4 py-2.5 text-sm hover:border-primary hover:bg-primary/18'
-
             : 'rounded-lg border border-primary/30 bg-primary/10 px-3 py-2 text-xs hover:border-primary/50 hover:bg-primary/14',
-
+          !alt && isFeatured && 'w-full sm:w-auto',
         )}
-
       >
-
-        <span className='text-[10px] font-bold uppercase tracking-wide text-primary/80'>Recommended</span>
-
-        <span className='text-[#f2eff7]'>{links.recommended.label}</span>
-
-        <ArrowRight className={cn('shrink-0', isFeatured ? 'size-4' : 'size-3')} />
-
-      </a>
-
-      {links.alt && (
-
-        <a
-
-          href={links.alt.url}
-
-          target='_blank'
-
-          rel='noopener noreferrer'
-
+        <span
           className={cn(
-
-            'inline-flex items-center justify-center gap-2 font-semibold text-[#c7c1d6] transition-colors hover:text-white',
-
-            isFeatured
-
-              ? 'rounded-xl border border-white/10 bg-white/4 px-4 py-2.5 text-sm hover:border-white/20 hover:bg-white/6'
-
-              : 'rounded-lg border border-white/8 bg-white/3 px-3 py-2 text-xs hover:border-white/14 hover:bg-white/5',
-
+            'flex shrink-0 items-center justify-center rounded-full bg-primary/25 text-primary',
+            isFeatured ? 'size-6' : 'size-5',
           )}
-
+          aria-hidden
         >
-
+          <Star className={cn('fill-current', isFeatured ? 'size-3.5' : 'size-3')} />
+        </span>
+        <span className={cn('text-[#f2eff7]', isFeatured ? 'text-sm' : 'text-xs')}>
+          {links.recommended.label}
+        </span>
+        <ArrowRight className={cn('shrink-0', isFeatured ? 'size-4' : 'size-3')} />
+      </a>
+      {alt && (
+        <a
+          href={alt.url}
+          target='_blank'
+          rel='noopener noreferrer'
+          className={cn(
+            'inline-flex items-center justify-center gap-2 font-semibold text-[#c7c1d6] transition-colors hover:text-white',
+            isFeatured
+              ? 'rounded-xl border border-white/10 bg-white/4 px-4 py-2.5 text-sm hover:border-white/20 hover:bg-white/6'
+              : 'rounded-lg border border-white/8 bg-white/3 px-3 py-2 text-xs hover:border-white/14 hover:bg-white/5',
+          )}
+        >
           <span className='text-[10px] font-bold uppercase tracking-wide text-[#8e889e]'>Alt</span>
-
-          <span>{links.alt.label}</span>
-
+          <span>{alt.label}</span>
           <ArrowRight className={cn('shrink-0', isFeatured ? 'size-4' : 'size-3')} />
-
         </a>
-
       )}
-
     </div>
-
   );
-
 }
 
 

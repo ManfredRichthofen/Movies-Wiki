@@ -11,7 +11,7 @@ const features = [
   {
     icon: Play,
     title: 'Ad-free YouTube',
-    description: 'All of Premium — background play, SponsorBlock, PiP — for free with ReVanced.',
+    description: 'Background play, SponsorBlock, and PiP — free Android APKs, no subscription.',
   },
 ];
 

@@ -6,7 +6,7 @@ import {
   Clapperboard,
   Music,
   Puzzle,
-  Sparkles,
+  Smartphone,
 } from 'lucide-react';
 import SiteLayout from '@site/src/components/SiteLayout';
 import { Badge } from '@site/src/components/ui/badge';
@@ -61,17 +61,17 @@ export default function AppsPage(): React.JSX.Element {
       <section className='relative overflow-hidden pt-28 pb-12 px-6 text-center hero-glow grid-bg'>
         <div className='relative max-w-[760px] mx-auto flex flex-col items-center'>
           <Badge className='mb-6'>
-            <Sparkles className='size-3.5' />
-            Free apps · no ads
+            <Smartphone className='size-3.5' />
+            Android apps · no ads
           </Badge>
           <h1 className='font-heading font-extrabold text-[clamp(2.375rem,6vw,4.5rem)] leading-[1.04] tracking-tight text-[#f6f3fb] mb-5'>
-            Apps without
+            Android apps without
             <br />
             <GradientText>the ads</GradientText>
           </h1>
           <p className='text-base md:text-lg text-base-muted max-w-[560px] leading-relaxed'>
-            A growing collection of free apps with premium features unlocked — no ads, no fees.
-            We&apos;re starting with YouTube and adding more over time.
+            Patched YouTube and YouTube Music APKs for Android phones and tablets — premium features,
+            no ads, no fees. Sideload the latest builds below.
           </p>
         </div>
       </section>
@@ -81,10 +81,10 @@ export default function AppsPage(): React.JSX.Element {
           <div className='text-center mb-9'>
             <SectionLabel>Available now</SectionLabel>
             <h2 className='font-heading font-extrabold text-[clamp(1.625rem,3.6vw,2.5rem)] leading-tight tracking-tight text-[#f4f1fa] mb-2.5'>
-              Get the apps
+              Get the Android apps
             </h2>
-            <p className='text-[15px] text-[#9d97ad]'>
-              Install MicroG first — the YouTube apps need it to sign in.
+            <p className='text-[15px] text-[#9d97ad] max-w-[520px] mx-auto'>
+              APK downloads for Android only. Install MicroG first — the YouTube apps need it to sign in.
             </p>
           </div>
 
@@ -110,6 +110,9 @@ export default function AppsPage(): React.JSX.Element {
                 <div className='min-w-0'>
                   <div className='flex items-center gap-2 mb-1 flex-wrap'>
                     <h4 className='font-heading font-bold text-base text-[#f2eff7]'>{app.name}</h4>
+                    <span className='text-[10px] font-semibold uppercase tracking-wide text-[#8e889e] bg-white/5 px-1.5 py-0.5 rounded'>
+                      Android
+                    </span>
                     {releaseInfo.loading ? (
                       <span
                         className='text-[10px] font-semibold uppercase tracking-wide text-[#8e889e] bg-white/5 px-1.5 py-0.5 rounded animate-pulse'
@@ -125,7 +128,7 @@ export default function AppsPage(): React.JSX.Element {
                   </div>
                   <p className='text-[13.5px] text-[#9d97ad] leading-snug mb-2.5'>{app.description}</p>
                   <span className='inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary'>
-                    Get APK
+                    Download Android APK
                     <ArrowRight className='size-3.5 group-hover:translate-x-0.5 transition-transform' />
                   </span>
                 </div>
@@ -133,9 +136,15 @@ export default function AppsPage(): React.JSX.Element {
             ))}
           </div>
 
-          <div className='mt-4 flex items-center justify-center gap-2.5 py-6 rounded-2xl border border-dashed border-white/14 bg-white/1.5 text-[#8e889e] text-sm font-medium'>
-            <Sparkles className='size-4 text-primary' />
-            More apps coming soon
+          <div className='mt-4 flex flex-col items-center gap-4'>
+            <div className='flex w-full max-w-[560px] items-center justify-center gap-2.5 py-6 rounded-2xl border border-dashed border-white/14 bg-white/1.5 text-[#8e889e] text-sm font-medium text-center px-4'>
+              <Smartphone className='size-4 shrink-0 text-primary' />
+              <span>More Android apps coming soon</span>
+            </div>
+            <p className='max-w-[560px] text-center text-xs leading-relaxed text-[#8e889e] px-4'>
+              These modified apps are not affiliated with, endorsed by, or connected to YouTube,
+              YouTube Music, or Google. They are community-built modifications. Use at your own risk.
+            </p>
           </div>
         </div>
       </section>
@@ -146,7 +155,7 @@ export default function AppsPage(): React.JSX.Element {
             Trouble installing?
           </h2>
           <p className='text-base md:text-lg text-base-muted max-w-[480px] mx-auto mb-7'>
-            Our installation guide covers MicroG, sideloading, and first sign-in step by step.
+            Our Android installation guide covers MicroG, sideloading, and first sign-in step by step.
           </p>
           <div className='flex flex-wrap justify-center gap-3.5'>
             <ButtonLink href='/docs/installation' variant='gradient' size='lg'>

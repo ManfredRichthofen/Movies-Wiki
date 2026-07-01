@@ -2,76 +2,104 @@
 sidebar_label: 'Requesting content'
 sidebar_position: 3
 title: 'Requesting Movies & TV Shows'
-description: How to request new movies and series through Overseerr so they appear in Jellyfin.
+description: How to search for and request new movies and series with Seerr on Jellyfin.
 tags:
   - Jellyfin
-  - Overseerr
+  - Seerr
   - Requests
 ---
 
 # Requesting Movies & TV Shows
 
-New titles are added to the library through **Overseerr**, a request portal connected to our Jellyfin server. Search for what you want, submit a request, and it is downloaded automatically once approved.
+Our Jellyfin server is connected to **Seerr** — a request system that lets you search for movies and TV shows, ask for what is missing, and have it added to the library automatically.
+
+:::info In short
+Search for a title → tap **Request** → wait until it shows **Available** → watch it in Jellyfin.
+:::
 
 ## Before you start
 
-- You need a [Jellyfin account](accounts.md) — Overseerr uses the **same username and password**.
-- Requests are processed automatically; popular titles usually appear within a few hours.
+- You need a [Jellyfin account](accounts.md). Seerr uses the **same username and password**.
+- You can request from **Jellyfin** (while searching) or from the **Seerr website** — both go to the same place.
+- Popular titles usually show up within a few hours. New or rare titles can take longer.
 
-## Step-by-step
+## Request from Jellyfin (easiest)
 
-### 1. Open the request portal
+Seerr is linked to our server, so you can request while you browse:
+
+1. Open [jfapp.xyz](https://jfapp.xyz) and sign in.
+2. Use the **Search** bar at the top and type the movie or show you want.
+3. If it is **not in the library yet**, you should see a **Request** option on the title.
+4. Tap **Request** and confirm (pick seasons for TV shows if asked).
+5. When the download finishes, the title appears in your Jellyfin library — search for it again or check your home screen.
+
+:::tip
+Already in the library? Jellyfin will show **Play** instead of **Request**. No need to request twice.
+:::
+
+## Request from the Seerr website
+
+You can also use the dedicated request site:
+
+### 1. Open Seerr
 
 Go to [requests.jfapp.xyz](https://requests.jfapp.xyz) in any web browser.
 
 ### 2. Log in
 
-Enter your Jellyfin username and password, then click **Login**.
+Enter your **Jellyfin username and password**, then click **Sign in**.
 
-If this is your first visit and login fails, your account may not be linked yet — contact an admin.
+If login fails on your first visit, your account may not be linked yet — contact an admin.
 
-### 3. Find a title
+### 3. Search for a title
 
-Use the navigation bar to open **Movies** or **TV Shows**, then search for the title you want.
+Use **Movies** or **Series** in the top menu, then search for what you want — just like browsing a streaming service.
 
-### 4. Submit a request
+### 4. Submit the request
 
-1. Click the movie or show in the search results to open its details page.
+1. Click the movie or show in the results.
 2. Click **Request**.
-3. For TV shows, choose the seasons or episodes you want (if prompted).
-4. Confirm the request.
+3. For TV shows, choose the seasons you need (if prompted).
+4. Confirm.
 
-### 5. Track progress
+### 5. Track your request
 
-Open the **Requests** tab to see status:
+Open the **Requests** page in Seerr to see progress:
 
 | Status | Meaning |
 | --- | --- |
-| **Pending** | Waiting for approval or download to start |
+| **Pending** | Waiting to start |
 | **Approved** | Download in progress |
 | **Available** | Ready to watch in Jellyfin |
 
-When a request shows **Available**, open [jfapp.xyz](https://jfapp.xyz) and search your library — the title should be there.
+When a request is **Available**, open [jfapp.xyz](https://jfapp.xyz) and search for the title — it should be there.
 
 ## Tips
 
-- Request the **English** release when multiple versions exist, unless you need a specific language.
-- For ongoing TV series, request the latest season you are missing — earlier seasons are often pulled in automatically.
-- Duplicate requests for titles already in the library are usually rejected; search Jellyfin first.
+- Search Jellyfin first before requesting — the title might already be available.
+- Request the **English** release when several versions exist, unless you need another language.
+- For ongoing TV series, request the latest season you are missing — earlier seasons are often added automatically.
+- Duplicate requests for titles already in the library are usually rejected.
 
 ## Troubleshooting
 
-### Cannot log in to Overseerr
+### I searched in Jellyfin but don't see Request
 
-- Verify your Jellyfin credentials at [jfapp.xyz](https://jfapp.xyz) first.
-- Password changes on Jellyfin apply to Overseerr immediately — use your current password.
+- Make sure you are signed in and searched for the exact title.
+- Try the [Seerr site](https://requests.jfapp.xyz) instead — search there and request from the results page.
+- Refresh Jellyfin or sign out and back in.
+
+### Cannot log in to Seerr
+
+- Verify your Jellyfin login works at [jfapp.xyz](https://jfapp.xyz) first.
+- Use your **current** Jellyfin password — changes on Jellyfin apply to Seerr right away.
 
 ### Request stuck on Pending
 
-- New or obscure titles may take longer to source.
-- Check back after a few hours; if it has been more than 24 hours, ask in the community channel.
+- New or obscure titles can take longer to find.
+- Check back after a few hours. If it has been more than 24 hours, ask in the community channel.
 
 ### Title shows Available but not in Jellyfin
 
-- Refresh your Jellyfin library (pull down on mobile, or reload the browser).
-- Log out and back in if the title still does not appear.
+- Pull down to refresh on mobile, or reload the browser.
+- Sign out of Jellyfin and sign back in if the title still does not appear.

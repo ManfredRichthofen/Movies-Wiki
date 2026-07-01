@@ -18,7 +18,7 @@ export function RevancedShowcase() {
           <div className='relative aspect-[4/3] rounded-2xl border border-white/12 overflow-hidden shadow-[0_30px_70px_-30px_rgba(0,0,0,0.8)]'>
             <img
               src={require('@site/static/img/youtube.jpg').default}
-              alt='ReVanced player'
+              alt='YouTube on Android'
               className='w-full h-full object-cover'
               loading='lazy'
             />
@@ -34,8 +34,8 @@ export function RevancedShowcase() {
             zero price tag
           </h2>
           <p className='text-base text-base-muted leading-relaxed mb-6'>
-            ReVanced brings every premium feature to YouTube and YouTube Music — completely free. No
-            ads, no interruptions, just content.
+            Ad-free YouTube and YouTube Music for Android — background play, SponsorBlock, and more.
+            No ads, no subscription.
           </p>
           <div className='grid grid-cols-2 gap-2.5 mb-8'>
             {features.map((feature) => (
