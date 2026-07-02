@@ -3,7 +3,7 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'jfapp',
+  title: 'JFapp',
   tagline: 'Request anything, watch it free.',
   favicon: 'img/favicon.ico',
 

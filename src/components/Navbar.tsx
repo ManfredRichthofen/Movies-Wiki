@@ -8,7 +8,7 @@ import { cn } from '@site/src/components/ui/cn';
 
 const navLinks = [
   { label: 'Home', href: '/', icon: Home },
-  { label: 'Jellyfin', href: '/Downloads', icon: Clapperboard },
+  { label: 'Jellyfin Apps', href: '/Downloads', icon: Clapperboard },
   { label: 'Apps', href: '/Apps', icon: Sparkles },
   { label: 'Docs', href: '/docs', icon: BookOpen },
 ];
