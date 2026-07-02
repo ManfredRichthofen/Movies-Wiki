@@ -179,9 +179,11 @@ const platforms: Platform[] = [
 
         label: 'Google Play',
 
-        url: 'https://play.google.com/store/apps/details?id=org.jellyfin.androidtv',
+        url: 'https://play.google.com/store/apps/details?id=com.github.damontecres.wholphin',
 
       },
+
+      alt: { label: 'Official Client', url: 'https://play.google.com/store/apps/details?id=org.jellyfin.androidtv' },
 
     },
 
