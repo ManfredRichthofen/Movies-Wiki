@@ -6,6 +6,7 @@ const footerLinks = {
   product: [
     { label: 'Home', href: '/' },
     { label: 'Jellyfin', href: '/Downloads' },
+    { label: 'Request movies', href: 'https://requests.jfapp.xyz/' },
     { label: 'Apps', href: '/Apps' },
     { label: 'Documentation', href: '/docs' },
   ],
@@ -53,7 +54,12 @@ export default function Footer() {
             <ul className='space-y-2.5'>
               {footerLinks.product.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className='text-sm text-[#8e889e] hover:text-primary transition-colors'>
+                  <a
+                    href={link.href}
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className='text-sm text-[#8e889e] hover:text-primary transition-colors'
+                  >
                     {link.label}
                   </a>
                 </li>

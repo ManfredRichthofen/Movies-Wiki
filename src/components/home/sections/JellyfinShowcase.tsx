@@ -56,16 +56,22 @@ export function JellyfinShowcase() {
               </span>
             ))}
           </div>
-          <ButtonLink
-            href='https://jellyfin.org/downloads'
-            variant='gradient'
-            size='lg'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <Download className='size-4' />
-            Download Jellyfin
-          </ButtonLink>
+          <div className='flex flex-wrap gap-3'>
+            <ButtonLink
+              href='https://requests.jfapp.xyz/'
+              variant='gradient'
+              size='lg'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <ListPlus className='size-4' />
+              Request movies
+            </ButtonLink>
+            <ButtonLink href='/Downloads' variant='ghost-glass' size='lg'>
+              <Download className='size-4' />
+              Get Jellyfin apps
+            </ButtonLink>
+          </div>
         </div>
         <div className='relative'>
           <div className='relative aspect-[4/3] rounded-2xl border border-white/12 overflow-hidden shadow-[0_30px_70px_-30px_rgba(0,0,0,0.8)]'>

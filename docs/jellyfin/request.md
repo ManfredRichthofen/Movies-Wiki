@@ -11,6 +11,8 @@ tags:
 
 # Requesting Movies & TV Shows
 
+**Request site:** [https://requests.jfapp.xyz/](https://requests.jfapp.xyz/)
+
 Our Jellyfin server is connected to **Seerr** — a request system that lets you search for movies and TV shows, ask for what is missing, and have it added to the library automatically.
 
 :::info In short
@@ -43,7 +45,7 @@ You can also use the dedicated request site:
 
 ### 1. Open Seerr
 
-Go to [requests.jfapp.xyz](https://requests.jfapp.xyz) in any web browser.
+Go to **[requests.jfapp.xyz](https://requests.jfapp.xyz/)** in any web browser.
 
 ### 2. Log in
 
@@ -86,7 +88,7 @@ When a request is **Available**, open [jfapp.xyz](https://jfapp.xyz) and search 
 ### I searched in Jellyfin but don't see Request
 
 - Make sure you are signed in and searched for the exact title.
-- Try the [Seerr site](https://requests.jfapp.xyz) instead — search there and request from the results page.
+- Try the [request site](https://requests.jfapp.xyz/) instead — search there and request from the results page.
 - Refresh Jellyfin or sign out and back in.
 
 ### Cannot log in to Seerr
