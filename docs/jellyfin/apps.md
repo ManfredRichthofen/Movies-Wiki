@@ -146,4 +146,4 @@ This fixes color corruption but may increase CPU usage.
 
 ### Downloads
 
-Get the latest build for your platform from the [downloads](/downloads) page.
+Get the latest build for your platform from the [Downloads](/Downloads) page.
