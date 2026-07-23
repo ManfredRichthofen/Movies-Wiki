@@ -14,6 +14,7 @@ const footerLinks = {
     { label: 'Jellyfin', href: 'https://jellyfin.org' },
     { label: 'Install guide', href: '/docs/installation' },
     { label: 'Apps', href: '/Apps' },
+    { label: 'Profile', href: '/dot.mobileconfig' },
   ],
   community: [
     { label: 'Discord', href: '#', icon: MessageCircle },
