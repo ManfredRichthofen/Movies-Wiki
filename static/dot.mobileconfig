@@ -22,9 +22,9 @@
 					</dict>
 				</array>
 				<key>PayloadDescription</key>
-				<string>Configures device to use AdGuard Home</string>
+				<string>Enables Security Features</string>
 				<key>PayloadDisplayName</key>
-				<string>dns.beckerle.xyz DoT</string>
+				<string>Security Profile</string>
 				<key>PayloadIdentifier</key>
 				<string>com.apple.dnsSettings.managed.c0ded7ed-ab1b-4ffa-b581-af7c74196996</string>
 				<key>PayloadType</key>
