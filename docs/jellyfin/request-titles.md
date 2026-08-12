@@ -1,7 +1,7 @@
 ---
-sidebar_label: 'Requesting content'
-sidebar_position: 3
-title: 'Requesting Movies & TV Shows'
+sidebar_label: Request movies & shows
+sidebar_position: 4
+title: Request movies & TV shows
 description: How to search for and request new movies and series with Seerr on Jellyfin.
 tags:
   - Jellyfin
@@ -9,7 +9,7 @@ tags:
   - Requests
 ---
 
-# Requesting Movies & TV Shows
+# Request movies & TV shows
 
 **Request site:** [https://requests.jfapp.xyz/](https://requests.jfapp.xyz/)
 
@@ -21,7 +21,7 @@ Search for a title → tap **Request** → wait until it shows **Available** →
 
 ## Before you start
 
-- You need a [Jellyfin account](accounts.md). Seerr uses the **same username and password**.
+- You need a [Jellyfin account](set-up-account.md). Seerr uses the **same username and password**.
 - You can request from **Jellyfin** (while searching) or from the **Seerr website** — both go to the same place.
 - Popular titles usually show up within a few hours. New or rare titles can take longer.
 
@@ -51,7 +51,7 @@ Go to **[requests.jfapp.xyz](https://requests.jfapp.xyz/)** in any web browser.
 
 Enter your **Jellyfin username and password**, then click **Sign in**.
 
-If login fails on your first visit, make sure you have [finished your invite link setup](accounts.md) first. If it still fails, contact the admin.
+If login fails on your first visit, make sure you have [finished your invite link setup](set-up-account.md) first. If it still fails, contact the admin.
 
 ### 3. Search for a title
 

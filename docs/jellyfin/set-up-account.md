@@ -1,14 +1,14 @@
 ---
-sidebar_label: 'Accounts'
+sidebar_label: Set up your account
 sidebar_position: 1
-title: 'Jellyfin Accounts'
-description: How to accept your invite, set up your account, and sign in on any device.
+title: Set up your Jellyfin account
+description: How to accept your invite, create your account, and sign in on any device.
 tags:
   - Jellyfin
   - Accounts
 ---
 
-# Jellyfin Accounts
+# Set up your Jellyfin account
 
 jfapp runs a private Jellyfin server for the community. You need an account before you can stream or request new titles.
 
@@ -25,7 +25,7 @@ Contact the jfapp admin to request access. Once your account is created, you wil
 :::
 
 :::tip
-Your Jellyfin login is also used for [Seerr requests](request.md). Use the same username and password on [requests.jfapp.xyz](https://requests.jfapp.xyz/).
+Your Jellyfin login is also used for [Seerr requests](request-titles.md). Use the same username and password on [requests.jfapp.xyz](https://requests.jfapp.xyz/).
 :::
 
 ## First sign-in
@@ -53,7 +53,7 @@ The server address is always **`jfapp.xyz`** (no `https://` prefix in most apps)
 | Android TV / Fire TV | **Add Server** → `jfapp.xyz` |
 | Desktop app | Server URL: `https://jfapp.xyz` |
 
-See [Apps & common issues](apps.md) for platform-specific setup and troubleshooting.
+See [Watch on iPhone](watch-on-iphone.md) for the iPhone walkthrough, or [Watch on any device](watch-anywhere.md) for every platform.
 
 ## Common issues
 

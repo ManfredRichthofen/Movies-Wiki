@@ -1,21 +1,20 @@
 ---
-sidebar_label: 'Apps & common issues'
-sidebar_position: 2
-title: 'Jellyfin Apps & Common Issues'
+sidebar_label: Watch on any device
+sidebar_position: 3
+title: Watch on any device
 description: Install Jellyfin clients on every platform and fix the most common playback problems.
 tags:
   - Jellyfin
-  - Apps
   - Clients
   - FAQ
 ---
 
-# Jellyfin Apps & Common Issues
+# Watch on any device
 
 Stream from any device using the official Jellyfin clients. The server address is always **`jfapp.xyz`**.
 
 :::info
-Need an account first? See [Accounts](accounts.md). Want something that is not in the library? See [Requesting content](request.md) — search in Jellyfin or Seerr and tap **Request**.
+Need an account first? See [Set up your account](set-up-account.md). Want something that is not in the library? See [Request movies & shows](request-titles.md) — search in Jellyfin or Seerr and tap **Request**.
 :::
 
 ---
@@ -70,10 +69,17 @@ The fastest way to watch — no install required.
 
 Swiftfin is the recommended native client for Apple devices.
 
+:::tip Full iPhone walkthrough
+For a step-by-step install and sign-in guide, see **[Watch on iPhone](watch-on-iphone.md)**.
+:::
+
 ### Setup
 
 1. Install [Swiftfin from the App Store](https://apps.apple.com/us/app/swiftfin/id1604098728).
-2. Add server `jfapp.xyz` and sign in.
+2. Tap **Connect to Server** and enter `jfapp.xyz` (no `https://` prefix).
+3. Sign in with your Jellyfin username and password.
+
+The same steps work on **iPad** and **Apple TV** (install Swiftfin from that device’s App Store).
 
 ### Common issues
 

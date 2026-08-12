@@ -91,7 +91,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Docs',
           },
           {
             href: 'https://watch.jfapp.xyz',
@@ -107,8 +107,16 @@ const config = {
             title: 'Docs',
             items: [
               {
+                label: 'Getting started',
+                to: '/docs/',
+              },
+              {
                 label: 'Jellyfin',
                 to: '/docs/jellyfin',
+              },
+              {
+                label: 'YouTube apps',
+                to: '/docs/youtube-apps',
               },
             ],
           },
