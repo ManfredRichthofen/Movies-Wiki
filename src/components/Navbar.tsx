@@ -29,24 +29,15 @@ export default function Navbar({ search }: NavbarProps) {
       )}
     >
       <Collapsible.Root open={menuOpen} onOpenChange={setMenuOpen}>
-        <div className='max-w-[1240px] mx-auto px-6'>
-          <div className='flex items-center justify-between h-[68px] gap-3'>
-            <a href='/' className='flex items-center gap-3 group shrink-0'>
-              <span className='flex size-9 items-center justify-center rounded-[11px] gradient-btn shadow-[0_6px_18px_-6px_color-mix(in_srgb,var(--theme-primary)_70%,transparent)]'>
-                <Clapperboard className='size-5 text-white' />
-              </span>
-              <span className='font-heading text-lg font-extrabold tracking-tight text-[color:var(--theme-base-content)]'>
-                jfapp
-              </span>
+        <div className='jfapp-navbar-inner'>
+          <div className='jfapp-navbar-row'>
+            <a href='/' className='jfapp-navbar-brand'>
+              JFapp
             </a>
 
-            <div className='hidden md:flex items-center gap-5 lg:gap-7 min-w-0 flex-1 justify-end'>
+            <div className='hidden md:flex items-center gap-6 lg:gap-8 min-w-0 flex-1 justify-end'>
               {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className='text-sm font-semibold text-[color:var(--theme-base-muted)] hover:text-[color:var(--theme-base-content)] transition-colors shrink-0'
-                >
+                <a key={link.label} href={link.href} className='jfapp-navbar-link'>
                   {link.label}
                 </a>
               ))}
@@ -76,7 +67,7 @@ export default function Navbar({ search }: NavbarProps) {
         </div>
 
         <Collapsible.Panel className='jfapp-mobile-nav-panel md:hidden border-t border-[color:var(--theme-base-300)]'>
-          <div className='max-w-[1240px] mx-auto px-6 py-4'>
+          <div className='jfapp-navbar-inner py-4'>
             <div className='flex flex-col gap-1'>
               {navLinks.map((link) => (
                 <a

@@ -52,16 +52,24 @@
 }
 
 :root {
-  --sl-nav-height: 4.25rem;
+  --sl-nav-height: var(--jfapp-nav-height, 4.25rem);
 }
 
-/* Shared React navbar owns chrome inside Starlight's fixed header slot */
+/* Shared React navbar owns full-bleed chrome inside Starlight's fixed header */
 .page > header.header {
   height: auto;
-  padding-block: 0;
-  padding-inline-start: 0;
-  background: transparent;
-  border-bottom: none;
+  width: 100%;
+  max-width: none;
+  inset-inline: 0;
+  padding: 0 !important;
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none;
+}
+
+.page > header.header .jfapp-starlight-header,
+.page > header.header .jfapp-navbar {
+  width: 100%;
 }
 
 .doc-disclaimer {
