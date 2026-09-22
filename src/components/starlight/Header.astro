@@ -1,5 +1,6 @@
 ---
 import config from 'virtual:starlight/user-config';
+import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
 import Search from 'virtual:starlight/components/Search';
 import Navbar from '../Navbar';
 
@@ -13,8 +14,29 @@ const shouldRenderSearch =
 <div class="jfapp-starlight-header">
   <Navbar client:load>
     {shouldRenderSearch ? <Search slot="search" /> : null}
+    {config.isMultilingual ? <LanguageSelect slot="language" /> : null}
   </Navbar>
 </div>
+
+{/* Persist manual language choice so it overrides system/browser default. */}
+<script is:inline>
+  document.addEventListener(
+    'change',
+    (event) => {
+      const select = event.target;
+      if (!(select instanceof HTMLSelectElement)) return;
+      if (!select.closest('starlight-lang-select')) return;
+      const value = select.value;
+      const locale = value === '/ko' || value.startsWith('/ko/') ? 'ko' : 'en';
+      try {
+        localStorage.setItem('jfapp-locale', locale);
+      } catch {
+        /* ignore */
+      }
+    },
+    true,
+  );
+</script>
 
 <style>
   .jfapp-starlight-header {

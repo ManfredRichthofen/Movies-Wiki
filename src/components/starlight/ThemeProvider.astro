@@ -2,10 +2,79 @@
 /**
  * Mirrors Starlight's ThemeProvider, but also honors the marketing-site `theme` key
  * so light/dark stays in sync across docs and custom pages.
+ *
+ * Also applies locale from a saved preference, or the browser/system language
+ * (navigator.languages) on first visit — works on desktop and phones.
  */
 ---
 
-{/* This is intentionally inlined to avoid FOUC. */}
+{/* This is intentionally inlined to avoid FOUC / wrong-locale flash. */}
+<script is:inline>
+	(() => {
+		const STORAGE_KEY = 'jfapp-locale';
+
+		/** @param {string} pathname */
+		function currentLocale(pathname) {
+			return pathname === '/ko' || pathname.startsWith('/ko/') ? 'ko' : 'en';
+		}
+
+		/** @param {string} pathname */
+		function stripLocale(pathname) {
+			const bare = pathname.replace(/^\/ko(?=\/|$)/, '');
+			return bare || '/';
+		}
+
+		/** @param {string} pathname */
+		function isDocsRoute(pathname) {
+			const bare = stripLocale(pathname);
+			return bare === '/docs' || bare.startsWith('/docs/');
+		}
+
+		/**
+		 * @param {string} pathname
+		 * @param {'en' | 'ko'} locale
+		 */
+		function localizePath(pathname, locale) {
+			const bare = stripLocale(pathname);
+			if (locale === 'ko') {
+				return bare === '/' ? '/ko/' : '/ko' + bare;
+			}
+			return bare;
+		}
+
+		/** @returns {'en' | 'ko'} */
+		function preferredLocale() {
+			try {
+				const stored = localStorage.getItem(STORAGE_KEY);
+				if (stored === 'ko' || stored === 'en') return stored;
+			} catch {
+				/* private mode / blocked storage */
+			}
+
+			const langs =
+				typeof navigator !== 'undefined' && navigator.languages?.length
+					? navigator.languages
+					: [typeof navigator !== 'undefined' ? navigator.language : 'en'];
+
+			for (const lang of langs) {
+				if (String(lang).toLowerCase().startsWith('ko')) return 'ko';
+			}
+			return 'en';
+		}
+
+		const path = window.location.pathname;
+		if (!isDocsRoute(path)) return;
+
+		const target = preferredLocale();
+		if (currentLocale(path) === target) return;
+
+		const next = localizePath(path, target);
+		if (next !== path) {
+			window.location.replace(next + window.location.search + window.location.hash);
+		}
+	})();
+</script>
+
 <script is:inline>
 	window.StarlightThemeProvider = (() => {
 		const marketing = typeof localStorage !== 'undefined' && localStorage.getItem('theme');

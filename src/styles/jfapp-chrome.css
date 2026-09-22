@@ -146,6 +146,16 @@
   display: contents;
 }
 
+.jfapp-nav-language {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.jfapp-nav-language starlight-lang-select {
+  display: contents;
+}
+
 @media (min-width: 768px) {
   .jfapp-nav-search {
     min-width: 11rem;

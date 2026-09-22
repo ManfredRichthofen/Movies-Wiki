@@ -16,9 +16,11 @@ const navLinks = [
 type NavbarProps = {
   /** Starlight Pagefind search, passed via Astro named slot */
   search?: ReactNode;
+  /** Starlight language switcher, passed via Astro named slot */
+  language?: ReactNode;
 };
 
-export default function Navbar({ search }: NavbarProps) {
+export default function Navbar({ search, language }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -39,6 +41,8 @@ export default function Navbar({ search }: NavbarProps) {
 
               {search ? <div className='jfapp-nav-search'>{search}</div> : null}
 
+              {language ? <div className='jfapp-nav-language'>{language}</div> : null}
+
               <ColorModeToggleButton />
 
               <ButtonLink href='/Downloads' variant='gradient' size='sm' className='shrink-0'>
@@ -49,6 +53,7 @@ export default function Navbar({ search }: NavbarProps) {
 
             <div className='flex items-center gap-2 md:hidden'>
               {search ? <div className='jfapp-nav-search'>{search}</div> : null}
+              {language ? <div className='jfapp-nav-language'>{language}</div> : null}
               <ColorModeToggleButton className='flex items-center justify-center' />
               <Collapsible.Trigger className={cn(buttonClassName('ghost', 'sm'), 'shrink-0')} aria-label='Toggle menu'>
                 <Menu className='size-5 data-panel-open:hidden' />
