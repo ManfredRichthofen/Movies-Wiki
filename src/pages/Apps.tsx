@@ -4,6 +4,7 @@ import {
   BookOpen,
   CirclePlay,
   Clapperboard,
+  KeyRound,
   Music,
   Puzzle,
   Smartphone,
@@ -16,6 +17,7 @@ import { SectionLabel } from '@site/src/components/ui/section-label';
 import {
   MICROG_RELEASES_PAGE,
   MORPHE_RELEASES_PAGE,
+  POTHELPER_RELEASES_PAGE,
   useLatestAPKReleaseInfo,
 } from '@site/src/utils/github';
 
@@ -26,6 +28,7 @@ type AppCard = {
   url: string;
   version?: string | null;
   required?: boolean;
+  optional?: boolean;
 };
 
 export default function AppsPage(): React.JSX.Element {
@@ -53,6 +56,14 @@ export default function AppsPage(): React.JSX.Element {
       url: releaseInfo.microg || MICROG_RELEASES_PAGE,
       version: releaseInfo.microgVersion,
       required: true,
+    },
+    {
+      name: 'PotHelper',
+      description: 'Optional helper if playback buffers or stops at 1:00.',
+      icon: KeyRound,
+      url: releaseInfo.pothelper || POTHELPER_RELEASES_PAGE,
+      version: releaseInfo.pothelperVersion,
+      optional: true,
     },
   ];
 
@@ -88,7 +99,7 @@ export default function AppsPage(): React.JSX.Element {
             </p>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
             {apps.map((app) => (
               <a
                 key={app.name}
@@ -102,6 +113,11 @@ export default function AppsPage(): React.JSX.Element {
                 {app.required && (
                   <span className='absolute top-3.5 right-3.5 text-[10px] font-bold uppercase tracking-wide text-primary bg-primary/16 px-2 py-0.5 rounded-md'>
                     Required
+                  </span>
+                )}
+                {app.optional && (
+                  <span className='absolute top-3.5 right-3.5 text-[10px] font-bold uppercase tracking-wide text-[#8e889e] bg-white/8 px-2 py-0.5 rounded-md'>
+                    Optional
                   </span>
                 )}
                 <span className='flex size-[46px] shrink-0 items-center justify-center rounded-xl bg-primary/12 text-primary'>
@@ -137,10 +153,13 @@ export default function AppsPage(): React.JSX.Element {
           </div>
 
           <div className='mt-4 flex flex-col items-center gap-4'>
-            <div className='flex w-full max-w-[560px] items-center justify-center gap-2.5 py-6 rounded-2xl border border-dashed border-white/14 bg-white/1.5 text-[#8e889e] text-sm font-medium text-center px-4'>
-              <Smartphone className='size-4 shrink-0 text-primary' />
-              <span>More Android apps coming soon</span>
-            </div>
+            <p className='max-w-[560px] text-center text-sm leading-relaxed text-[#9d97ad] px-4'>
+              Playback buffering or stopping at 1:00? See the{' '}
+              <a href='/docs/youtube-apps/playback-issues' className='font-semibold text-primary hover:underline'>
+                playback troubleshooting guide
+              </a>
+              .
+            </p>
             <p className='max-w-[560px] text-center text-xs leading-relaxed text-[#8e889e] px-4'>
               These modified apps are not affiliated with, endorsed by, or connected to YouTube,
               YouTube Music, or Google. They are community-built modifications. Use at your own risk.
@@ -161,6 +180,10 @@ export default function AppsPage(): React.JSX.Element {
             <ButtonLink href='/docs/installation' variant='gradient' size='lg'>
               <BookOpen className='size-4' />
               Installation guide
+            </ButtonLink>
+            <ButtonLink href='/docs/youtube-apps/playback-issues' variant='ghost-glass' size='lg'>
+              <BookOpen className='size-4' />
+              Playback issues
             </ButtonLink>
             <ButtonLink href='/Downloads' variant='ghost-glass' size='lg'>
               <Clapperboard className='size-4' />

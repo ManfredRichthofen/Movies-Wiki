@@ -1,42 +1,49 @@
-import { ArrowRight, BookOpen, Globe, Monitor, Smartphone, Tv } from 'lucide-react';
+import { Check, Compass, Play } from 'lucide-react';
 import { Badge } from '@site/src/components/ui/badge';
 import { ButtonLink } from '@site/src/components/ui/button-link';
 import { GradientText } from '@site/src/components/ui/gradient-text';
+
+const trustItems = ['Always free', 'No ads, ever', 'Phone, TV, laptop'];
 
 export function Hero() {
   return (
     <section className='relative overflow-hidden pt-28 pb-24 px-6 hero-glow grid-bg'>
       <div className='relative max-w-[920px] mx-auto text-center flex flex-col items-center'>
         <Badge dot className='mb-8'>
-          Free media, on request
+          Private movie night, for people I know
         </Badge>
         <h1 className='font-heading font-extrabold text-[clamp(2.625rem,7vw,5.375rem)] leading-[1.02] tracking-tight text-[#f6f3fb] mb-6'>
-          Request anything,
+          Everything you want to watch,
           <br />
-          <GradientText>watch it free.</GradientText>
+          <GradientText>in one place.</GradientText>
         </h1>
         <p className='text-lg md:text-xl text-base-muted max-w-[640px] leading-relaxed mb-10'>
-          Tell jfapp what you want to watch and it lands in your library — movies, shows, and ad-free
-          YouTube. No ads, no fees, no catch.
+          Movies, shows, and ad-free YouTube. Ask for anything that isn&apos;t there yet and it shows
+          up. No ads, no fees, nothing to pay for.
         </p>
         <div className='flex flex-wrap justify-center gap-3.5'>
-          <ButtonLink href='/Downloads' variant='gradient' size='lg'>
-            Start watching
-            <ArrowRight className='size-4' />
+          <ButtonLink
+            href='https://jfapp.xyz'
+            target='_blank'
+            rel='noopener noreferrer'
+            variant='gradient'
+            size='lg'
+          >
+            <Play className='size-4' />
+            Watch now
           </ButtonLink>
-          <ButtonLink href='/docs' variant='ghost-glass' size='lg'>
-            <BookOpen className='size-4' />
-            Read the docs
+          <ButtonLink href='#steps' variant='ghost-glass' size='lg'>
+            <Compass className='size-4' />
+            First time here?
           </ButtonLink>
         </div>
-        <div className='flex items-center gap-3.5 mt-9 text-[#6f6982] text-sm font-medium'>
-          <span>Runs everywhere</span>
-          <span className='flex gap-3 text-[#8e889e]'>
-            <Monitor className='size-4' />
-            <Smartphone className='size-4' />
-            <Tv className='size-4' />
-            <Globe className='size-4' />
-          </span>
+        <div className='flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mt-9 text-[#7d7890] text-sm font-semibold'>
+          {trustItems.map((item) => (
+            <span key={item} className='inline-flex items-center gap-1.5'>
+              <Check className='size-3.5 text-primary' />
+              {item}
+            </span>
+          ))}
         </div>
       </div>
 

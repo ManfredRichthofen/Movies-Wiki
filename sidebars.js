@@ -27,6 +27,7 @@ const sidebars = {
         'youtube-apps/install-on-android',
         'youtube-apps/youtube',
         'youtube-apps/youtube-music',
+        'youtube-apps/playback-issues',
       ],
       collapsed: false,
     },

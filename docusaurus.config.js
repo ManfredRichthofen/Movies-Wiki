@@ -16,7 +16,11 @@ const config = {
   organizationName: 'Hermes', // GitHub org/user name
   projectName: 'Watch Group', // Repo name
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   // Site language and localization settings
   i18n: {

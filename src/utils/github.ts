@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 
 const MORPHE_REPO = 'ManfredRichthofen/morphe-builder';
 const MICROG_REPO = 'MorpheApp/MicroG-RE';
+const POTHELPER_REPO = 'MorpheApp/PotHelper';
 
 export const MORPHE_RELEASES_PAGE = 'https://github.com/ManfredRichthofen/morphe-builder/releases';
 export const MICROG_RELEASES_PAGE = 'https://github.com/MorpheApp/MicroG-RE/releases';
+export const POTHELPER_RELEASES_PAGE = 'https://github.com/MorpheApp/PotHelper/releases';
 
 interface GitHubAsset {
   name: string;
@@ -21,9 +23,11 @@ export interface APKReleaseInfo {
   youtube: string;
   youtubeMusic: string;
   microg: string;
+  pothelper: string;
   youtubeVersion: string | null;
   youtubeMusicVersion: string | null;
   microgVersion: string | null;
+  pothelperVersion: string | null;
   loading: boolean;
 }
 
@@ -31,9 +35,11 @@ const EMPTY_RELEASE_INFO: APKReleaseInfo = {
   youtube: '',
   youtubeMusic: '',
   microg: '',
+  pothelper: '',
   youtubeVersion: null,
   youtubeMusicVersion: null,
   microgVersion: null,
+  pothelperVersion: null,
   loading: true,
 };
 
@@ -80,18 +86,24 @@ async function fetchLatestRelease(repo: string): Promise<GitHubRelease> {
 }
 
 async function fetchLatestAPKReleaseInfo(): Promise<Omit<APKReleaseInfo, 'loading'>> {
-  const [morpheRelease, microgRelease] = await Promise.all([
+  const [morpheRelease, microgRelease, pothelperRelease] = await Promise.all([
     fetchLatestRelease(MORPHE_REPO),
     fetchLatestRelease(MICROG_REPO),
+    fetchLatestRelease(POTHELPER_REPO),
   ]);
 
   const morpheAssets = morpheRelease.assets ?? [];
   const microgAssets = microgRelease.assets ?? [];
+  const pothelperAssets = pothelperRelease.assets ?? [];
 
   const youtubeApk = findApk(morpheAssets, 'youtube-morphe-');
   const musicApk = findApk(morpheAssets, 'music-morphe-');
   const microgApk = microgAssets.find(
     (asset) => asset.name.startsWith('microg-') && asset.name.endsWith('.apk'),
+  );
+  const pothelperApk = pothelperAssets.find(
+    (asset) =>
+      asset.name.toLowerCase().includes('pot-helper') && asset.name.endsWith('.apk'),
   );
   const bodyVersions = parseMorpheVersions(morpheRelease.body);
 
@@ -107,14 +119,20 @@ async function fetchLatestAPKReleaseInfo(): Promise<Omit<APKReleaseInfo, 'loadin
     normalizeTag(microgRelease.tag_name) ??
     microgApk?.name?.match(/microg-([\d.]+)\.apk/)?.[1] ??
     null;
+  const pothelperVersion =
+    normalizeTag(pothelperRelease.tag_name) ??
+    pothelperApk?.name?.match(/pot-helper-([\d.]+)\.apk/i)?.[1] ??
+    null;
 
   return {
     youtube: youtubeApk?.browser_download_url ?? '',
     youtubeMusic: musicApk?.browser_download_url ?? '',
     microg: microgApk?.browser_download_url ?? '',
+    pothelper: pothelperApk?.browser_download_url ?? '',
     youtubeVersion,
     youtubeMusicVersion,
     microgVersion,
+    pothelperVersion,
   };
 }
 
