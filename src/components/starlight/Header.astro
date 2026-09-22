@@ -12,7 +12,7 @@ const shouldRenderSearch =
 ---
 
 <div class="jfapp-starlight-header">
-  <Navbar client:load>
+  <Navbar client:load docsMode>
     {shouldRenderSearch ? <Search slot="search" /> : null}
     {config.isMultilingual ? <LanguageSelect slot="language" /> : null}
   </Navbar>

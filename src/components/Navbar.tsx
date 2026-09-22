@@ -18,9 +18,14 @@ type NavbarProps = {
   search?: ReactNode;
   /** Starlight language switcher, passed via Astro named slot */
   language?: ReactNode;
+  /**
+   * Docs pages already have Starlight's mobile sidebar toggle.
+   * Hide the site hamburger so mobile doesn't show two menu buttons.
+   */
+  docsMode?: boolean;
 };
 
-export default function Navbar({ search, language }: NavbarProps) {
+export default function Navbar({ search, language, docsMode = false }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -55,43 +60,50 @@ export default function Navbar({ search, language }: NavbarProps) {
               {search ? <div className='jfapp-nav-search'>{search}</div> : null}
               {language ? <div className='jfapp-nav-language'>{language}</div> : null}
               <ColorModeToggleButton className='flex items-center justify-center' />
-              <Collapsible.Trigger className={cn(buttonClassName('ghost', 'sm'), 'shrink-0')} aria-label='Toggle menu'>
-                <Menu className='size-5 data-panel-open:hidden' />
-                <X className='size-5 hidden data-panel-open:block' />
-              </Collapsible.Trigger>
+              {!docsMode ? (
+                <Collapsible.Trigger
+                  className={cn(buttonClassName('ghost', 'sm'), 'shrink-0')}
+                  aria-label='Toggle menu'
+                >
+                  <Menu className='size-5 data-panel-open:hidden' />
+                  <X className='size-5 hidden data-panel-open:block' />
+                </Collapsible.Trigger>
+              ) : null}
             </div>
           </div>
         </div>
 
-        <Collapsible.Panel className='jfapp-mobile-nav-panel md:hidden border-t border-[color:var(--theme-base-300)]'>
-          <div className='jfapp-navbar-inner py-4'>
-            <div className='flex flex-col gap-1'>
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className='flex items-center gap-3 rounded-lg px-3 py-3 text-[15px] font-semibold text-[color:var(--theme-base-muted)] hover:text-[color:var(--theme-base-content)] hover:bg-[color:var(--theme-base-300)] transition-colors'
-                  onClick={() => setMenuOpen(false)}
-                >
-                  <link.icon className='size-5 shrink-0 text-[color:var(--theme-primary)]' />
-                  {link.label}
-                </a>
-              ))}
-              <div className='pt-3 mt-2 border-t border-[color:var(--theme-base-300)]'>
-                <ButtonLink
-                  href='/Downloads'
-                  variant='gradient'
-                  size='sm'
-                  className='w-full justify-center'
-                  onClick={() => setMenuOpen(false)}
-                >
-                  <Download className='size-4' />
-                  Get the app
-                </ButtonLink>
+        {!docsMode ? (
+          <Collapsible.Panel className='jfapp-mobile-nav-panel md:hidden border-t border-[color:var(--theme-base-300)]'>
+            <div className='jfapp-navbar-inner py-4'>
+              <div className='flex flex-col gap-1'>
+                {navLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className='flex items-center gap-3 rounded-lg px-3 py-3 text-[15px] font-semibold text-[color:var(--theme-base-muted)] hover:text-[color:var(--theme-base-content)] hover:bg-[color:var(--theme-base-300)] transition-colors'
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <link.icon className='size-5 shrink-0 text-[color:var(--theme-primary)]' />
+                    {link.label}
+                  </a>
+                ))}
+                <div className='pt-3 mt-2 border-t border-[color:var(--theme-base-300)]'>
+                  <ButtonLink
+                    href='/Downloads'
+                    variant='gradient'
+                    size='sm'
+                    className='w-full justify-center'
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <Download className='size-4' />
+                    Get the app
+                  </ButtonLink>
+                </div>
               </div>
             </div>
-          </div>
-        </Collapsible.Panel>
+          </Collapsible.Panel>
+        ) : null}
       </Collapsible.Root>
     </nav>
   );
