@@ -25,8 +25,7 @@ const actions = [
   },
   {
     title: 'YouTube without ads',
-    description:
-      'A YouTube and YouTube Music app for Android with no ads and music that keeps playing in your pocket.',
+    description: 'A YouTube and YouTube Music app for Android with no ads and music that keeps playing in your pocket.',
     cta: 'Get the apps',
     icon: CirclePlay,
     href: '/Apps',

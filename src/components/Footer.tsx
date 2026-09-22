@@ -88,9 +88,7 @@ export default function Footer() {
 
           <div>
             <h4 className='text-sm font-bold text-[#ede9f5] mb-4'>Stay updated</h4>
-            <p className='text-sm text-base-muted mb-4 leading-relaxed'>
-              Get the latest on new apps and features.
-            </p>
+            <p className='text-sm text-base-muted mb-4 leading-relaxed'>Get the latest on new apps and features.</p>
             <ButtonLink href='/docs' variant='gradient' size='sm'>
               <BookOpen className='size-4' />
               Read docs
@@ -101,9 +99,7 @@ export default function Footer() {
         <Separator className='bg-white/7 mb-6' />
 
         <div className='flex flex-col md:flex-row justify-between items-center gap-3'>
-          <p className='text-sm text-[#6f6982]'>
-            © {currentYear} jfapp.xyz — free streaming for the community.
-          </p>
+          <p className='text-sm text-[#6f6982]'>© {currentYear} jfapp.xyz — free streaming for the community.</p>
           <p className='text-sm text-[#6f6982] flex items-center gap-1.5'>
             Made with <Heart className='size-3.5 text-primary fill-primary' /> for the community
           </p>

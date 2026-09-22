@@ -9,17 +9,11 @@ export function CTASection() {
           Stuck on anything?
         </h2>
         <p className='text-lg text-base-muted max-w-[520px] mx-auto mb-8'>
-          Try the browser player first — if that works, the app just needs reinstalling. Otherwise
-          message whoever invited you.
+          Try the browser player first — if that works, the app just needs reinstalling. Otherwise message whoever
+          invited you.
         </p>
         <div className='flex flex-wrap justify-center gap-3.5'>
-          <ButtonLink
-            href='https://jfapp.xyz'
-            target='_blank'
-            rel='noopener noreferrer'
-            variant='gradient'
-            size='lg'
-          >
+          <ButtonLink href='https://jfapp.xyz' target='_blank' rel='noopener noreferrer' variant='gradient' size='lg'>
             <Play className='size-4' />
             Open the player
           </ButtonLink>

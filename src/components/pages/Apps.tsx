@@ -1,14 +1,5 @@
+import { ArrowRight, BookOpen, CirclePlay, Clapperboard, KeyRound, Music, Puzzle, Smartphone } from 'lucide-react';
 import type React from 'react';
-import {
-  ArrowRight,
-  BookOpen,
-  CirclePlay,
-  Clapperboard,
-  KeyRound,
-  Music,
-  Puzzle,
-  Smartphone,
-} from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { ButtonLink } from '@/components/ui/button-link';
 import { GradientText } from '@/components/ui/gradient-text';
@@ -82,8 +73,8 @@ export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Elem
             <GradientText>the ads</GradientText>
           </h1>
           <p className='text-base md:text-lg text-base-muted max-w-[560px] leading-relaxed'>
-            Patched YouTube and YouTube Music APKs for Android phones and tablets — premium features,
-            no ads, no fees. Sideload the latest builds below.
+            Patched YouTube and YouTube Music APKs for Android phones and tablets — premium features, no ads, no fees.
+            Sideload the latest builds below.
           </p>
         </div>
       </section>
@@ -155,8 +146,8 @@ export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Elem
               .
             </p>
             <p className='max-w-[560px] text-center text-xs leading-relaxed text-[#8e889e] px-4'>
-              These modified apps are not affiliated with, endorsed by, or connected to YouTube,
-              YouTube Music, or Google. They are community-built modifications. Use at your own risk.
+              These modified apps are not affiliated with, endorsed by, or connected to YouTube, YouTube Music, or
+              Google. They are community-built modifications. Use at your own risk.
             </p>
           </div>
         </div>

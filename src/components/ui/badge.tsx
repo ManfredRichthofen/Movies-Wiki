@@ -17,9 +17,7 @@ export function Badge({ variant = 'pill', dot = false, className, children, ...p
         )}
         {...props}
       >
-        {dot && (
-          <span className="size-1.5 rounded-full bg-primary shadow-[0_0_10px_var(--theme-primary)]" />
-        )}
+        {dot && <span className='size-1.5 rounded-full bg-primary shadow-[0_0_10px_var(--theme-primary)]' />}
         {children}
       </span>
     );

@@ -9,10 +9,7 @@ function Root({ className, ...props }: React.ComponentProps<typeof BaseTabs.Root
 function List({ className, ...props }: React.ComponentProps<typeof BaseTabs.List>) {
   return (
     <BaseTabs.List
-      className={cn(
-        'inline-flex gap-1 rounded-lg bg-base-200 p-1 border border-base-300',
-        className,
-      )}
+      className={cn('inline-flex gap-1 rounded-lg bg-base-200 p-1 border border-base-300', className)}
       {...props}
     />
   );

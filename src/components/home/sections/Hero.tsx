@@ -18,17 +18,11 @@ export function Hero() {
           <GradientText>in one place.</GradientText>
         </h1>
         <p className='text-lg md:text-xl text-base-muted max-w-[640px] leading-relaxed mb-10'>
-          Movies, shows, and ad-free YouTube. Ask for anything that isn&apos;t there yet and it shows
-          up. No ads, no fees, nothing to pay for.
+          Movies, shows, and ad-free YouTube. Ask for anything that isn&apos;t there yet and it shows up. No ads, no
+          fees, nothing to pay for.
         </p>
         <div className='flex flex-wrap justify-center gap-3.5'>
-          <ButtonLink
-            href='https://jfapp.xyz'
-            target='_blank'
-            rel='noopener noreferrer'
-            variant='gradient'
-            size='lg'
-          >
+          <ButtonLink href='https://jfapp.xyz' target='_blank' rel='noopener noreferrer' variant='gradient' size='lg'>
             <Play className='size-4' />
             Watch now
           </ButtonLink>
@@ -57,7 +51,7 @@ export function Hero() {
           </div>
           <div className='aspect-video'>
             <img
-              src="/img/jellyfin.png"
+              src='/img/jellyfin.png'
               alt='Jellyfin dashboard'
               className='w-full h-full object-cover'
               loading='lazy'

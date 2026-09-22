@@ -1,10 +1,10 @@
-import { useState, type ReactNode } from 'react';
 import { BookOpen, Clapperboard, Download, Home, Menu, Sparkles, X } from 'lucide-react';
+import { type ReactNode, useState } from 'react';
 import { ColorModeToggleButton } from '@/components/ColorModeToggleButton';
 import { ButtonLink } from '@/components/ui/button-link';
 import { buttonClassName } from '@/components/ui/button-variants';
-import { Collapsible } from '@/components/ui/collapsible';
 import { cn } from '@/components/ui/cn';
+import { Collapsible } from '@/components/ui/collapsible';
 
 const navLinks = [
   { label: 'Home', href: '/', icon: Home },
@@ -22,12 +22,7 @@ export default function Navbar({ search }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav
-      className={cn(
-        'jfapp-navbar glass-nav sticky top-0 z-50 w-full',
-        menuOpen && 'jfapp-navbar--open',
-      )}
-    >
+    <nav className={cn('jfapp-navbar glass-nav sticky top-0 z-50 w-full', menuOpen && 'jfapp-navbar--open')}>
       <Collapsible.Root open={menuOpen} onOpenChange={setMenuOpen}>
         <div className='jfapp-navbar-inner'>
           <div className='jfapp-navbar-row'>
@@ -55,10 +50,7 @@ export default function Navbar({ search }: NavbarProps) {
             <div className='flex items-center gap-2 md:hidden'>
               {search ? <div className='jfapp-nav-search'>{search}</div> : null}
               <ColorModeToggleButton className='flex items-center justify-center' />
-              <Collapsible.Trigger
-                className={cn(buttonClassName('ghost', 'sm'), 'shrink-0')}
-                aria-label='Toggle menu'
-              >
+              <Collapsible.Trigger className={cn(buttonClassName('ghost', 'sm'), 'shrink-0')} aria-label='Toggle menu'>
                 <Menu className='size-5 data-panel-open:hidden' />
                 <X className='size-5 hidden data-panel-open:block' />
               </Collapsible.Trigger>

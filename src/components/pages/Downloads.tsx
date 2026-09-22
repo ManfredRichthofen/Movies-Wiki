@@ -1,4 +1,3 @@
-import type React from 'react';
 import {
   ArrowRight,
   BookOpen,
@@ -11,6 +10,7 @@ import {
   Star,
   Tv,
 } from 'lucide-react';
+import type React from 'react';
 import { Badge } from '@/components/ui/badge';
 import { ButtonLink } from '@/components/ui/button-link';
 import { cn } from '@/components/ui/cn';
@@ -157,13 +157,7 @@ const categories = [
   { id: 'desktop' as const, name: 'Desktop', icon: Monitor },
 ];
 
-function PlatformLinks({
-  links,
-  layout,
-}: {
-  links: Platform['links'];
-  layout: 'featured' | 'row';
-}) {
+function PlatformLinks({ links, layout }: { links: Platform['links']; layout: 'featured' | 'row' }) {
   const isFeatured = layout === 'featured';
   const alt = hasAltLink(links.alt) ? links.alt : null;
 
@@ -197,9 +191,7 @@ function PlatformLinks({
         >
           <Star className={cn('fill-current', isFeatured ? 'size-3.5' : 'size-3')} />
         </span>
-        <span className={cn('text-[#f2eff7]', isFeatured ? 'text-sm' : 'text-xs')}>
-          {links.recommended.label}
-        </span>
+        <span className={cn('text-[#f2eff7]', isFeatured ? 'text-sm' : 'text-xs')}>{links.recommended.label}</span>
         <ArrowRight className={cn('shrink-0', isFeatured ? 'size-4' : 'size-3')} />
       </a>
       {alt && (
@@ -248,9 +240,7 @@ function PlatformRow({ platform }: { platform: Platform }) {
         </span>
         <div className='min-w-0'>
           <h4 className='font-heading font-bold text-[15.5px] text-[#f2eff7] mb-0.5'>{platform.name}</h4>
-          <p className='text-[13px] text-[#9d97ad] leading-snug'>
-            {platform.shortDescription ?? platform.description}
-          </p>
+          <p className='text-[13px] text-[#9d97ad] leading-snug'>{platform.shortDescription ?? platform.description}</p>
         </div>
       </div>
       <PlatformLinks links={platform.links} layout='row' />
@@ -277,8 +267,8 @@ export default function DownloadPage(): React.JSX.Element {
             <GradientText>every device</GradientText>
           </h1>
           <p className='text-base md:text-lg text-base-muted max-w-[560px] leading-relaxed mb-7'>
-            Get the jfapp player for your platform, sign in, and stream everything you&apos;ve requested.
-            Free on every device.
+            Get the jfapp player for your platform, sign in, and stream everything you&apos;ve requested. Free on every
+            device.
           </p>
           <div className='flex flex-wrap justify-center gap-2.5'>
             {categories.map((category) => (

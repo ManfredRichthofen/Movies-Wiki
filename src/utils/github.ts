@@ -59,10 +59,7 @@ function normalizeTag(tag?: string): string | null {
 
 function findApk(assets: GitHubAsset[], prefix: string) {
   return assets.find(
-    (asset) =>
-      asset.name.startsWith(prefix) &&
-      asset.name.endsWith('.apk') &&
-      !asset.name.includes('-module-'),
+    (asset) => asset.name.startsWith(prefix) && asset.name.endsWith('.apk') && !asset.name.includes('-module-'),
   );
 }
 
@@ -94,12 +91,9 @@ async function fetchLatestAPKReleaseInfo(): Promise<APKReleaseInfo> {
 
   const youtubeApk = findApk(morpheAssets, 'youtube-morphe-');
   const musicApk = findApk(morpheAssets, 'music-morphe-');
-  const microgApk = microgAssets.find(
-    (asset) => asset.name.startsWith('microg-') && asset.name.endsWith('.apk'),
-  );
+  const microgApk = microgAssets.find((asset) => asset.name.startsWith('microg-') && asset.name.endsWith('.apk'));
   const pothelperApk = pothelperAssets.find(
-    (asset) =>
-      asset.name.toLowerCase().includes('pot-helper') && asset.name.endsWith('.apk'),
+    (asset) => asset.name.toLowerCase().includes('pot-helper') && asset.name.endsWith('.apk'),
   );
   const bodyVersions = parseMorpheVersions(morpheRelease.body);
 
@@ -108,18 +102,11 @@ async function fetchLatestAPKReleaseInfo(): Promise<APKReleaseInfo> {
     youtubeMusic: musicApk?.browser_download_url ?? '',
     microg: microgApk?.browser_download_url ?? '',
     pothelper: pothelperApk?.browser_download_url ?? '',
-    youtubeVersion:
-      parseVersionFromApkName(youtubeApk?.name ?? '') ?? bodyVersions.youtube ?? null,
-    youtubeMusicVersion:
-      parseVersionFromApkName(musicApk?.name ?? '') ?? bodyVersions.music ?? null,
-    microgVersion:
-      normalizeTag(microgRelease.tag_name) ??
-      microgApk?.name?.match(/microg-([\d.]+)\.apk/)?.[1] ??
-      null,
+    youtubeVersion: parseVersionFromApkName(youtubeApk?.name ?? '') ?? bodyVersions.youtube ?? null,
+    youtubeMusicVersion: parseVersionFromApkName(musicApk?.name ?? '') ?? bodyVersions.music ?? null,
+    microgVersion: normalizeTag(microgRelease.tag_name) ?? microgApk?.name?.match(/microg-([\d.]+)\.apk/)?.[1] ?? null,
     pothelperVersion:
-      normalizeTag(pothelperRelease.tag_name) ??
-      pothelperApk?.name?.match(/pot-helper-([\d.]+)\.apk/i)?.[1] ??
-      null,
+      normalizeTag(pothelperRelease.tag_name) ?? pothelperApk?.name?.match(/pot-helper-([\d.]+)\.apk/i)?.[1] ?? null,
   };
 }
 

@@ -1,7 +1,7 @@
 import { Moon, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { cn } from '@/components/ui/cn';
 import { buttonClassName } from '@/components/ui/button-variants';
+import { cn } from '@/components/ui/cn';
 import { applyTheme, getPreferredDark } from '@/utils/theme';
 
 type ColorModeToggleButtonProps = {
@@ -25,12 +25,12 @@ export function ColorModeToggleButton({ className }: ColorModeToggleButtonProps)
 
   return (
     <button
-      type="button"
+      type='button'
       aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
       className={cn(buttonClassName('ghost', 'sm'), className)}
       onClick={toggle}
     >
-      {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+      {dark ? <Sun className='size-4' /> : <Moon className='size-4' />}
     </button>
   );
 }

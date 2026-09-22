@@ -33,8 +33,8 @@ export function RequestShowcase() {
             just ask for it.
           </h2>
           <p className='text-base text-base-muted leading-relaxed mb-7'>
-            Search for the movie or show, hit request, and it gets added for everyone. You&apos;ll see
-            it in the library without lifting another finger.
+            Search for the movie or show, hit request, and it gets added for everyone. You&apos;ll see it in the library
+            without lifting another finger.
           </p>
           <div className='space-y-4 mb-8'>
             {points.map((point) => (

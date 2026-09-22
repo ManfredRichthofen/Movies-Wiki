@@ -10,8 +10,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary: 'bg-primary text-white hover:brightness-110',
   gradient: 'gradient-btn hover:-translate-y-px',
   ghost: 'bg-transparent hover:bg-white/5 text-base-content',
-  'ghost-glass':
-    'bg-white/4 border border-white/13 text-[#ede9f5] hover:bg-white/8',
+  'ghost-glass': 'bg-white/4 border border-white/13 text-[#ede9f5] hover:bg-white/8',
   outline: 'border border-white/13 bg-transparent hover:bg-white/5 text-base-content',
   error: 'bg-error text-white hover:brightness-110',
 };
@@ -22,10 +21,6 @@ const sizeStyles: Record<ButtonSize, string> = {
   lg: 'px-7 py-3.5 text-base rounded-[13px]',
 };
 
-export function buttonClassName(
-  variant: ButtonVariant = 'primary',
-  size: ButtonSize = 'md',
-  className?: string,
-) {
+export function buttonClassName(variant: ButtonVariant = 'primary', size: ButtonSize = 'md', className?: string) {
   return cn(baseStyles, variantStyles[variant], sizeStyles[size], className);
 }

@@ -7,11 +7,6 @@ type ButtonLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   size?: ButtonSize;
 };
 
-export function ButtonLink({
-  variant = 'primary',
-  size = 'md',
-  className,
-  ...props
-}: ButtonLinkProps) {
+export function ButtonLink({ variant = 'primary', size = 'md', className, ...props }: ButtonLinkProps) {
   return <a className={cn(buttonClassName(variant, size), className)} {...props} />;
 }
