@@ -1,5 +1,5 @@
 import { LifeBuoy, Play } from 'lucide-react';
-import { ButtonLink } from '@site/src/components/ui/button-link';
+import { ButtonLink } from '@/components/ui/button-link';
 
 export function CTASection() {
   return (

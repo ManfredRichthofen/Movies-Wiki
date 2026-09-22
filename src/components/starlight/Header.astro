@@ -1,0 +1,23 @@
+---
+import config from 'virtual:starlight/user-config';
+import Search from 'virtual:starlight/components/Search';
+import Navbar from '../Navbar';
+
+/**
+ * Render the `Search` component if Pagefind is enabled or the default search component has been overridden.
+ */
+const shouldRenderSearch =
+  config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
+---
+
+<div class="jfapp-starlight-header">
+  <Navbar client:load>
+    {shouldRenderSearch ? <Search slot="search" /> : null}
+  </Navbar>
+</div>
+
+<style>
+  .jfapp-starlight-header {
+    width: 100%;
+  }
+</style>

@@ -1,4 +1,4 @@
-import { SectionLabel } from '@site/src/components/ui/section-label';
+import { SectionLabel } from '@/components/ui/section-label';
 
 const steps = [
   {

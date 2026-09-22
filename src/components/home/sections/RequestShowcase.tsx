@@ -1,5 +1,5 @@
 import { Bell, Gift, ListPlus, Search } from 'lucide-react';
-import { ButtonLink } from '@site/src/components/ui/button-link';
+import { ButtonLink } from '@/components/ui/button-link';
 
 const points = [
   {

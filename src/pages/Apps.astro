@@ -1,0 +1,11 @@
+---
+import CustomPageLayout from '../layouts/CustomPageLayout.astro';
+import Apps from '../components/pages/Apps';
+import { getLatestAPKReleaseInfo } from '../utils/github';
+
+const releaseInfo = await getLatestAPKReleaseInfo();
+---
+
+<CustomPageLayout title="Android apps" description="Download ad-free YouTube and YouTube Music APKs for Android.">
+  <Apps releaseInfo={releaseInfo} />
+</CustomPageLayout>

@@ -1,6 +1,6 @@
 import { BookOpen, Heart, MessageCircle } from 'lucide-react';
-import { ButtonLink } from '@site/src/components/ui/button-link';
-import { Separator } from '@site/src/components/ui/separator';
+import { ButtonLink } from '@/components/ui/button-link';
+import { Separator } from '@/components/ui/separator';
 
 const footerLinks = {
   product: [
@@ -12,7 +12,7 @@ const footerLinks = {
   ],
   services: [
     { label: 'Jellyfin', href: 'https://jellyfin.org' },
-    { label: 'Install guide', href: '/docs/installation' },
+    { label: 'Install guide', href: '/docs/youtube-apps/install-on-android/' },
     { label: 'Apps', href: '/Apps' },
     { label: 'Profile', href: '/dot.mobileconfig' },
   ],

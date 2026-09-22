@@ -1,0 +1,107 @@
+/* Shared chrome (navbar / theme tokens) for marketing pages and Starlight docs */
+
+:root {
+  --theme-accent: #a855f7;
+  --theme-accent-2: #38bdf8;
+  --theme-gradient: linear-gradient(135deg, #b15ce8 0%, #6b6cf0 52%, #22b5e8 100%);
+  --theme-base-100: #0b0910;
+  --theme-base-200: #15111f;
+  --theme-base-300: rgba(255, 255, 255, 0.08);
+  --theme-base-content: #f2eff7;
+  --theme-base-muted: #a59fb5;
+  --theme-primary: #a855f7;
+  --theme-primary-content: #ffffff;
+  --theme-secondary: #6b6cf0;
+  --theme-error: #f87171;
+  --font-heading: "Sora", system-ui, sans-serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+[data-theme="light"] {
+  --theme-base-100: #faf9fc;
+  --theme-base-200: #f0edf5;
+  --theme-base-300: rgba(0, 0, 0, 0.08);
+  --theme-base-content: #1a1525;
+  --theme-base-muted: #5c5670;
+}
+
+[data-theme="dark"] {
+  --theme-base-100: #0b0910;
+  --theme-base-200: #15111f;
+  --theme-base-300: rgba(255, 255, 255, 0.08);
+  --theme-base-content: #f2eff7;
+  --theme-base-muted: #a59fb5;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.gradient-btn {
+  background: var(--theme-gradient);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 24px -10px color-mix(in srgb, var(--theme-primary) 75%, transparent);
+}
+
+.gradient-btn:hover {
+  filter: brightness(1.08);
+}
+
+.glass-nav {
+  background: rgba(11, 9, 16, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.jfapp-navbar--open.glass-nav {
+  background: #0b0910;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.jfapp-mobile-nav-panel {
+  background: #0b0910;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="light"] .glass-nav {
+  background: rgba(250, 249, 252, 0.94);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .jfapp-navbar--open.glass-nav,
+[data-theme="light"] .jfapp-mobile-nav-panel {
+  background: #faf9fc;
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .jfapp-mobile-nav-panel {
+  border-top-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.jfapp-navbar {
+  display: block;
+  width: 100%;
+  min-height: 4.25rem;
+}
+
+.jfapp-nav-search {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.jfapp-nav-search site-search {
+  display: contents;
+}
+
+@media (min-width: 768px) {
+  .jfapp-nav-search {
+    min-width: 11rem;
+    max-width: 16rem;
+    flex: 1;
+  }
+}

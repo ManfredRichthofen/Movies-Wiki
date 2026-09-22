@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@import "./jfapp-chrome.css";
+
+@source "../pages";
+@source "../components";
+@source "../layouts";
+
+@theme inline {
+  --color-base-100: var(--theme-base-100);
+  --color-base-200: var(--theme-base-200);
+  --color-base-300: var(--theme-base-300);
+  --color-base-content: var(--theme-base-content);
+  --color-base-muted: var(--theme-base-muted);
+  --color-primary: var(--theme-primary);
+  --color-primary-content: var(--theme-primary-content);
+  --color-accent-2: var(--theme-accent-2);
+  --color-secondary: var(--theme-secondary);
+  --color-accent: var(--theme-accent);
+  --color-error: var(--theme-error);
+  --radius-lg: 0.75rem;
+  --radius-md: 0.5rem;
+  --radius-xl: 1rem;
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-heading: "Sora", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@custom-variant dark (&:is([data-theme="dark"] *));
+
+html {
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-mono-label {
+  font-family: var(--font-mono);
+}
+
+/* jfapp utilities */
+.gradient-text {
+  background: var(--theme-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-glow::before {
+  content: "";
+  position: absolute;
+  top: -160px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 560px;
+  background: radial-gradient(ellipse at center, color-mix(in srgb, var(--theme-primary) 46%, transparent), transparent 65%);
+  filter: blur(20px);
+  pointer-events: none;
+  animation: glowpulse 7s ease-in-out infinite;
+}
+
+.grid-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 0%, transparent 75%);
+  pointer-events: none;
+}
+
+.surface-card {
+  background: linear-gradient(180deg, #17121f, #120e1a);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.125rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.surface-card:hover {
+  border-color: color-mix(in srgb, var(--theme-primary) 45%, transparent);
+  transform: translateY(-4px);
+}
+
+.cta-card {
+  background: linear-gradient(160deg, #1a1230, #100c1a);
+  border: 1px solid color-mix(in srgb, var(--theme-primary) 24%, transparent);
+  border-radius: 1.5rem;
+}
+
+@keyframes glowpulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+
+::selection {
+  background: rgba(168, 85, 247, 0.35);
+  color: #fff;
+}

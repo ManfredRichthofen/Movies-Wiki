@@ -1,0 +1,47 @@
+---
+/**
+ * Mirrors Starlight's ThemeProvider, but also honors the marketing-site `theme` key
+ * so light/dark stays in sync across docs and custom pages.
+ */
+---
+
+{/* This is intentionally inlined to avoid FOUC. */}
+<script is:inline>
+	window.StarlightThemeProvider = (() => {
+		const marketing = typeof localStorage !== 'undefined' && localStorage.getItem('theme');
+		const starlight = typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const storedTheme =
+			starlight === 'light' || starlight === 'dark'
+				? starlight
+				: marketing === 'light' || marketing === 'dark'
+					? marketing
+					: null;
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		const mode = theme === 'light' ? 'light' : 'dark';
+		document.documentElement.dataset.theme = mode;
+		document.documentElement.classList.toggle('dark', mode === 'dark');
+		if (typeof localStorage !== 'undefined') {
+			localStorage.setItem('theme', mode);
+			localStorage.setItem('starlight-theme', mode);
+		}
+		return {
+			updatePickers(theme = storedTheme || mode) {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script>

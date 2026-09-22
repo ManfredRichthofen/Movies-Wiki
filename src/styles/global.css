@@ -1,0 +1,73 @@
+@layer base, starlight, theme, components, utilities;
+
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import './jfapp-chrome.css';
+
+@source '../components';
+@source '../layouts';
+
+@theme {
+  /* Accent — indigo (closest to Starlight defaults) */
+  --color-accent-50: var(--color-indigo-50);
+  --color-accent-100: var(--color-indigo-100);
+  --color-accent-200: var(--color-indigo-200);
+  --color-accent-300: var(--color-indigo-300);
+  --color-accent-400: var(--color-indigo-400);
+  --color-accent-500: var(--color-indigo-500);
+  --color-accent-600: var(--color-indigo-600);
+  --color-accent-700: var(--color-indigo-700);
+  --color-accent-800: var(--color-indigo-800);
+  --color-accent-900: var(--color-indigo-900);
+  --color-accent-950: var(--color-indigo-950);
+
+  /* Gray — zinc (closest to Starlight defaults) */
+  --color-gray-50: var(--color-zinc-50);
+  --color-gray-100: var(--color-zinc-100);
+  --color-gray-200: var(--color-zinc-200);
+  --color-gray-300: var(--color-zinc-300);
+  --color-gray-400: var(--color-zinc-400);
+  --color-gray-500: var(--color-zinc-500);
+  --color-gray-600: var(--color-zinc-600);
+  --color-gray-700: var(--color-zinc-700);
+  --color-gray-800: var(--color-zinc-800);
+  --color-gray-900: var(--color-zinc-900);
+  --color-gray-950: var(--color-zinc-950);
+
+  /* Shared marketing / navbar tokens */
+  --color-base-100: var(--theme-base-100);
+  --color-base-200: var(--theme-base-200);
+  --color-base-300: var(--theme-base-300);
+  --color-base-content: var(--theme-base-content);
+  --color-base-muted: var(--theme-base-muted);
+  --color-primary: var(--theme-primary);
+  --color-primary-content: var(--theme-primary-content);
+  --color-accent-2: var(--theme-accent-2);
+  --color-secondary: var(--theme-secondary);
+  --color-error: var(--theme-error);
+  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-heading: 'Sora', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+:root {
+  --sl-nav-height: 4.25rem;
+}
+
+/* Shared React navbar owns chrome inside Starlight's fixed header slot */
+.page > header.header {
+  height: auto;
+  padding-block: 0;
+  padding-inline-start: 0;
+  background: transparent;
+  border-bottom: none;
+}
+
+.doc-disclaimer {
+  margin-top: 2rem;
+  padding: 0.75rem 1rem;
+  border-inline-start: 3px solid var(--sl-color-gray-5);
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-3);
+}

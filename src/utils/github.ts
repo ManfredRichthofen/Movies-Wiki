@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react';
+export const MORPHE_RELEASES_PAGE = 'https://github.com/ManfredRichthofen/morphe-builder/releases';
+export const MICROG_RELEASES_PAGE = 'https://github.com/MorpheApp/MicroG-RE/releases';
+export const POTHELPER_RELEASES_PAGE = 'https://github.com/MorpheApp/PotHelper/releases';
 
 const MORPHE_REPO = 'ManfredRichthofen/morphe-builder';
 const MICROG_REPO = 'MorpheApp/MicroG-RE';
 const POTHELPER_REPO = 'MorpheApp/PotHelper';
-
-export const MORPHE_RELEASES_PAGE = 'https://github.com/ManfredRichthofen/morphe-builder/releases';
-export const MICROG_RELEASES_PAGE = 'https://github.com/MorpheApp/MicroG-RE/releases';
-export const POTHELPER_RELEASES_PAGE = 'https://github.com/MorpheApp/PotHelper/releases';
 
 interface GitHubAsset {
   name: string;
@@ -28,7 +26,6 @@ export interface APKReleaseInfo {
   youtubeMusicVersion: string | null;
   microgVersion: string | null;
   pothelperVersion: string | null;
-  loading: boolean;
 }
 
 const EMPTY_RELEASE_INFO: APKReleaseInfo = {
@@ -40,7 +37,6 @@ const EMPTY_RELEASE_INFO: APKReleaseInfo = {
   youtubeMusicVersion: null,
   microgVersion: null,
   pothelperVersion: null,
-  loading: true,
 };
 
 function parseMorpheVersions(body?: string) {
@@ -85,7 +81,7 @@ async function fetchLatestRelease(repo: string): Promise<GitHubRelease> {
   return response.json();
 }
 
-async function fetchLatestAPKReleaseInfo(): Promise<Omit<APKReleaseInfo, 'loading'>> {
+async function fetchLatestAPKReleaseInfo(): Promise<APKReleaseInfo> {
   const [morpheRelease, microgRelease, pothelperRelease] = await Promise.all([
     fetchLatestRelease(MORPHE_REPO),
     fetchLatestRelease(MICROG_REPO),
@@ -107,58 +103,32 @@ async function fetchLatestAPKReleaseInfo(): Promise<Omit<APKReleaseInfo, 'loadin
   );
   const bodyVersions = parseMorpheVersions(morpheRelease.body);
 
-  const youtubeVersion =
-    parseVersionFromApkName(youtubeApk?.name ?? '') ??
-    bodyVersions.youtube ??
-    null;
-  const youtubeMusicVersion =
-    parseVersionFromApkName(musicApk?.name ?? '') ??
-    bodyVersions.music ??
-    null;
-  const microgVersion =
-    normalizeTag(microgRelease.tag_name) ??
-    microgApk?.name?.match(/microg-([\d.]+)\.apk/)?.[1] ??
-    null;
-  const pothelperVersion =
-    normalizeTag(pothelperRelease.tag_name) ??
-    pothelperApk?.name?.match(/pot-helper-([\d.]+)\.apk/i)?.[1] ??
-    null;
-
   return {
     youtube: youtubeApk?.browser_download_url ?? '',
     youtubeMusic: musicApk?.browser_download_url ?? '',
     microg: microgApk?.browser_download_url ?? '',
     pothelper: pothelperApk?.browser_download_url ?? '',
-    youtubeVersion,
-    youtubeMusicVersion,
-    microgVersion,
-    pothelperVersion,
+    youtubeVersion:
+      parseVersionFromApkName(youtubeApk?.name ?? '') ?? bodyVersions.youtube ?? null,
+    youtubeMusicVersion:
+      parseVersionFromApkName(musicApk?.name ?? '') ?? bodyVersions.music ?? null,
+    microgVersion:
+      normalizeTag(microgRelease.tag_name) ??
+      microgApk?.name?.match(/microg-([\d.]+)\.apk/)?.[1] ??
+      null,
+    pothelperVersion:
+      normalizeTag(pothelperRelease.tag_name) ??
+      pothelperApk?.name?.match(/pot-helper-([\d.]+)\.apk/i)?.[1] ??
+      null,
   };
 }
 
-export function useLatestAPKReleaseInfo(): APKReleaseInfo {
-  const [info, setInfo] = useState<APKReleaseInfo>(EMPTY_RELEASE_INFO);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    fetchLatestAPKReleaseInfo()
-      .then((data) => {
-        if (!cancelled) {
-          setInfo({ ...data, loading: false });
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching latest APK releases:', error);
-        if (!cancelled) {
-          setInfo((prev) => ({ ...prev, loading: false }));
-        }
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  return info;
+/** Build-time / server fetch with a safe empty fallback for CI rate limits. */
+export async function getLatestAPKReleaseInfo(): Promise<APKReleaseInfo> {
+  try {
+    return await fetchLatestAPKReleaseInfo();
+  } catch (error) {
+    console.error('Error fetching latest APK releases:', error);
+    return EMPTY_RELEASE_INFO;
+  }
 }

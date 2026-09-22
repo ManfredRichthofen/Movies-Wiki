@@ -1,0 +1,47 @@
+---
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import '../styles/custom-pages.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Request anything, watch it free.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | JFapp</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem('theme') ?? localStorage.getItem('starlight-theme');
+        const dark = stored ? stored === 'dark' : true;
+        const mode = dark ? 'dark' : 'light';
+        document.documentElement.classList.toggle('dark', dark);
+        document.documentElement.dataset.theme = mode;
+        localStorage.setItem('theme', mode);
+        localStorage.setItem('starlight-theme', mode);
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen bg-base-100 text-base-content antialiased">
+    <div class="min-h-screen flex flex-col bg-base-100 text-base-content">
+      <Navbar client:load />
+      <main class="flex-1">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

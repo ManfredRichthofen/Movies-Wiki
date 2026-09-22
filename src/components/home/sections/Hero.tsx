@@ -1,7 +1,7 @@
 import { Check, Compass, Play } from 'lucide-react';
-import { Badge } from '@site/src/components/ui/badge';
-import { ButtonLink } from '@site/src/components/ui/button-link';
-import { GradientText } from '@site/src/components/ui/gradient-text';
+import { Badge } from '@/components/ui/badge';
+import { ButtonLink } from '@/components/ui/button-link';
+import { GradientText } from '@/components/ui/gradient-text';
 
 const trustItems = ['Always free', 'No ads, ever', 'Phone, TV, laptop'];
 
@@ -57,7 +57,7 @@ export function Hero() {
           </div>
           <div className='aspect-video'>
             <img
-              src={require('@site/static/img/jellyfin.png').default}
+              src="/img/jellyfin.png"
               alt='Jellyfin dashboard'
               className='w-full h-full object-cover'
               loading='lazy'
