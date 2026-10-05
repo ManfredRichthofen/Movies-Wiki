@@ -28,7 +28,7 @@ export function HowItWorks() {
         </div>
         <div className='grid grid-cols-1 sm:grid-cols-3 gap-4'>
           {steps.map((step, index) => (
-            <div key={step.title} className='p-7 rounded-[18px] surface-card'>
+            <div key={step.title} className='p-7 rounded-2xl border border-white/8 bg-base-200'>
               <span className='flex size-9 items-center justify-center rounded-full border border-primary/30 bg-primary/11 font-heading font-bold text-[15px] text-primary mb-4.5'>
                 {index + 1}
               </span>

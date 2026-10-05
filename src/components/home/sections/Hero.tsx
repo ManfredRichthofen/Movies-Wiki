@@ -7,9 +7,9 @@ const trustItems = ['Always free', 'No ads, ever', 'Phone, TV, laptop'];
 
 export function Hero() {
   return (
-    <section className='relative overflow-hidden pt-28 pb-24 px-6 hero-glow grid-bg'>
+    <section className='relative overflow-hidden pt-28 pb-24 px-6'>
       <div className='relative max-w-[920px] mx-auto text-center flex flex-col items-center'>
-        <Badge dot className='mb-8'>
+        <Badge variant='tag' className='mb-8'>
           Private movie night, for people I know
         </Badge>
         <h1 className='font-heading font-extrabold text-[clamp(2.625rem,7vw,5.375rem)] leading-[1.02] tracking-tight text-[#f6f3fb] mb-6'>
@@ -34,7 +34,7 @@ export function Hero() {
         <div className='flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mt-9 text-[#7d7890] text-sm font-semibold'>
           {trustItems.map((item) => (
             <span key={item} className='inline-flex items-center gap-1.5'>
-              <Check className='size-3.5 text-primary' />
+              <Check className='size-3.5 text-[#8e889e]' />
               {item}
             </span>
           ))}
@@ -42,7 +42,7 @@ export function Hero() {
       </div>
 
       <div className='relative max-w-[1000px] mx-auto mt-16'>
-        <div className='relative rounded-2xl border border-white/12 bg-[#100c18] overflow-hidden shadow-[0_40px_100px_-40px_rgba(0,0,0,0.9)]'>
+        <div className='relative rounded-2xl border border-white/12 bg-[#100c18] overflow-hidden'>
           <div className='flex items-center gap-2 px-4 py-3 border-b border-white/7 bg-white/2'>
             <span className='size-2.5 rounded-full bg-[#3a3346]' />
             <span className='size-2.5 rounded-full bg-[#3a3346]' />

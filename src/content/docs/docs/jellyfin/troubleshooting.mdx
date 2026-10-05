@@ -1,0 +1,78 @@
+---
+title: Fix common problems
+description: Buffering, slow search, extra sources, and basic Jellyfin login or connection fixes.
+sidebar:
+  label: Troubleshooting
+  order: 6
+---
+
+Use this page when streaming feels slow, search hangs, or you can’t sign in. Work top to bottom — most people fix it in the first two sections.
+
+:::tip[Quick checks]
+- Server address is always **`jfapp.xyz`** (most apps: no `https://`)
+- Check [status.jfapp.xyz](https://status.jfapp.xyz) if nothing loads
+- Try Wi‑Fi if mobile data fails (or the other way around)
+:::
+
+## Buffering or slow playback
+
+1. **Lower the quality** — while a video is playing, open the gear icon and pick a lower resolution.
+2. **Turn off extra sources** — the globe icon next to Search can slow things down on a weak connection. See the next section.
+3. **Move closer to Wi‑Fi** or use a wired connection if you can.
+4. On a phone or TV app, try pausing for a few seconds, then play again.
+
+Still buffering after that? See device-specific tips in [Watch on any device](/docs/jellyfin/watch-anywhere/).
+
+## Extra sources (globe icon)
+
+The **globe** next to Search turns extra playback sources on or off. When it’s on, the player may look for more places to play a title. That helps sometimes, but it uses more data and can make **search and playback feel slow**.
+
+**If pages load slowly, searches hang, or video buffers more than usual — turn it off:**
+
+1. Open [jfapp.xyz](https://jfapp.xyz) and sign in.
+2. Go to the **Search** bar.
+3. Tap the **globe** to the left of Search until you see a **globe with a slash**.
+
+![Extra sources off — globe with a slash next to Search](/img/remote-stream-disabled.png)
+
+Your regular library still works with extra sources off. Full walkthrough: [Extra sources (globe icon)](/docs/jellyfin/remote-stream/).
+
+## Can’t connect or sign in
+
+### “Unable to connect to server” / server not found
+
+- Enter exactly `jfapp.xyz` (no `https://` in most mobile/TV apps; desktop may use `https://jfapp.xyz`).
+- Turn off VPN temporarily and try again.
+- Check [status.jfapp.xyz](https://status.jfapp.xyz).
+- Remove the saved server in the app and add `jfapp.xyz` again.
+
+### “Invalid username or password”
+
+- Check caps lock and spelling.
+- Make sure you finished your [invite link setup](/docs/jellyfin/set-up-account/) first.
+- Wait a minute after setup, then try again.
+- Ask the admin for a password reset if you’re locked out.
+
+### Works in the browser but not in the app
+
+- Update the app from the store or the [Downloads](/Downloads/) page.
+- Delete the server entry and add `jfapp.xyz` again.
+- Confirm the same username and password work at [jfapp.xyz](https://jfapp.xyz).
+
+## Picture or sound problems
+
+| What you see | What to try |
+| --- | --- |
+| Video but no sound | Turn **Direct play** off in the app settings, or lower quality |
+| Green or purple colors (desktop) | Client Settings → Video → set **Hardware decoding** to **Disabled** |
+| Audio out of sync | Turn hardware decoding off; update the app and graphics drivers |
+| 4K stutters on TV | Drop quality to 1080p |
+
+More detail by device: [Watch on any device](/docs/jellyfin/watch-anywhere/).
+
+## Still stuck?
+
+- [Set up your account](/docs/jellyfin/set-up-account/) — invite and first sign-in
+- [Ask for a movie or show](/docs/jellyfin/request-titles/) — if a title is missing from the library
+- [Downloads](/Downloads/) — reinstall or switch clients
+- YouTube buffering instead? See [Fix YouTube playback issues](/docs/youtube-apps/playback-issues/)

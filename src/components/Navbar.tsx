@@ -1,5 +1,5 @@
 import { BookOpen, Clapperboard, Download, Home, Menu, Sparkles, X } from 'lucide-react';
-import { type ReactNode, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 import { ColorModeToggleButton } from '@/components/ColorModeToggleButton';
 import { ButtonLink } from '@/components/ui/button-link';
 import { buttonClassName } from '@/components/ui/button-variants';
@@ -7,10 +7,25 @@ import { cn } from '@/components/ui/cn';
 import { Collapsible } from '@/components/ui/collapsible';
 
 const navLinks = [
-  { label: 'Home', href: '/', icon: Home },
-  { label: 'Jellyfin Apps', href: '/Downloads', icon: Clapperboard },
-  { label: 'Apps', href: '/Apps', icon: Sparkles },
-  { label: 'Docs', href: '/docs/', icon: BookOpen },
+  { label: 'Home', href: '/', icon: Home, match: (path: string) => path === '/' },
+  {
+    label: 'Jellyfin',
+    href: '/Downloads',
+    icon: Clapperboard,
+    match: (path: string) => path.startsWith('/Downloads'),
+  },
+  {
+    label: 'Apps',
+    href: '/Apps',
+    icon: Sparkles,
+    match: (path: string) => path.startsWith('/Apps'),
+  },
+  {
+    label: 'Docs',
+    href: '/docs/',
+    icon: BookOpen,
+    match: (path: string) => path.startsWith('/docs') || path.startsWith('/ko/docs'),
+  },
 ];
 
 type NavbarProps = {
@@ -25,8 +40,19 @@ type NavbarProps = {
   docsMode?: boolean;
 };
 
+function usePathname() {
+  const [pathname, setPathname] = useState('/');
+
+  useEffect(() => {
+    setPathname(window.location.pathname);
+  }, []);
+
+  return pathname;
+}
+
 export default function Navbar({ search, language, docsMode = false }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <nav className={cn('jfapp-navbar glass-nav sticky top-0 z-50 w-full', menuOpen && 'jfapp-navbar--open')}>
@@ -37,69 +63,92 @@ export default function Navbar({ search, language, docsMode = false }: NavbarPro
               JFapp
             </a>
 
-            <div className='hidden md:flex items-center gap-6 lg:gap-8 min-w-0 flex-1 justify-end'>
-              {navLinks.map((link) => (
-                <a key={link.label} href={link.href} className='jfapp-navbar-link'>
-                  {link.label}
-                </a>
-              ))}
+            {/* Desktop primary nav */}
+            <div className='jfapp-navbar-links' role='navigation' aria-label='Primary'>
+              {navLinks.map((link) => {
+                const active = link.match(pathname);
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className={cn('jfapp-navbar-link', active && 'jfapp-navbar-link--active')}
+                    aria-current={active ? 'page' : undefined}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
+            </div>
 
+            {/* Desktop utilities */}
+            <div className='jfapp-navbar-actions'>
               {search ? <div className='jfapp-nav-search'>{search}</div> : null}
-
               {language ? <div className='jfapp-nav-language'>{language}</div> : null}
-
-              <ColorModeToggleButton />
-
-              <ButtonLink href='/Downloads' variant='gradient' size='sm' className='shrink-0'>
-                <Download className='size-4' />
-                Get the app
+              <ColorModeToggleButton className='jfapp-nav-icon-btn' />
+              <ButtonLink href='/Downloads' variant='gradient' size='sm' className='jfapp-nav-cta shrink-0'>
+                <Download className='size-3.5' />
+                Get app
               </ButtonLink>
             </div>
 
-            <div className='flex items-center gap-2 md:hidden'>
+            {/* Mobile utilities — keep the bar light */}
+            <div className='jfapp-navbar-mobile-actions'>
               {search ? <div className='jfapp-nav-search'>{search}</div> : null}
-              {language ? <div className='jfapp-nav-language'>{language}</div> : null}
-              <ColorModeToggleButton className='flex items-center justify-center' />
-              {!docsMode ? (
+              {docsMode ? (
+                <>
+                  {language ? <div className='jfapp-nav-language'>{language}</div> : null}
+                  <ColorModeToggleButton className='jfapp-nav-icon-btn' />
+                </>
+              ) : (
                 <Collapsible.Trigger
-                  className={cn(buttonClassName('ghost', 'sm'), 'shrink-0')}
-                  aria-label='Toggle menu'
+                  className={cn(buttonClassName('ghost', 'sm'), 'jfapp-nav-icon-btn')}
+                  aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+                  aria-expanded={menuOpen}
                 >
                   <Menu className='size-5 data-panel-open:hidden' />
                   <X className='size-5 hidden data-panel-open:block' />
                 </Collapsible.Trigger>
-              ) : null}
+              )}
             </div>
           </div>
         </div>
 
         {!docsMode ? (
-          <Collapsible.Panel className='jfapp-mobile-nav-panel md:hidden border-t border-[color:var(--theme-base-300)]'>
-            <div className='jfapp-navbar-inner py-4'>
-              <div className='flex flex-col gap-1'>
-                {navLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    className='flex items-center gap-3 rounded-lg px-3 py-3 text-[15px] font-semibold text-[color:var(--theme-base-muted)] hover:text-[color:var(--theme-base-content)] hover:bg-[color:var(--theme-base-300)] transition-colors'
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <link.icon className='size-5 shrink-0 text-[color:var(--theme-primary)]' />
-                    {link.label}
-                  </a>
-                ))}
-                <div className='pt-3 mt-2 border-t border-[color:var(--theme-base-300)]'>
-                  <ButtonLink
-                    href='/Downloads'
-                    variant='gradient'
-                    size='sm'
-                    className='w-full justify-center'
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <Download className='size-4' />
-                    Get the app
-                  </ButtonLink>
+          <Collapsible.Panel className='jfapp-mobile-nav-panel md:hidden'>
+            <div className='jfapp-navbar-inner jfapp-mobile-nav-body'>
+              <div className='jfapp-mobile-nav-links' role='navigation' aria-label='Mobile'>
+                {navLinks.map((link) => {
+                  const active = link.match(pathname);
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      className={cn('jfapp-mobile-nav-link', active && 'jfapp-mobile-nav-link--active')}
+                      aria-current={active ? 'page' : undefined}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      <link.icon className='size-4 shrink-0 opacity-70' aria-hidden />
+                      {link.label}
+                    </a>
+                  );
+                })}
+              </div>
+
+              <div className='jfapp-mobile-nav-footer'>
+                <div className='jfapp-mobile-nav-meta'>
+                  {language ? <div className='jfapp-nav-language'>{language}</div> : null}
+                  <ColorModeToggleButton className='jfapp-nav-icon-btn' />
                 </div>
+                <ButtonLink
+                  href='/Downloads'
+                  variant='gradient'
+                  size='sm'
+                  className='w-full justify-center'
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <Download className='size-3.5' />
+                  Get app
+                </ButtonLink>
               </div>
             </div>
           </Collapsible.Panel>

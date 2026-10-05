@@ -21,7 +21,7 @@ Contact the jfapp admin to request access. Once your account is created, you wil
 :::
 
 :::tip
-Your Jellyfin login is also used for [Seerr requests](/docs/jellyfin/request-titles/). Use the same username and password on [requests.jfapp.xyz](https://requests.jfapp.xyz/).
+Your Jellyfin login is also used when you [ask for a movie or show](/docs/jellyfin/request-titles/). Use the same username and password on [requests.jfapp.xyz](https://requests.jfapp.xyz/).
 :::
 
 ## First sign-in

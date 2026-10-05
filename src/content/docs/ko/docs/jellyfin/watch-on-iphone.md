@@ -61,7 +61,7 @@ sidebar:
 - **다운로드** — 일부 작품은 항목 화면에서 오프라인 다운로드를 지원합니다 (작품·계정에 따라 다름).
 - **AirPlay** — Swiftfin에서 재생을 시작한 뒤 **제어 센터**를 열고 Apple TV 또는 스피커를 선택하세요.
 
-휴대폰에서 없는 작품을 요청하려면 같은 로그인으로 [requests.jfapp.xyz](https://requests.jfapp.xyz/)의 [Seerr](/ko/docs/jellyfin/request-titles/)를 사용하거나, Jellyfin 검색에서 **요청**이 보이면 그걸로 요청하세요.
+휴대폰에서 없는 작품을 요청하려면 같은 로그인으로 [requests.jfapp.xyz](https://requests.jfapp.xyz/)를 열거나, Jellyfin 검색에서 **요청**이 보이면 그걸로 요청하세요. 자세한 내용은 [영화나 프로그램 요청](/ko/docs/jellyfin/request-titles/)을 참고하세요.
 
 ## 문제가 생겼나요?
 

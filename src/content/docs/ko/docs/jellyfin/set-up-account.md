@@ -21,7 +21,7 @@ jfapp 관리자에게 접근을 요청하세요. 계정이 생성되면 설정�
 :::
 
 :::tip
-Jellyfin 로그인은 [Seerr 요청](/ko/docs/jellyfin/request-titles/)에도 동일하게 사용됩니다. [requests.jfapp.xyz](https://requests.jfapp.xyz/)에서도 같은 사용자 이름과 비밀번호를 사용하세요.
+Jellyfin 로그인은 [영화나 프로그램 요청](/ko/docs/jellyfin/request-titles/)에도 동일하게 사용됩니다. [requests.jfapp.xyz](https://requests.jfapp.xyz/)에서도 같은 사용자 이름과 비밀번호를 사용하세요.
 :::
 
 ## 첫 로그인

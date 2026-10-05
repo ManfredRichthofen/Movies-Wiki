@@ -1,26 +1,26 @@
 ---
 title: Fix YouTube playback issues
-description: Fix buffering, 1:00 stop, and missing video quality on YouTube and YouTube Music.
+description: What to try when video buffers, stops at 1:00, or quality options are missing.
 sidebar:
   label: Playback issues
   order: 5
 ---
 
-If playback **buffers**, **stops around the 1:00 mark**, or some **video qualities are missing**, try the two solutions below in order. These steps apply to both **YouTube** and **YouTube Music**.
+If a video **buffers a lot**, **stops around the 1:00 mark**, or some **quality options are missing**, work through the fixes below in order. These steps apply to both **YouTube** and **YouTube Music**.
 
-:::tip[First step]
-Download the latest **YouTube** / **YouTube Music** builds from the [Apps page](/Apps/). Older APKs often break when Google changes playback.
-:::
+## First — update the apps
 
-## Solution 1 — Spoof video streams
+Download the latest **YouTube** / **YouTube Music** builds from the [Apps page](/Apps/) and install them over the old versions. Older apps often break when Google changes how playback works.
 
-Use this first. It does not require PotHelper.
+## Fix 1 — Change the playback mode (easiest)
+
+This usually fixes the problem and does **not** need PotHelper.
 
 1. Open **YouTube** (or **YouTube Music**)
 2. Go to **Settings → Morphe → Miscellaneous → Spoof video streams → Default client**
-3. Change the client and play a video again
+3. Pick a different option, then play a video again
 
-For **YouTube Music**, try one of these clients:
+For **YouTube Music**, these options often work well:
 
 - **Android Music Reel**
 - **TV**
@@ -28,51 +28,47 @@ For **YouTube Music**, try one of these clients:
 
 ### Extra checks
 
-| Setting | What to try |
+| What to try | How |
 | --- | --- |
-| Background playback | Some users need **Disable background playback restrictions** turned **off** under Morphe → Miscellaneous |
-| Network | Try a VPN to a different country (try several) |
-| Account | Sign in with a different YouTube / Google account |
+| Background play | Under Morphe → Miscellaneous, try turning **Disable background playback restrictions** **off** |
+| Network | Try a different Wi‑Fi network, or a VPN in another country |
+| Account | Sign in with a different Google account |
 
-## Solution 2 — PoToken with PotHelper
+## Fix 2 — Install PotHelper
 
-Use this when Solution 1 does not fix playback. PoToken needs an extra helper app and does **not** work for every account or region.
+Use this when Fix 1 does not help. You install a small helper app, then turn on **PoToken provider** in settings. This does **not** work for every account or region.
 
 :::warning[Important]
-PoToken does not work for all users. Keep Solution 1 available as a fallback.
+If PotHelper does not help, go back to Fix 1 and try another playback mode.
 :::
 
 ### 1. Install PotHelper
 
 1. Download **PotHelper** from the [Apps page](/Apps/)
-2. Install the APK (allow unknown apps if Android asks)
+2. Install the app file (allow unknown apps if Android asks)
 3. Leave PotHelper installed — YouTube uses it in the background
 
-Latest releases are published at [MorpheApp/PotHelper](https://github.com/MorpheApp/PotHelper/releases/latest).
-
-### 2. Use a build that supports PoToken
-
-Make sure you have a recent YouTube / YouTube Music APK from the [Apps page](/Apps/) that includes the PoToken provider option.
-
-If you patch yourself with Morphe Manager instead:
-
-1. Turn on **pre-release** for the Morphe patch source (lower-left switch in Manager)
-2. Repatch YouTube / YouTube Music with the latest patches
-
-### 3. Enable PoToken in the app
+### 2. Turn it on in YouTube
 
 1. Open **YouTube** (or **YouTube Music**)
 2. Go to **Settings → Morphe → Miscellaneous → Spoof video streams** and set it to **Disabled**
-3. Go to **Settings → Morphe → Miscellaneous → PoToken provider** and turn it **On** / **Enable**
-4. Restart the app when prompted
-5. Play a video to confirm playback works past 1:00
+3. Go to **Settings → Morphe → Miscellaneous → PoToken provider** and turn it **On**
+4. Restart the app when asked
+5. Play a video and check that it continues past 1:00
 
 ## Still stuck?
 
-1. Confirm patch / build age under **Settings → Morphe → About**
-2. Reinstall **MicroG**, then YouTube / YouTube Music, from the [Apps page](/Apps/)
-3. Retry Solution 1 with a different spoof client
-4. Retry Solution 2 with a fresh PotHelper install
+1. Reinstall **MicroG**, then YouTube / YouTube Music, from the [Apps page](/Apps/)
+2. Retry Fix 1 with a different playback mode
+3. Retry Fix 2 with a fresh PotHelper install
+4. Confirm you are on a recent build under **Settings → Morphe → About**
+
+### Advanced
+
+If you build the apps yourself with Morphe Manager:
+
+1. Turn on **pre-release** for the Morphe patch source (lower-left switch in Manager)
+2. Repatch YouTube / YouTube Music with the latest patches
 
 Upstream discussion: [morphe-patches#327](https://github.com/MorpheApp/morphe-patches/issues/327).
 

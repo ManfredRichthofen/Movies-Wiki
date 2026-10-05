@@ -7,25 +7,45 @@ sidebar:
 
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
-Everything you need to stream on jfapp and install ad-free YouTube apps.
+What do you want to do?
 
 <CardGrid>
   <LinkCard
-    title="Jellyfin"
+    title="I want to watch movies"
     href="/docs/jellyfin/"
-    description="Get an account, install a client, and request movies & TV shows."
+    description="Get an account, pick a device, and start streaming."
   />
   <LinkCard
-    title="YouTube apps"
+    title="I want ad-free YouTube"
     href="/docs/youtube-apps/"
-    description="Install ad-free YouTube and YouTube Music on Android with MicroG."
+    description="Install the helper and YouTube apps on Android."
+  />
+  <LinkCard
+    title="Ask for a missing title"
+    href="/docs/jellyfin/request-titles/"
+    description="Search, tap Request, and watch when it’s ready."
+  />
+</CardGrid>
+
+### Something isn’t working
+
+<CardGrid>
+  <LinkCard
+    title="Jellyfin troubleshooting"
+    href="/docs/jellyfin/troubleshooting/"
+    description="Buffering, globe icon, login, and connection fixes."
+  />
+  <LinkCard
+    title="YouTube playback issues"
+    href="/docs/youtube-apps/playback-issues/"
+    description="Video buffers, stops at 1:00, or missing quality."
   />
 </CardGrid>
 
 ## Quick links
 
 - [Set up your account](/docs/jellyfin/set-up-account/) — Accept your invite and sign in
-- [Watch on iPhone](/docs/jellyfin/watch-on-iphone/) — Install Swiftfin and connect to jfapp
-- [Request movies & shows](/docs/jellyfin/request-titles/) — How Seerr works with Jellyfin
-- [Install YouTube on Android](/docs/youtube-apps/install-on-android/) — YouTube, YouTube Music & MicroG
-- [Request site](https://requests.jfapp.xyz/) — Search and request titles
+- [Watch on any device](/docs/jellyfin/watch-anywhere/) — Phone, TV, and computer
+- [Watch on iPhone](/docs/jellyfin/watch-on-iphone/) — Install Swiftfin and connect
+- [Install YouTube on Android](/docs/youtube-apps/install-on-android/) — Helper first, then the apps
+- [Request site](https://requests.jfapp.xyz/) — Search and ask for titles

@@ -61,7 +61,7 @@ After you are signed in:
 - **Downloads** — Some titles support offline download from the item screen (availability depends on the title and your account).
 - **AirPlay** — Start playing in Swiftfin, open **Control Center**, then choose your Apple TV or speaker.
 
-To request missing titles from your phone, use [Seerr](/docs/jellyfin/request-titles/) at [requests.jfapp.xyz](https://requests.jfapp.xyz/) with the same login, or request from search inside Jellyfin when the **Request** option appears.
+To ask for a missing title from your phone, open [requests.jfapp.xyz](https://requests.jfapp.xyz/) with the same login, or tap **Request** in Jellyfin search when it appears. See [Ask for a movie or show](/docs/jellyfin/request-titles/).
 
 ## Something went wrong?
 

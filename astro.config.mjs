@@ -43,12 +43,36 @@ export default defineConfig({
         {
           label: 'Jellyfin',
           translations: { ko: 'Jellyfin' },
-          items: [{ autogenerate: { directory: 'docs/jellyfin' } }],
+          items: [
+            { slug: 'docs/jellyfin' },
+            { slug: 'docs/jellyfin/set-up-account' },
+            { slug: 'docs/jellyfin/watch-on-iphone' },
+            { slug: 'docs/jellyfin/watch-anywhere' },
+            { slug: 'docs/jellyfin/request-titles' },
+            {
+              label: 'Fix problems',
+              translations: { ko: '문제 해결' },
+              items: [
+                { slug: 'docs/jellyfin/troubleshooting' },
+                { slug: 'docs/jellyfin/remote-stream' },
+              ],
+            },
+          ],
         },
         {
           label: 'YouTube apps',
           translations: { ko: 'YouTube 앱' },
-          items: [{ autogenerate: { directory: 'docs/youtube-apps' } }],
+          items: [
+            { slug: 'docs/youtube-apps' },
+            { slug: 'docs/youtube-apps/install-on-android' },
+            { slug: 'docs/youtube-apps/youtube' },
+            { slug: 'docs/youtube-apps/youtube-music' },
+            {
+              label: 'Fix problems',
+              translations: { ko: '문제 해결' },
+              items: [{ slug: 'docs/youtube-apps/playback-issues' }],
+            },
+          ],
         },
       ],
       customCss: ['./src/styles/global.css'],

@@ -8,7 +8,7 @@ const baseStyles =
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: 'bg-primary text-white hover:brightness-110',
-  gradient: 'gradient-btn hover:-translate-y-px',
+  gradient: 'gradient-btn',
   ghost: 'bg-transparent hover:bg-white/5 text-base-content',
   'ghost-glass': 'bg-white/4 border border-white/13 text-[#ede9f5] hover:bg-white/8',
   outline: 'border border-white/13 bg-transparent hover:bg-white/5 text-base-content',

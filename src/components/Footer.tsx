@@ -6,14 +6,14 @@ const footerLinks = {
   product: [
     { label: 'Home', href: '/' },
     { label: 'Jellyfin', href: '/Downloads' },
+    { label: 'YouTube apps', href: '/Apps' },
     { label: 'Request movies', href: 'https://requests.jfapp.xyz/' },
-    { label: 'Apps', href: '/Apps' },
     { label: 'Documentation', href: '/docs' },
   ],
   services: [
-    { label: 'Jellyfin', href: 'https://jellyfin.org' },
-    { label: 'Install guide', href: '/docs/youtube-apps/install-on-android/' },
-    { label: 'Apps', href: '/Apps' },
+    { label: 'Jellyfin.org', href: 'https://jellyfin.org' },
+    { label: 'YouTube install guide', href: '/docs/youtube-apps/install-on-android/' },
+    { label: 'Jellyfin guides', href: '/docs/jellyfin/' },
     { label: 'Profile', href: '/dot.mobileconfig' },
   ],
   community: [
@@ -30,7 +30,7 @@ export default function Footer() {
       <div className='max-w-[1240px] mx-auto px-6 py-14'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10'>
           <div>
-            <h3 className='font-heading text-lg font-bold text-[#f2eff7] mb-3'>jfapp</h3>
+            <h3 className='font-heading text-lg font-bold text-[#f2eff7] mb-3'>JFapp</h3>
             <p className='text-sm text-base-muted leading-relaxed mb-5'>
               Free media, on request. Stream movies, ad-free YouTube, and more — no subscriptions.
             </p>
@@ -99,7 +99,7 @@ export default function Footer() {
         <Separator className='bg-white/7 mb-6' />
 
         <div className='flex flex-col md:flex-row justify-between items-center gap-3'>
-          <p className='text-sm text-[#6f6982]'>© {currentYear} jfapp.xyz — free streaming for the community.</p>
+          <p className='text-sm text-[#6f6982]'>© {currentYear} jfapp.xyz</p>
           <p className='text-sm text-[#6f6982] flex items-center gap-1.5'>
             Made with <Heart className='size-3.5 text-primary fill-primary' /> for the community
           </p>
