@@ -42,13 +42,13 @@ Full walkthrough: [Watch on iPhone](/docs/jellyfin/watch-on-iphone/).
 
 ### Android TV & Google TV
 
-1. Install Jellyfin from the [Play Store](https://play.google.com/store/apps/details?id=org.jellyfin.androidtv) (or the app linked on the [Downloads](/Downloads/) page).
+1. Install **[Wholphin](https://play.google.com/store/apps/details?id=com.github.damontecres.wholphin)** from the Play Store (recommended). If you prefer, the [official Jellyfin TV app](https://play.google.com/store/apps/details?id=org.jellyfin.androidtv) works as a backup.
 2. Open the app → **Add Server** → enter `jfapp.xyz`.
 3. Sign in and start watching.
 
 ### Fire TV
 
-1. Install Jellyfin from the [Amazon Appstore](https://www.amazon.com/Jellyfin-for-Fire-TV/dp/B07TX7Z725).
+1. Install **[Wholphin](https://www.amazon.com/gp/product/B0G8RQQR9T/ref=mas_pm_wholphin)** from the Amazon Appstore (recommended). Backup: [official Jellyfin for Fire TV](https://www.amazon.com/Jellyfin-for-Fire-TV/dp/B07TX7Z725).
 2. **Add Server** → `jfapp.xyz` → sign in.
 
 **If it breaks**

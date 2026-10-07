@@ -42,13 +42,13 @@ sidebar:
 
 ### Android TV & Google TV
 
-1. [Play Store](https://play.google.com/store/apps/details?id=org.jellyfin.androidtv)에서 Jellyfin을 설치합니다 ([다운로드](/Downloads/) 페이지의 링크도 가능).
+1. Play Store에서 **[Wholphin](https://play.google.com/store/apps/details?id=com.github.damontecres.wholphin)**을 설치합니다 (권장). 대안으로 [공식 Jellyfin TV 앱](https://play.google.com/store/apps/details?id=org.jellyfin.androidtv)도 사용할 수 있습니다.
 2. 앱 실행 → **서버 추가** → `jfapp.xyz` 입력.
 3. 로그인 후 시청을 시작하세요.
 
 ### Fire TV
 
-1. [Amazon Appstore](https://www.amazon.com/Jellyfin-for-Fire-TV/dp/B07TX7Z725)에서 Jellyfin을 설치합니다.
+1. Amazon Appstore에서 **[Wholphin](https://www.amazon.com/gp/product/B0G8RQQR9T/ref=mas_pm_wholphin)**을 설치합니다 (권장). 대안: [공식 Jellyfin for Fire TV](https://www.amazon.com/Jellyfin-for-Fire-TV/dp/B07TX7Z725).
 2. **서버 추가** → `jfapp.xyz` → 로그인.
 
 **문제가 생기면**

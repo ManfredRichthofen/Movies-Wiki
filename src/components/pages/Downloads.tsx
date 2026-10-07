@@ -69,25 +69,29 @@ const platforms: Platform[] = [
   },
   {
     name: 'Android TV',
-    description: 'Big-screen app for Android TV and Google TV.',
+    description: 'Wholphin — recommended for Android TV and Google TV.',
     icon: Tv,
     category: 'tv',
     download: {
-      label: 'Get on Google Play',
+      label: 'Get Wholphin on Google Play',
       url: 'https://play.google.com/store/apps/details?id=com.github.damontecres.wholphin',
     },
     secondary: {
-      label: 'Official Jellyfin TV app',
+      label: 'Official Jellyfin TV app (backup)',
       url: 'https://play.google.com/store/apps/details?id=org.jellyfin.androidtv',
     },
   },
   {
     name: 'Fire TV',
-    description: 'Fire TV sticks, cubes, and smart TVs.',
+    description: 'Wholphin — recommended for Fire TV sticks, cubes, and smart TVs.',
     icon: Flame,
     category: 'tv',
     download: {
-      label: 'Get on Amazon',
+      label: 'Get Wholphin on Amazon',
+      url: 'https://www.amazon.com/gp/product/B0G8RQQR9T/ref=mas_pm_wholphin',
+    },
+    secondary: {
+      label: 'Official Jellyfin Fire TV app (backup)',
       url: 'https://www.amazon.com/Jellyfin-for-Fire-TV/dp/B07TX7Z725',
     },
   },
