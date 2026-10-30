@@ -35,7 +35,7 @@
   "engines": {
     "node": ">=24.21.0"
   },
-  "packageManager": "npm@11.6.2",
+  "packageManager": "npm@11.21.1",
   "supportedArchitectures": {
     "os": ["win32", "darwin", "linux"],
     "cpu": ["x64", "arm64"],
