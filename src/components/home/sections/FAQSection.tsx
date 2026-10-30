@@ -21,14 +21,14 @@ export function FAQSection() {
   return (
     <section className='px-6 pb-24'>
       <div className='max-w-[820px] mx-auto'>
-        <h2 className='font-heading font-extrabold text-[clamp(1.5rem,3vw,2.125rem)] leading-tight tracking-tight text-[#e6e2f0] mb-7 text-center'>
+        <h2 className='font-heading font-extrabold text-[clamp(1.5rem,3vw,2.125rem)] leading-tight tracking-tight text-base-content mb-7 text-center'>
           Good to know
         </h2>
-        <div className='flex flex-col gap-px rounded-2xl overflow-hidden border border-white/8'>
+        <div className='flex flex-col gap-px rounded-2xl overflow-hidden border border-base-content/8'>
           {faqs.map((faq) => (
             <div key={faq.q} className='p-6 bg-base-200'>
-              <div className='font-heading font-bold text-[15.5px] text-[#e6e2f0] mb-1.5'>{faq.q}</div>
-              <div className='text-sm leading-relaxed text-[#9b96a9]'>{faq.a}</div>
+              <div className='font-heading font-bold text-[15.5px] text-base-content mb-1.5'>{faq.q}</div>
+              <div className='text-sm leading-relaxed text-base-muted'>{faq.a}</div>
             </div>
           ))}
         </div>

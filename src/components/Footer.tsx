@@ -26,11 +26,11 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className='bg-base-100 border-t border-white/7'>
+    <footer className='bg-base-100 border-t border-base-content/7'>
       <div className='max-w-[1240px] mx-auto px-6 py-14'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10'>
           <div>
-            <h3 className='font-heading text-lg font-bold text-[#f2eff7] mb-3'>JFapp</h3>
+            <h3 className='font-heading text-lg font-bold text-base-content mb-3'>JFapp</h3>
             <p className='text-sm text-base-muted leading-relaxed mb-5'>
               Free media, on request. Stream movies, ad-free YouTube, and more — no subscriptions.
             </p>
@@ -41,7 +41,7 @@ export default function Footer() {
                   href={link.href}
                   target={link.href.startsWith('http') ? '_blank' : undefined}
                   rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className='flex size-10 items-center justify-center rounded-lg border border-white/8 text-[#8e889e] hover:text-primary hover:border-primary/30 transition-colors'
+                  className='flex size-10 items-center justify-center rounded-lg border border-base-content/8 text-base-muted hover:text-primary hover:border-primary/30 transition-colors'
                   aria-label={link.label}
                 >
                   <link.icon className='size-4' />
@@ -51,7 +51,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className='text-sm font-bold text-[#ede9f5] mb-4'>Product</h4>
+            <h4 className='text-sm font-bold text-base-content mb-4'>Product</h4>
             <ul className='space-y-2.5'>
               {footerLinks.product.map((link) => (
                 <li key={link.label}>
@@ -59,7 +59,7 @@ export default function Footer() {
                     href={link.href}
                     target={link.href.startsWith('http') ? '_blank' : undefined}
                     rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className='text-sm text-[#8e889e] hover:text-primary transition-colors'
+                    className='inline-block py-1 text-sm text-base-muted hover:text-base-content transition-colors'
                   >
                     {link.label}
                   </a>
@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className='text-sm font-bold text-[#ede9f5] mb-4'>Services</h4>
+            <h4 className='text-sm font-bold text-base-content mb-4'>Services</h4>
             <ul className='space-y-2.5'>
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
@@ -77,7 +77,7 @@ export default function Footer() {
                     href={link.href}
                     target={link.href.startsWith('http') ? '_blank' : undefined}
                     rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className='text-sm text-[#8e889e] hover:text-primary transition-colors'
+                    className='inline-block py-1 text-sm text-base-muted hover:text-base-content transition-colors'
                   >
                     {link.label}
                   </a>
@@ -87,7 +87,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className='text-sm font-bold text-[#ede9f5] mb-4'>Stay updated</h4>
+            <h4 className='text-sm font-bold text-base-content mb-4'>Stay updated</h4>
             <p className='text-sm text-base-muted mb-4 leading-relaxed'>Get the latest on new apps and features.</p>
             <ButtonLink href='/docs' variant='gradient' size='sm'>
               <BookOpen className='size-4' />
@@ -96,11 +96,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <Separator className='bg-white/7 mb-6' />
+        <Separator className='bg-base-content/7 mb-6' />
 
         <div className='flex flex-col md:flex-row justify-between items-center gap-3'>
-          <p className='text-sm text-[#6f6982]'>© {currentYear} jfapp.xyz</p>
-          <p className='text-sm text-[#6f6982] flex items-center gap-1.5'>
+          <p className='text-sm text-base-muted'>© {currentYear} jfapp.xyz</p>
+          <p className='text-sm text-base-muted flex items-center gap-1.5'>
             Made with <Heart className='size-3.5 text-primary fill-primary' /> for the community
           </p>
         </div>

@@ -5,7 +5,7 @@ export function CTASection() {
   return (
     <section className='py-16 px-6 pb-24'>
       <div className='cta-card relative max-w-[1000px] mx-auto px-8 py-16 text-center overflow-hidden'>
-        <h2 className='font-heading font-extrabold text-[clamp(1.875rem,4.5vw,3.125rem)] leading-tight tracking-tight text-[#f6f3fb] mb-4'>
+        <h2 className='font-heading font-extrabold text-[clamp(1.875rem,4.5vw,3.125rem)] leading-tight tracking-tight text-base-content mb-4'>
           Stuck on anything?
         </h2>
         <p className='text-lg text-base-muted max-w-[520px] mx-auto mb-8'>

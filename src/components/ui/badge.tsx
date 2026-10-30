@@ -12,7 +12,7 @@ export function Badge({ variant = 'pill', dot = false, className, children, ...p
       <span
         className={cn(
           'inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold',
-          'bg-primary/12 border border-primary/28 text-[#e4d9f5]',
+          'bg-primary/12 border border-primary/28 text-base-content',
           className,
         )}
         {...props}
@@ -42,7 +42,7 @@ export function Badge({ variant = 'pill', dot = false, className, children, ...p
     <span
       className={cn(
         'inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold',
-        'bg-white/3 border border-white/8 text-[#c7c1d6]',
+        'bg-base-content/3 border border-base-content/8 text-base-muted',
         className,
       )}
       {...props}

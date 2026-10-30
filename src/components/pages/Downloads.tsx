@@ -13,9 +13,7 @@ import {
 } from 'lucide-react';
 import type React from 'react';
 import { useState } from 'react';
-import { Badge } from '@/components/ui/badge';
 import { ButtonLink } from '@/components/ui/button-link';
-import { SectionLabel } from '@/components/ui/section-label';
 
 type PlatformCategory = 'all' | 'web' | 'mobile' | 'tv' | 'desktop';
 
@@ -162,13 +160,13 @@ function ServerAddress() {
   }
 
   return (
-    <div className='flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 rounded-2xl border border-white/10 bg-base-200 px-4 py-4 sm:px-5'>
+    <div className='flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 rounded-2xl border border-base-content/10 bg-base-200 px-4 py-4 sm:px-5'>
       <div className='min-w-0 flex-1'>
         <p className='text-[11px] font-bold uppercase tracking-[0.14em] text-base-muted mb-1'>Server address</p>
-        <p className='font-mono-label text-lg sm:text-xl font-semibold text-[#f2eff7] tracking-tight'>
+        <p className='font-mono-label text-lg sm:text-xl font-semibold text-base-content tracking-tight'>
           {SERVER_ADDRESS}
         </p>
-        <p className='text-[13px] text-[#9d97ad] mt-1 leading-snug'>
+        <p className='text-[13px] text-base-muted mt-1 leading-snug'>
           Type this exactly — no https:// and no trailing slash.
         </p>
       </div>
@@ -186,16 +184,16 @@ function ServerAddress() {
 
 function PlatformCard({ platform }: { platform: Platform }) {
   return (
-    <article className='flex flex-col rounded-2xl border border-white/8 bg-base-200 p-5 transition-colors hover:border-white/16'>
+    <article className='flex flex-col rounded-2xl border border-base-content/8 bg-base-200 p-5 transition-colors hover:border-base-content/16'>
       <div className='flex gap-3.5 items-start mb-4'>
-        <span className='flex size-11 shrink-0 items-center justify-center rounded-xl bg-white/5 text-[#c7c1d6]'>
+        <span className='flex size-11 shrink-0 items-center justify-center rounded-xl bg-base-content/5 text-base-muted'>
           <platform.icon className='size-5' strokeWidth={1.5} />
         </span>
         <div className='min-w-0'>
-          <h3 className='font-heading font-bold text-[15.5px] text-[#f2eff7] leading-snug'>{platform.name}</h3>
-          <p className='text-[13px] text-[#9d97ad] leading-snug mt-0.5'>{platform.description}</p>
+          <h3 className='font-heading font-bold text-[15.5px] text-base-content leading-snug'>{platform.name}</h3>
+          <p className='text-[13px] text-base-muted leading-snug mt-0.5'>{platform.description}</p>
           {platform.tip ? (
-            <p className='text-[12px] text-[#8e889e] font-medium leading-snug mt-1.5'>{platform.tip}</p>
+            <p className='text-[12px] text-base-muted font-medium leading-snug mt-1.5'>{platform.tip}</p>
           ) : null}
         </div>
       </div>
@@ -205,7 +203,7 @@ function PlatformCard({ platform }: { platform: Platform }) {
           href={platform.download.url}
           target='_blank'
           rel='noopener noreferrer'
-          className='inline-flex items-center justify-center gap-2 rounded-xl border border-white/12 bg-white/6 px-3.5 py-2.5 text-sm font-bold text-[#f2eff7] transition-colors hover:border-white/20 hover:bg-white/10'
+          className='inline-flex items-center justify-center gap-2 rounded-xl border border-base-content/12 bg-base-content/6 px-3.5 py-2.5 text-sm font-bold text-base-content transition-colors hover:border-base-content/20 hover:bg-base-content/10'
         >
           {platform.download.label}
           <ArrowRight className='size-3.5 shrink-0' />
@@ -215,7 +213,7 @@ function PlatformCard({ platform }: { platform: Platform }) {
             href={platform.secondary.url}
             target='_blank'
             rel='noopener noreferrer'
-            className='inline-flex items-center justify-center gap-1.5 px-2 py-1.5 text-[13px] font-semibold text-[#9d97ad] transition-colors hover:text-[#f2eff7]'
+            className='inline-flex items-center justify-center gap-1.5 min-h-11 px-2 text-[13px] font-semibold text-base-muted transition-colors hover:text-base-content'
           >
             {platform.secondary.label}
             <ArrowRight className='size-3 shrink-0' />
@@ -236,17 +234,13 @@ export default function DownloadPage(): React.JSX.Element {
     <>
       <section className='relative overflow-hidden pt-28 pb-10 px-6 text-center'>
         <div className='relative max-w-[760px] mx-auto flex flex-col items-center'>
-          <Badge variant='tag' className='mb-6'>
-            <Clapperboard className='size-3.5' />
-            Jellyfin apps
-          </Badge>
-          <h1 className='font-heading font-extrabold text-[clamp(2.375rem,6vw,4.25rem)] leading-[1.04] tracking-tight text-[#f6f3fb] mb-5'>
+          <h1 className='font-heading font-extrabold text-[clamp(2.375rem,6vw,4.25rem)] leading-[1.04] tracking-tight text-base-content mb-5'>
             Watch on
             <br />
             your device
           </h1>
           <p className='text-base md:text-lg text-base-muted max-w-[540px] leading-relaxed mb-8'>
-            Install a player, connect to <span className='font-semibold text-[#d9d3e8]'>{SERVER_ADDRESS}</span>, and
+            Install a player, connect to <span className='font-semibold text-base-content'>{SERVER_ADDRESS}</span>, and
             stream everything you&apos;ve requested — phone, TV, or laptop.
           </p>
           <div className='flex flex-wrap justify-center gap-3'>
@@ -267,14 +261,14 @@ export default function DownloadPage(): React.JSX.Element {
             {setupSteps.map((step, index) => (
               <div
                 key={step.title}
-                className='flex sm:flex-col gap-3 sm:gap-0 items-start rounded-2xl border border-white/8 bg-base-200 px-4 py-4 sm:p-5'
+                className='flex sm:flex-col gap-3 sm:gap-0 items-start rounded-2xl border border-base-content/8 bg-base-200 px-4 py-4 sm:p-5'
               >
-                <span className='flex size-8 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/5 font-heading font-bold text-sm text-base-muted sm:mb-3'>
+                <span className='flex size-8 shrink-0 items-center justify-center rounded-full border border-base-content/12 bg-base-content/5 font-heading font-bold text-sm text-base-muted sm:mb-3'>
                   {index + 1}
                 </span>
                 <div>
-                  <h2 className='font-heading font-bold text-[15px] text-[#f2eff7] mb-0.5'>{step.title}</h2>
-                  <p className='text-[13px] text-[#9d97ad] leading-snug'>{step.description}</p>
+                  <h2 className='font-heading font-bold text-[15px] text-base-content mb-0.5'>{step.title}</h2>
+                  <p className='text-[13px] text-base-muted leading-snug'>{step.description}</p>
                 </div>
               </div>
             ))}
@@ -286,18 +280,17 @@ export default function DownloadPage(): React.JSX.Element {
       <section id='devices' className='py-6 px-6 pb-12 scroll-mt-24'>
         <div className='max-w-[1080px] mx-auto'>
           <div className='text-center mb-7'>
-            <SectionLabel className='text-base-muted'>Downloads</SectionLabel>
-            <h2 className='font-heading font-extrabold text-[clamp(1.625rem,3.6vw,2.5rem)] leading-tight tracking-tight text-[#f4f1fa] mb-2'>
+            <h2 className='font-heading font-extrabold text-[clamp(1.625rem,3.6vw,2.5rem)] leading-tight tracking-tight text-base-content mb-2'>
               Choose your device
             </h2>
-            <p className='text-[15px] text-[#9d97ad] max-w-[480px] mx-auto'>
+            <p className='text-[15px] text-base-muted max-w-[480px] mx-auto'>
               Tap a category, download the app, then add the server address above.
             </p>
           </div>
 
           <div className='sticky top-[calc(var(--jfapp-nav-height)+0.5rem)] z-20 -mx-1 mb-6 px-1 py-1'>
             <div
-              role='tablist'
+              role='group'
               aria-label='Device category'
               className='flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
             >
@@ -307,16 +300,15 @@ export default function DownloadPage(): React.JSX.Element {
                   <button
                     key={category.id}
                     type='button'
-                    role='tab'
-                    aria-selected={selected}
+                    aria-pressed={selected}
                     onClick={() => setActiveCategory(category.id)}
                     className={`inline-flex shrink-0 items-center gap-2 rounded-xl border px-3.5 py-2.5 text-[13.5px] font-semibold transition-colors ${
                       selected
-                        ? 'border-white/20 bg-white/10 text-[#f2eff7]'
-                        : 'border-white/10 bg-base-100/90 text-[#c7c1d6] hover:border-white/16 hover:text-white backdrop-blur-md'
+                        ? 'border-base-content/20 bg-base-content/10 text-base-content'
+                        : 'border-base-content/10 bg-base-100/90 text-base-muted hover:border-base-content/16 hover:text-base-content backdrop-blur-md'
                     }`}
                   >
-                    <category.icon className={`size-4 ${selected ? 'text-[#c7c1d6]' : 'text-[#8e889e]'}`} />
+                    <category.icon className={`size-4 ${selected ? 'text-base-muted' : 'text-base-muted'}`} />
                     {category.name}
                   </button>
                 );
@@ -330,16 +322,16 @@ export default function DownloadPage(): React.JSX.Element {
             ))}
           </div>
 
-          <p className='mt-6 text-center text-sm text-[#8e889e]'>
+          <p className='mt-6 text-center text-sm text-base-muted'>
             After install, open the app → Add server → enter{' '}
-            <span className='font-mono-label text-[#c7c1d6]'>{SERVER_ADDRESS}</span>
+            <span className='font-mono-label text-base-muted'>{SERVER_ADDRESS}</span>
           </p>
         </div>
       </section>
 
       <section className='py-8 px-6 pb-24'>
         <div className='cta-card relative max-w-[1000px] mx-auto px-6 sm:px-8 py-12 sm:py-14 text-center overflow-hidden'>
-          <h2 className='font-heading font-extrabold text-[clamp(1.625rem,4vw,2.5rem)] leading-tight tracking-tight text-[#f6f3fb] mb-3.5'>
+          <h2 className='font-heading font-extrabold text-[clamp(1.625rem,4vw,2.5rem)] leading-tight tracking-tight text-base-content mb-3.5'>
             Stuck on setup?
           </h2>
           <p className='text-base md:text-lg text-base-muted max-w-[480px] mx-auto mb-7'>

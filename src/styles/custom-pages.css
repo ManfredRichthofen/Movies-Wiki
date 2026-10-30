@@ -29,8 +29,18 @@
 
 html {
   font-family: var(--font-sans);
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--theme-primary);
+  outline-offset: 2px;
 }
 
 .font-mono-label {
@@ -38,16 +48,9 @@ html {
 }
 
 /* jfapp utilities */
-.gradient-text {
-  background: var(--theme-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 .surface-card {
   background: var(--theme-base-200);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--theme-base-300);
   border-radius: 1.125rem;
   transition: border-color 0.2s ease;
 }
@@ -58,11 +61,11 @@ html {
 
 .cta-card {
   background: var(--theme-base-200);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--theme-base-300);
   border-radius: 1.5rem;
 }
 
 ::selection {
-  background: rgba(168, 85, 247, 0.35);
-  color: #fff;
+  background: color-mix(in srgb, var(--theme-primary) 35%, transparent);
+  color: var(--theme-base-content);
 }

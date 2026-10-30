@@ -24,10 +24,7 @@ export function RequestShowcase() {
     <section className='py-20 px-6'>
       <div className='max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center'>
         <div>
-          <span className='inline-block font-mono-label text-xs uppercase tracking-[0.16em] text-primary mb-4 px-3 py-1 rounded-lg bg-primary/12 border border-primary/24'>
-            Requests
-          </span>
-          <h2 className='font-heading font-extrabold text-[clamp(1.75rem,3.6vw,2.625rem)] leading-tight tracking-tight text-[#f4f1fa] mb-5'>
+          <h2 className='font-heading font-extrabold text-[clamp(1.75rem,3.6vw,2.625rem)] leading-tight tracking-tight text-base-content mb-5'>
             If it isn&apos;t there,
             <br />
             just ask for it.
@@ -43,8 +40,8 @@ export function RequestShowcase() {
                   <point.icon className='size-4' />
                 </span>
                 <div>
-                  <div className='font-bold text-[#ede9f5] text-sm mb-0.5'>{point.title}</div>
-                  <div className='text-sm text-[#9d97ad]'>{point.description}</div>
+                  <div className='font-bold text-base-content text-sm mb-0.5'>{point.title}</div>
+                  <div className='text-sm text-base-muted'>{point.description}</div>
                 </div>
               </div>
             ))}
@@ -60,8 +57,8 @@ export function RequestShowcase() {
             Request a movie
           </ButtonLink>
         </div>
-        <div className='relative aspect-[4/3] rounded-2xl border border-white/12 overflow-hidden flex items-center justify-center bg-[repeating-linear-gradient(135deg,rgba(255,255,255,0.03)_0_2px,transparent_2px_10px)] bg-base-200'>
-          <span className='font-mono-label text-xs uppercase tracking-[0.08em] text-[#726d84]'>
+        <div className='relative aspect-[4/3] rounded-2xl border border-base-content/12 overflow-hidden flex items-center justify-center bg-[repeating-linear-gradient(135deg,rgba(255,255,255,0.03)_0_2px,transparent_2px_10px)] bg-base-200'>
+          <span className='font-mono-label text-xs uppercase tracking-[0.08em] text-base-muted'>
             Screenshot — request screen
           </span>
         </div>

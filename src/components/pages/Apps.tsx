@@ -1,8 +1,6 @@
-import { ArrowRight, BookOpen, CirclePlay, Clapperboard, KeyRound, Music, Puzzle, Smartphone } from 'lucide-react';
+import { ArrowRight, BookOpen, CirclePlay, Clapperboard, KeyRound, Music, Puzzle } from 'lucide-react';
 import type React from 'react';
-import { Badge } from '@/components/ui/badge';
 import { ButtonLink } from '@/components/ui/button-link';
-import { SectionLabel } from '@/components/ui/section-label';
 import { type APKReleaseInfo, MICROG_RELEASES_PAGE, POTHELPER_RELEASES_PAGE } from '@/utils/github';
 
 type AppCard = {
@@ -78,11 +76,7 @@ export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Elem
     <>
       <section className='relative overflow-hidden pt-28 pb-10 px-6 text-center'>
         <div className='relative max-w-[760px] mx-auto flex flex-col items-center'>
-          <Badge variant='tag' className='mb-6'>
-            <Smartphone className='size-3.5' />
-            Android · no ads
-          </Badge>
-          <h1 className='font-heading font-extrabold text-[clamp(2.375rem,6vw,4.25rem)] leading-[1.04] tracking-tight text-[#f6f3fb] mb-5'>
+          <h1 className='font-heading font-extrabold text-[clamp(2.375rem,6vw,4.25rem)] leading-[1.04] tracking-tight text-base-content mb-5'>
             Ad-free YouTube
             <br />
             for Android
@@ -108,14 +102,14 @@ export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Elem
             {installSteps.map((step, index) => (
               <div
                 key={step.title}
-                className='flex sm:flex-col gap-3 sm:gap-0 items-start rounded-2xl border border-white/8 bg-base-200 px-4 py-4 sm:p-5'
+                className='flex sm:flex-col gap-3 sm:gap-0 items-start rounded-2xl border border-base-content/8 bg-base-200 px-4 py-4 sm:p-5'
               >
-                <span className='flex size-8 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/5 font-heading font-bold text-sm text-base-muted sm:mb-3'>
+                <span className='flex size-8 shrink-0 items-center justify-center rounded-full border border-base-content/12 bg-base-content/5 font-heading font-bold text-sm text-base-muted sm:mb-3'>
                   {index + 1}
                 </span>
                 <div>
-                  <h2 className='font-heading font-bold text-[15px] text-[#f2eff7] mb-0.5'>{step.title}</h2>
-                  <p className='text-[13px] text-[#9d97ad] leading-snug'>{step.description}</p>
+                  <h2 className='font-heading font-bold text-[15px] text-base-content mb-0.5'>{step.title}</h2>
+                  <p className='text-[13px] text-base-muted leading-snug'>{step.description}</p>
                 </div>
               </div>
             ))}
@@ -126,11 +120,10 @@ export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Elem
       <section id='downloads' className='py-6 px-6 pb-12 scroll-mt-24'>
         <div className='max-w-[1080px] mx-auto'>
           <div className='text-center mb-7'>
-            <SectionLabel className='text-base-muted'>Downloads</SectionLabel>
-            <h2 className='font-heading font-extrabold text-[clamp(1.625rem,3.6vw,2.5rem)] leading-tight tracking-tight text-[#f4f1fa] mb-2'>
+            <h2 className='font-heading font-extrabold text-[clamp(1.625rem,3.6vw,2.5rem)] leading-tight tracking-tight text-base-content mb-2'>
               Get the apps
             </h2>
-            <p className='text-[15px] text-[#9d97ad] max-w-[520px] mx-auto'>
+            <p className='text-[15px] text-base-muted max-w-[520px] mx-auto'>
               Android only. Start with MicroG, then install YouTube or YouTube Music.
             </p>
           </div>
@@ -138,35 +131,35 @@ export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Elem
           <div className='grid grid-cols-1 md:grid-cols-2 gap-3.5'>
             {apps.map((app) => {
               const cardClass = `group relative flex gap-4 items-start p-5 rounded-2xl border bg-base-200 transition-colors ${
-                app.url ? 'hover:border-white/16' : 'opacity-70'
-              } ${app.required ? 'border-white/14' : 'border-white/8'}`;
+                app.url ? 'hover:border-base-content/16' : 'opacity-70'
+              } ${app.required ? 'border-base-content/14' : 'border-base-content/8'}`;
 
               const content = (
                 <>
                   {app.required && (
-                    <span className='absolute top-3.5 right-3.5 text-[10px] font-bold uppercase tracking-wide text-[#c7c1d6] bg-white/8 px-2 py-0.5 rounded-md'>
+                    <span className='absolute top-3.5 right-3.5 text-[10px] font-bold uppercase tracking-wide text-base-muted bg-base-content/8 px-2 py-0.5 rounded-md'>
                       Required first
                     </span>
                   )}
                   {app.optional && (
-                    <span className='absolute top-3.5 right-3.5 text-[10px] font-bold uppercase tracking-wide text-[#8e889e] bg-white/6 px-2 py-0.5 rounded-md'>
+                    <span className='absolute top-3.5 right-3.5 text-[10px] font-bold uppercase tracking-wide text-base-muted bg-base-content/6 px-2 py-0.5 rounded-md'>
                       Only if needed
                     </span>
                   )}
-                  <span className='flex size-[46px] shrink-0 items-center justify-center rounded-xl bg-white/5 text-[#c7c1d6]'>
+                  <span className='flex size-[46px] shrink-0 items-center justify-center rounded-xl bg-base-content/5 text-base-muted'>
                     <app.icon className='size-[22px]' />
                   </span>
                   <div className='min-w-0 pr-16'>
                     <div className='flex items-center gap-2 mb-1 flex-wrap'>
-                      <h3 className='font-heading font-bold text-base text-[#f2eff7]'>{app.name}</h3>
+                      <h3 className='font-heading font-bold text-base text-base-content'>{app.name}</h3>
                       {app.version ? (
-                        <span className='text-[10px] font-semibold uppercase tracking-wide text-[#8e889e] bg-white/6 px-1.5 py-0.5 rounded'>
+                        <span className='text-[10px] font-semibold uppercase tracking-wide text-base-muted bg-base-content/6 px-1.5 py-0.5 rounded'>
                           v{app.version}
                         </span>
                       ) : null}
                     </div>
-                    <p className='text-[13.5px] text-[#9d97ad] leading-snug mb-2.5'>{app.description}</p>
-                    <span className='inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#f2eff7]'>
+                    <p className='text-[13.5px] text-base-muted leading-snug mb-2.5'>{app.description}</p>
+                    <span className='inline-flex items-center gap-1.5 text-[13px] font-semibold text-base-content'>
                       {app.url ? app.downloadLabel : 'Download unavailable'}
                       {app.url ? (
                         <ArrowRight className='size-3.5 group-hover:translate-x-0.5 transition-transform' />
@@ -199,14 +192,14 @@ export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Elem
           </div>
 
           <div className='mt-6 flex flex-col items-center gap-3'>
-            <p className='max-w-[560px] text-center text-sm leading-relaxed text-[#9d97ad] px-4'>
+            <p className='max-w-[560px] text-center text-sm leading-relaxed text-base-muted px-4'>
               Video buffering or stopping at 1:00? See the{' '}
-              <a href='/docs/youtube-apps/playback-issues' className='font-semibold text-[#d9d3e8] hover:underline'>
+              <a href='/docs/youtube-apps/playback-issues' className='font-semibold text-base-content hover:underline'>
                 playback troubleshooting guide
               </a>
               .
             </p>
-            <p className='max-w-[560px] text-center text-xs leading-relaxed text-[#8e889e] px-4'>
+            <p className='max-w-[560px] text-center text-xs leading-relaxed text-base-muted px-4'>
               These modified apps are not affiliated with, endorsed by, or connected to YouTube, YouTube Music, or
               Google. They are community-built modifications. Use at your own risk.
             </p>
@@ -216,7 +209,7 @@ export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Elem
 
       <section className='py-8 px-6 pb-24'>
         <div className='cta-card relative max-w-[1000px] mx-auto px-6 sm:px-8 py-12 sm:py-14 text-center overflow-hidden'>
-          <h2 className='font-heading font-extrabold text-[clamp(1.625rem,4vw,2.5rem)] leading-tight tracking-tight text-[#f6f3fb] mb-3.5'>
+          <h2 className='font-heading font-extrabold text-[clamp(1.625rem,4vw,2.5rem)] leading-tight tracking-tight text-base-content mb-3.5'>
             Stuck on setup?
           </h2>
           <p className='text-base md:text-lg text-base-muted max-w-[480px] mx-auto mb-7'>
