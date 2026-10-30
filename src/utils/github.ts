@@ -1,4 +1,3 @@
-export const MORPHE_RELEASES_PAGE = 'https://github.com/ManfredRichthofen/morphe-builder/releases';
 export const MICROG_RELEASES_PAGE = 'https://github.com/MorpheApp/MicroG-RE/releases';
 export const POTHELPER_RELEASES_PAGE = 'https://github.com/MorpheApp/PotHelper/releases';
 
@@ -14,6 +13,7 @@ interface GitHubAsset {
 interface GitHubRelease {
   tag_name?: string;
   body?: string;
+  published_at?: string;
   assets?: GitHubAsset[];
 }
 
@@ -39,6 +39,11 @@ const EMPTY_RELEASE_INFO: APKReleaseInfo = {
   pothelperVersion: null,
 };
 
+const GITHUB_HEADERS = {
+  Accept: 'application/vnd.github+json',
+  'User-Agent': 'jfapp-docs',
+};
+
 function parseMorpheVersions(body?: string) {
   return {
     music: body?.match(/Music:\s*v?([\d.]+)/i)?.[1] ?? null,
@@ -57,18 +62,25 @@ function normalizeTag(tag?: string): string | null {
   return normalized || null;
 }
 
-function findApk(assets: GitHubAsset[], prefix: string) {
-  return assets.find(
+/** Match release assets like youtube-morphe-v21.30.216-all.apk / music-morphe-v9.20.53-arm64-v8a.apk */
+function findMorpheApk(assets: GitHubAsset[], kind: 'youtube' | 'music'): GitHubAsset | undefined {
+  const prefix = kind === 'youtube' ? 'youtube-morphe-' : 'music-morphe-';
+  const candidates = assets.filter(
     (asset) => asset.name.startsWith(prefix) && asset.name.endsWith('.apk') && !asset.name.includes('-module-'),
   );
+
+  if (candidates.length === 0) return undefined;
+
+  if (kind === 'youtube') {
+    return candidates.find((asset) => /-all\.apk$/i.test(asset.name)) ?? candidates[0];
+  }
+
+  return candidates.find((asset) => /arm64-v8a\.apk$/i.test(asset.name)) ?? candidates[0];
 }
 
 async function fetchLatestRelease(repo: string): Promise<GitHubRelease> {
   const response = await fetch(`https://api.github.com/repos/${repo}/releases/latest`, {
-    headers: {
-      Accept: 'application/vnd.github+json',
-      'User-Agent': 'jfapp-docs',
-    },
+    headers: GITHUB_HEADERS,
   });
 
   if (!response.ok) {
@@ -78,32 +90,79 @@ async function fetchLatestRelease(repo: string): Promise<GitHubRelease> {
   return response.json();
 }
 
+async function fetchRecentReleases(repo: string, perPage = 30): Promise<GitHubRelease[]> {
+  const response = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=${perPage}`, {
+    headers: GITHUB_HEADERS,
+  });
+
+  if (!response.ok) {
+    throw new Error(`GitHub API ${response.status} for ${repo}`);
+  }
+
+  return response.json();
+}
+
+/**
+ * Newest release does not always ship both APKs (e.g. YouTube-only builds).
+ * Walk recent releases and take the first matching asset for each app.
+ */
+function pickLatestMorpheApks(releases: GitHubRelease[]) {
+  let youtubeApk: GitHubAsset | undefined;
+  let musicApk: GitHubAsset | undefined;
+  let youtubeBody: string | undefined;
+  let musicBody: string | undefined;
+
+  for (const release of releases) {
+    const assets = release.assets ?? [];
+
+    if (!youtubeApk) {
+      const match = findMorpheApk(assets, 'youtube');
+      if (match) {
+        youtubeApk = match;
+        youtubeBody = release.body;
+      }
+    }
+
+    if (!musicApk) {
+      const match = findMorpheApk(assets, 'music');
+      if (match) {
+        musicApk = match;
+        musicBody = release.body;
+      }
+    }
+
+    if (youtubeApk && musicApk) break;
+  }
+
+  return { youtubeApk, musicApk, youtubeBody, musicBody };
+}
+
 async function fetchLatestAPKReleaseInfo(): Promise<APKReleaseInfo> {
-  const [morpheRelease, microgRelease, pothelperRelease] = await Promise.all([
-    fetchLatestRelease(MORPHE_REPO),
+  const [morpheReleases, microgRelease, pothelperRelease] = await Promise.all([
+    fetchRecentReleases(MORPHE_REPO),
     fetchLatestRelease(MICROG_REPO),
     fetchLatestRelease(POTHELPER_REPO),
   ]);
 
-  const morpheAssets = morpheRelease.assets ?? [];
+  const { youtubeApk, musicApk, youtubeBody, musicBody } = pickLatestMorpheApks(morpheReleases);
   const microgAssets = microgRelease.assets ?? [];
   const pothelperAssets = pothelperRelease.assets ?? [];
 
-  const youtubeApk = findApk(morpheAssets, 'youtube-morphe-');
-  const musicApk = findApk(morpheAssets, 'music-morphe-');
   const microgApk = microgAssets.find((asset) => asset.name.startsWith('microg-') && asset.name.endsWith('.apk'));
   const pothelperApk = pothelperAssets.find(
     (asset) => asset.name.toLowerCase().includes('pot-helper') && asset.name.endsWith('.apk'),
   );
-  const bodyVersions = parseMorpheVersions(morpheRelease.body);
+
+  const youtubeVersions = parseMorpheVersions(youtubeBody);
+  const musicVersions = parseMorpheVersions(musicBody);
 
   return {
     youtube: youtubeApk?.browser_download_url ?? '',
     youtubeMusic: musicApk?.browser_download_url ?? '',
     microg: microgApk?.browser_download_url ?? '',
     pothelper: pothelperApk?.browser_download_url ?? '',
-    youtubeVersion: parseVersionFromApkName(youtubeApk?.name ?? '') ?? bodyVersions.youtube ?? null,
-    youtubeMusicVersion: parseVersionFromApkName(musicApk?.name ?? '') ?? bodyVersions.music ?? null,
+    youtubeVersion: parseVersionFromApkName(youtubeApk?.name ?? '') ?? youtubeVersions.youtube ?? null,
+    youtubeMusicVersion: parseVersionFromApkName(musicApk?.name ?? '') ?? musicVersions.music ?? null,
     microgVersion: normalizeTag(microgRelease.tag_name) ?? microgApk?.name?.match(/microg-([\d.]+)\.apk/)?.[1] ?? null,
     pothelperVersion:
       normalizeTag(pothelperRelease.tag_name) ?? pothelperApk?.name?.match(/pot-helper-([\d.]+)\.apk/i)?.[1] ?? null,

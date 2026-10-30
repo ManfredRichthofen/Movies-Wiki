@@ -3,17 +3,13 @@ import type React from 'react';
 import { Badge } from '@/components/ui/badge';
 import { ButtonLink } from '@/components/ui/button-link';
 import { SectionLabel } from '@/components/ui/section-label';
-import {
-  type APKReleaseInfo,
-  MICROG_RELEASES_PAGE,
-  MORPHE_RELEASES_PAGE,
-  POTHELPER_RELEASES_PAGE,
-} from '@/utils/github';
+import { type APKReleaseInfo, MICROG_RELEASES_PAGE, POTHELPER_RELEASES_PAGE } from '@/utils/github';
 
 type AppCard = {
   name: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
+  /** Direct APK download URL when available */
   url: string;
   version?: string | null;
   required?: boolean;
@@ -55,7 +51,7 @@ export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Elem
       name: 'YouTube',
       description: 'No ads, background play, and SponsorBlock.',
       icon: CirclePlay,
-      url: releaseInfo.youtube || MORPHE_RELEASES_PAGE,
+      url: releaseInfo.youtube,
       version: releaseInfo.youtubeVersion,
       downloadLabel: 'Download app',
     },
@@ -63,7 +59,7 @@ export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Elem
       name: 'YouTube Music',
       description: 'Ad-free listening with music that keeps playing.',
       icon: Music,
-      url: releaseInfo.youtubeMusic || MORPHE_RELEASES_PAGE,
+      url: releaseInfo.youtubeMusic,
       version: releaseInfo.youtubeMusicVersion,
       downloadLabel: 'Download app',
     },
@@ -140,46 +136,66 @@ export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Elem
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 gap-3.5'>
-            {apps.map((app) => (
-              <a
-                key={app.name}
-                href={app.url}
-                target='_blank'
-                rel='noopener noreferrer'
-                className={`group relative flex gap-4 items-start p-5 rounded-2xl border bg-base-200 transition-colors hover:border-white/16 ${
-                  app.required ? 'border-white/14' : 'border-white/8'
-                }`}
-              >
-                {app.required && (
-                  <span className='absolute top-3.5 right-3.5 text-[10px] font-bold uppercase tracking-wide text-[#c7c1d6] bg-white/8 px-2 py-0.5 rounded-md'>
-                    Required first
+            {apps.map((app) => {
+              const cardClass = `group relative flex gap-4 items-start p-5 rounded-2xl border bg-base-200 transition-colors ${
+                app.url ? 'hover:border-white/16' : 'opacity-70'
+              } ${app.required ? 'border-white/14' : 'border-white/8'}`;
+
+              const content = (
+                <>
+                  {app.required && (
+                    <span className='absolute top-3.5 right-3.5 text-[10px] font-bold uppercase tracking-wide text-[#c7c1d6] bg-white/8 px-2 py-0.5 rounded-md'>
+                      Required first
+                    </span>
+                  )}
+                  {app.optional && (
+                    <span className='absolute top-3.5 right-3.5 text-[10px] font-bold uppercase tracking-wide text-[#8e889e] bg-white/6 px-2 py-0.5 rounded-md'>
+                      Only if needed
+                    </span>
+                  )}
+                  <span className='flex size-[46px] shrink-0 items-center justify-center rounded-xl bg-white/5 text-[#c7c1d6]'>
+                    <app.icon className='size-[22px]' />
                   </span>
-                )}
-                {app.optional && (
-                  <span className='absolute top-3.5 right-3.5 text-[10px] font-bold uppercase tracking-wide text-[#8e889e] bg-white/6 px-2 py-0.5 rounded-md'>
-                    Only if needed
-                  </span>
-                )}
-                <span className='flex size-[46px] shrink-0 items-center justify-center rounded-xl bg-white/5 text-[#c7c1d6]'>
-                  <app.icon className='size-[22px]' />
-                </span>
-                <div className='min-w-0 pr-16'>
-                  <div className='flex items-center gap-2 mb-1 flex-wrap'>
-                    <h3 className='font-heading font-bold text-base text-[#f2eff7]'>{app.name}</h3>
-                    {app.version ? (
-                      <span className='text-[10px] font-semibold uppercase tracking-wide text-[#8e889e] bg-white/6 px-1.5 py-0.5 rounded'>
-                        v{app.version}
-                      </span>
-                    ) : null}
+                  <div className='min-w-0 pr-16'>
+                    <div className='flex items-center gap-2 mb-1 flex-wrap'>
+                      <h3 className='font-heading font-bold text-base text-[#f2eff7]'>{app.name}</h3>
+                      {app.version ? (
+                        <span className='text-[10px] font-semibold uppercase tracking-wide text-[#8e889e] bg-white/6 px-1.5 py-0.5 rounded'>
+                          v{app.version}
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className='text-[13.5px] text-[#9d97ad] leading-snug mb-2.5'>{app.description}</p>
+                    <span className='inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#f2eff7]'>
+                      {app.url ? app.downloadLabel : 'Download unavailable'}
+                      {app.url ? (
+                        <ArrowRight className='size-3.5 group-hover:translate-x-0.5 transition-transform' />
+                      ) : null}
+                    </span>
                   </div>
-                  <p className='text-[13.5px] text-[#9d97ad] leading-snug mb-2.5'>{app.description}</p>
-                  <span className='inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#f2eff7]'>
-                    {app.downloadLabel}
-                    <ArrowRight className='size-3.5 group-hover:translate-x-0.5 transition-transform' />
-                  </span>
-                </div>
-              </a>
-            ))}
+                </>
+              );
+
+              if (!app.url) {
+                return (
+                  <div key={app.name} className={cardClass}>
+                    {content}
+                  </div>
+                );
+              }
+
+              return (
+                <a
+                  key={app.name}
+                  href={app.url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className={cardClass}
+                >
+                  {content}
+                </a>
+              );
+            })}
           </div>
 
           <div className='mt-6 flex flex-col items-center gap-3'>
