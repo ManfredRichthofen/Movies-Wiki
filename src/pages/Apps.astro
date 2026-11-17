@@ -7,5 +7,5 @@ const releaseInfo = await getLatestAPKReleaseInfo();
 ---
 
 <CustomPageLayout title="YouTube apps" description="Ad-free YouTube and YouTube Music for Android — install the helper first, then the apps.">
-  <Apps releaseInfo={releaseInfo} />
+  <Apps client:load releaseInfo={releaseInfo} />
 </CustomPageLayout>

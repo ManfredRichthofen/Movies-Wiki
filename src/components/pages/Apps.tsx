@@ -1,7 +1,13 @@
 import { ArrowRight, BookOpen, CirclePlay, Clapperboard, KeyRound, Music, Puzzle } from 'lucide-react';
 import type React from 'react';
+import { useEffect, useState } from 'react';
 import { ButtonLink } from '@/components/ui/button-link';
-import { type APKReleaseInfo, MICROG_RELEASES_PAGE, POTHELPER_RELEASES_PAGE } from '@/utils/github';
+import {
+  type APKReleaseInfo,
+  getLatestAPKReleaseInfo,
+  MICROG_RELEASES_PAGE,
+  POTHELPER_RELEASES_PAGE,
+} from '@/utils/github';
 
 type AppCard = {
   name: string;
@@ -34,8 +40,8 @@ const installSteps = [
   },
 ];
 
-export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Element {
-  const apps: AppCard[] = [
+function buildAppCards(releaseInfo: APKReleaseInfo): AppCard[] {
+  return [
     {
       name: 'MicroG',
       description: 'Helper app required to sign in. Install this first.',
@@ -71,6 +77,30 @@ export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Elem
       downloadLabel: 'Download helper',
     },
   ];
+}
+
+export default function AppsPage({ releaseInfo }: AppsPageProps): React.JSX.Element {
+  const [info, setInfo] = useState(releaseInfo);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    getLatestAPKReleaseInfo()
+      .then((latest) => {
+        if (cancelled) return;
+        if (latest.youtube || latest.youtubeMusic || latest.microg || latest.pothelper) {
+          setInfo(latest);
+        }
+      })
+      .catch(() => {
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const apps = buildAppCards(info);
 
   return (
     <>

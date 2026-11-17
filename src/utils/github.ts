@@ -28,7 +28,7 @@ export interface APKReleaseInfo {
   pothelperVersion: string | null;
 }
 
-const EMPTY_RELEASE_INFO: APKReleaseInfo = {
+export const EMPTY_RELEASE_INFO: APKReleaseInfo = {
   youtube: '',
   youtubeMusic: '',
   microg: '',
@@ -39,10 +39,23 @@ const EMPTY_RELEASE_INFO: APKReleaseInfo = {
   pothelperVersion: null,
 };
 
-const GITHUB_HEADERS = {
-  Accept: 'application/vnd.github+json',
-  'User-Agent': 'jfapp-docs',
-};
+function githubHeaders(): HeadersInit {
+  const headers: Record<string, string> = {
+    Accept: 'application/vnd.github+json',
+    'User-Agent': 'jfapp-docs',
+  };
+
+  const token =
+    typeof process !== 'undefined'
+      ? process.env.GITHUB_TOKEN || process.env.GH_TOKEN
+      : undefined;
+
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+
+  return headers;
+}
 
 function parseMorpheVersions(body?: string) {
   return {
@@ -78,13 +91,24 @@ function findMorpheApk(assets: GitHubAsset[], kind: 'youtube' | 'music'): GitHub
   return candidates.find((asset) => /arm64-v8a\.apk$/i.test(asset.name)) ?? candidates[0];
 }
 
+function findMicrogApk(assets: GitHubAsset[]): GitHubAsset | undefined {
+  const apks = assets.filter((asset) => asset.name.startsWith('microg-') && asset.name.endsWith('.apk'));
+  if (apks.length === 0) return undefined;
+
+  return (
+    apks.find((asset) => /^microg-[\d.]+\.apk$/i.test(asset.name)) ??
+    apks.find((asset) => /arm64-v8a\.apk$/i.test(asset.name) && !asset.name.includes('-noicon-')) ??
+    apks[0]
+  );
+}
+
 async function fetchLatestRelease(repo: string): Promise<GitHubRelease> {
   const response = await fetch(`https://api.github.com/repos/${repo}/releases/latest`, {
-    headers: GITHUB_HEADERS,
+    headers: githubHeaders(),
   });
 
   if (!response.ok) {
-    throw new Error(`GitHub API ${response.status} for ${repo}`);
+    throw new Error(`GitHub API ${response.status} for ${repo}/releases/latest`);
   }
 
   return response.json();
@@ -92,11 +116,11 @@ async function fetchLatestRelease(repo: string): Promise<GitHubRelease> {
 
 async function fetchRecentReleases(repo: string, perPage = 30): Promise<GitHubRelease[]> {
   const response = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=${perPage}`, {
-    headers: GITHUB_HEADERS,
+    headers: githubHeaders(),
   });
 
   if (!response.ok) {
-    throw new Error(`GitHub API ${response.status} for ${repo}`);
+    throw new Error(`GitHub API ${response.status} for ${repo}/releases`);
   }
 
   return response.json();
@@ -137,19 +161,34 @@ function pickLatestMorpheApks(releases: GitHubRelease[]) {
   return { youtubeApk, musicApk, youtubeBody, musicBody };
 }
 
+function settledValue<T>(result: PromiseSettledResult<T>): T | null {
+  return result.status === 'fulfilled' ? result.value : null;
+}
+
 async function fetchLatestAPKReleaseInfo(): Promise<APKReleaseInfo> {
-  const [morpheReleases, microgRelease, pothelperRelease] = await Promise.all([
+  const [morpheResult, microgResult, pothelperResult] = await Promise.allSettled([
     fetchRecentReleases(MORPHE_REPO),
     fetchLatestRelease(MICROG_REPO),
     fetchLatestRelease(POTHELPER_REPO),
   ]);
 
-  const { youtubeApk, musicApk, youtubeBody, musicBody } = pickLatestMorpheApks(morpheReleases);
-  const microgAssets = microgRelease.assets ?? [];
-  const pothelperAssets = pothelperRelease.assets ?? [];
+  const morpheReleases = settledValue(morpheResult) ?? [];
+  const microgRelease = settledValue(microgResult);
+  const pothelperRelease = settledValue(pothelperResult);
 
-  const microgApk = microgAssets.find((asset) => asset.name.startsWith('microg-') && asset.name.endsWith('.apk'));
-  const pothelperApk = pothelperAssets.find(
+  if (morpheResult.status === 'rejected') {
+    console.error('Error fetching Morphe releases:', morpheResult.reason);
+  }
+  if (microgResult.status === 'rejected') {
+    console.error('Error fetching MicroG release:', microgResult.reason);
+  }
+  if (pothelperResult.status === 'rejected') {
+    console.error('Error fetching PotHelper release:', pothelperResult.reason);
+  }
+
+  const { youtubeApk, musicApk, youtubeBody, musicBody } = pickLatestMorpheApks(morpheReleases);
+  const microgApk = findMicrogApk(microgRelease?.assets ?? []);
+  const pothelperApk = (pothelperRelease?.assets ?? []).find(
     (asset) => asset.name.toLowerCase().includes('pot-helper') && asset.name.endsWith('.apk'),
   );
 
@@ -163,13 +202,13 @@ async function fetchLatestAPKReleaseInfo(): Promise<APKReleaseInfo> {
     pothelper: pothelperApk?.browser_download_url ?? '',
     youtubeVersion: parseVersionFromApkName(youtubeApk?.name ?? '') ?? youtubeVersions.youtube ?? null,
     youtubeMusicVersion: parseVersionFromApkName(musicApk?.name ?? '') ?? musicVersions.music ?? null,
-    microgVersion: normalizeTag(microgRelease.tag_name) ?? microgApk?.name?.match(/microg-([\d.]+)\.apk/)?.[1] ?? null,
+    microgVersion: normalizeTag(microgRelease?.tag_name) ?? microgApk?.name?.match(/microg-([\d.]+)/)?.[1] ?? null,
     pothelperVersion:
-      normalizeTag(pothelperRelease.tag_name) ?? pothelperApk?.name?.match(/pot-helper-([\d.]+)\.apk/i)?.[1] ?? null,
+      normalizeTag(pothelperRelease?.tag_name) ?? pothelperApk?.name?.match(/pot-helper-([\d.]+)\.apk/i)?.[1] ?? null,
   };
 }
 
-/** Build-time / server fetch with a safe empty fallback for CI rate limits. */
+/** Build-time / browser fetch with a safe empty fallback for CI rate limits. */
 export async function getLatestAPKReleaseInfo(): Promise<APKReleaseInfo> {
   try {
     return await fetchLatestAPKReleaseInfo();
